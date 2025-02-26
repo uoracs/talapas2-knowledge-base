@@ -31,7 +31,7 @@ This will launch the Mathematica 12 **GUI**.
 ## Interactive
 
 1. ssh onto a talapas login node ([How-to Login to Talapas]({% link docs/how-to_articles/how-to_login_to_talapas.md %}))
-2. Start an interactive job ([How-to Start an Interactive Job]({% link docs/how-to_articles/how-to_start_an_interactive_job.md}))
+2. Start an interactive job ([How-to Start an Interactive Job]({% link docs/how-to_articles/how-to_start_an_interactive_job.md %}))
 3. Once on the allocated node enter
 
 ```bash

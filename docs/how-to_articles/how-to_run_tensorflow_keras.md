@@ -225,4 +225,4 @@ Type "help", "copyright", "credits" or "license" for more information.
 '2.2.2'
 ```
 
-That's it you now have a working tensorflow environment. For more information about running jobs in singularity on Talapas see the [Singularity]({% link doc/software/singularity.md}) pages.
+That's it you now have a working tensorflow environment. For more information about running jobs in singularity on Talapas see the [Singularity]({% link docs/software/singularity/singularity.md %}) pages.
