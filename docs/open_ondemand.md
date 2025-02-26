@@ -6,7 +6,7 @@ nav_order: 4
 
 # Open OnDemand
 
-We've installed an [Open OnDemand](http://openondemand.org/ "http://openondemand.org/") instance on Talapas.  This provides a way to access Talapas resources via a web browser.  You can edit files, launch a shell, launch a Jupyter instance, and even launch an X11 desktop (accessed via VNC), which in turn provides access to applications like XStata, MATLAB, and RStudio.  There are limitations, but it's quite usable for many tasks.
+We've installed an [Open OnDemand](https://openondemand.org/ "http://openondemand.org/") instance on Talapas.  This provides a way to access Talapas resources via a web browser.  You can edit files, launch a shell, launch a Jupyter instance, and even launch an X11 desktop (accessed via VNC), which in turn provides access to applications like XStata, MATLAB, and RStudio.  There are limitations, but it's quite usable for many tasks.
 
 ## Accessing via Web Browser and Security
 

@@ -115,7 +115,7 @@ Constrain a job to allocate a node with 10GB of GPU memory,
 
 #### CUDA A100 MIG slicing
 
-Due to limitations with CUDA MIG slicing, it appears that a job can only use one slice (GPU) per host. That means one GPU per job unless MPI is being used to orchestrate GPU usage on multiple hosts. See [NVIDIA Multi-Instance GPU User Guide :: NVIDIA Tesla Documentation](https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#cuda-visible-devices "https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#cuda-visible-devices"). On nodes which have 80GB GPUs MIG mode is not enabled. Request these nodes using, `--constraint=gpu-80gb,no-mig`
+Due to limitations with CUDA MIG slicing, it appears that a job can only use one slice (GPU) per host. That means one GPU per job unless MPI is being used to orchestrate GPU usage on multiple hosts. See [NVIDIA Multi-Instance GPU User Guide](https://docs.nvidia.com/datacenter/tesla/mig-user-guide/). On nodes which have 80GB GPUs MIG mode is not enabled. Request these nodes using, `--constraint=gpu-80gb,no-mig`
 
 ### Request node based on memory feature
 

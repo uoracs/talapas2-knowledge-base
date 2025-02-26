@@ -23,7 +23,7 @@ Alternatively, you can click this link to go right to it: [Talapas2 Globus](htt
 
 Click the "Collections" tab on the tab bar of this endpoint.
 
-![Globus User Collections](globus_t2_user_collections.png)
+![Globus User Collections](../../../../assets/images/globus_t2_user_collections.png)
 
 Click the "Add Guest Collection" button on the top-right.
 

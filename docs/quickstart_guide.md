@@ -45,7 +45,7 @@ See the [Storage]({% link docs/storage.md %}) documentation page for more detai
 
 Read about how to find software on our [Software]({% link docs/software/software.md %}) page.  Read on for the absolute basics.
 
-Talapas uses the [Lmod](http://lmod.readthedocs.io/en/latest/) environment module software to provide access to the various installed software packages.  Type:
+Talapas uses the [Lmod](https://lmod.readthedocs.io/en/latest/) environment module software to provide access to the various installed software packages.  Type:
 
 `module spider blast`
 

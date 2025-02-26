@@ -10,7 +10,7 @@ parent: Software
 {: .note }
 Most users will find it far easier to start Jupyter using [Open OnDemand]({% link docs/open_ondemand.md %}) instead.  This procedure still works, but is rather involved, and has few advantages.
 
-[Jupyter Notebook](https://jupyter.org) (and its new incarnation [JupyterLab](http://jupyterlab.readthedocs.io/en/stable/)) is a web application that allows you to create and share documents that contain live code, equations, visualizations and narrative text.  Its uses include: data cleaning and transformation, numerical simulation, statistical modeling, data visualization, machine learning, and much more.
+[Jupyter Notebook](https://jupyter.org) (and its new incarnation [JupyterLab](https://jupyterlab.readthedocs.io/en/stable/)) is a web application that allows you to create and share documents that contain live code, equations, visualizations and narrative text.  Its uses include: data cleaning and transformation, numerical simulation, statistical modeling, data visualization, machine learning, and much more.
 
 Jupyter can be installed on Windows, MacOS, and Linux PCs, and many users use it on their local machines.  For more demanding analysis, Jupyter can be run on Talapas, providing access to more RAM, faster CPUs, and the Talapas filesystem.
 

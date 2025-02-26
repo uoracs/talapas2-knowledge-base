@@ -8,7 +8,7 @@ grand_parent: Data Movement
 
 # How-To Use Globus CLI on Talapas
 
-Globus CLI is installed on Talapas and can be used as an alternative to the [webapp](http://app.globus.org), and to programmatically initiate file transfers. This wiki how-to article walks through how to use Globus CLI on a Talapas login node. It assume you already have source and destination shares setup.
+Globus CLI is installed on Talapas and can be used as an alternative to the [webapp](https://app.globus.org), and to programmatically initiate file transfers. This wiki how-to article walks through how to use Globus CLI on a Talapas login node. It assume you already have source and destination shares setup.
 
 In this example I’ll use a Globus share that I have created on the ‘Talapas’ endpoint that is mapped to a subdirectory within my home directory on Talapas and the ‘UO - Information Services’ endpoint where I have requested storage and a corresponding Globus share.
 

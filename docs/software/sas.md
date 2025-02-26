@@ -23,7 +23,7 @@ The GUI version of SAS is not currently available–run this on your workstatio
 
 ## Documentation
 
-[SAS Unix Guide](http://support.sas.com/documentation/cdl/en/hostunx/63053/HTML/default/viewer.htm) – [Wikipedia](https://en.wikipedia.org/wiki/SAS_(software))
+[SAS Unix Guide](https://support.sas.com/documentation/cdl/en/hostunx/63053/HTML/default/viewer.htm) – [Wikipedia](https://en.wikipedia.org/wiki/SAS_(software))
 
 ## Usage Examples
 

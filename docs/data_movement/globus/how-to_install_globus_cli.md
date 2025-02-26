@@ -19,8 +19,8 @@ You can also install Globus CLI on your laptop of lab server for use with Globus
 Below are instructions for installing on a Mac:
 
 - [Globus CLI reference documentation](https://docs.globus.org/cli/reference/)
-- [Globus CLI installation documentation](https://docs.globus.org/cli/installation/)
-- Install any prerequisites as needed. The installation uses pip and the full version of python3 is recommended, [Globus Pre-reqs](https://docs.globus.org/cli/installation/prereqs/)
+- [Globus CLI installation documentation](https://docs.globus.org/cli/#installation)
+- Install any prerequisites as needed. The installation uses pip and the full version of python3 is recommended. If installed with pip, then the necessary requirements should be installed with Globus CLI.
   - Here's the documentation to install python3 on a mac using the homebrew package manager: [MacOS Python Installation](https://docs.python-guide.org/starting/install3/osx/#install3-osx)
 
 ## Install Globus CLI
