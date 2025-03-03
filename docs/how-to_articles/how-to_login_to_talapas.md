@@ -67,6 +67,55 @@ Last login: Thu May 25 10:18:23 2017 from somewhere.uoregon.edu
 
 Note: For security, no characters will display when entering your password.
 
+## Setting up SSH Keys for MAC and Linux
+Logging in via your SSH key will allow you to connect to Talapas without having to type in your password. To get started, follow the steps below:
+
+#### 1. Generate your SSH key
+On the command line, run the following command:
+
+```bash 
+$ ssh-keygen -t ed25519 -C "username@uoregon.edu" -f ~/.ssh/talapas_ed25519
+``` 
+
+It will ask where to save the key; press Enter to accept the default (~/.ssh/talapas_ed25519). Do not enter a passphrase when prompted—just press Enter.
+
+#### 2. Copy the SSH key to Talapas
+On the command line, run the following command (replace username with your DuckID):
+
+```bash 
+$ ssh-copy-id -i ~/.ssh/talapas_ed25519.pub username@login.talapas.uoregon.edu
+```
+
+#### 3. Create and edit config file
+
+If there is not already a file called `config` in the .ssh folder create it: `touch ~/.ssh/config`. In your  `~/.ssh/config` file add the following lines (replace username with your DuckID): 
+
+```
+Host login.talapas.uoregon.edu
+  HostName login.talapas.uoregon.edu
+  User username
+  IdentityFile ~/.ssh/talapas_ed25519
+```
+
+#### 4. (Optional) Add your alias 
+In either your `~/.bashrc` or `~/.zshrc` file (on mac you should edit your ~/.zshrc file), add the following line. Feel free to add any alias you prefer in place of talapas_login. 
+
+```
+alias talapas_login='ssh username@login.talapas.uoregon.edu'
+```
+
+Save and exit the file. On the command line type `source ~/.zshrc` or `source ~/.bashrc`.
+
+You can now type your alias "talapas_login" on the command line: 
+
+```bash
+$ talapas_login
+```
+
+You're done!
+
+Note: Before logging into Talapas, make sure you're on the UO VPN.
+
 ## Microsoft Windows
 
 Windows has no builtin `SSH` client, but you can download and install one of several free clients:
