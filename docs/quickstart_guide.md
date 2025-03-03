@@ -26,8 +26,6 @@ There are also GUI tools available for file transfer via SCP or SFTP.  [Filezil
 
 Globus is the fastest method of file transfering and the one that RACS reccomends the most. For more information see the [Globus]({% link docs/data_movement/globus/globus.md %}) pages.
 
-See the [Data Movement]{% link docs/data_movement/data_movement.md%} documentation page for more details. 
-
 ## Storing your Data
 
 As a Talapas user, you have these directories available for storing and manipulating your files.
