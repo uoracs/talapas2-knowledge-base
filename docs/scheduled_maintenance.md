@@ -6,10 +6,23 @@ nav_order: 11
 
 # Scheduled Maintenance Windows
 
-The cluster will be unavailable during the time frames below:
+The cluster will be unavailable during the time frames below with past (i.e. completed) windows highlighted in red and upcoming windows in blue.
 
-| Starting Date and Time | Ending Date and Time |
-| ---------------------- | -------------------- |
-| 7/9/2024 @ 9am         | 7/9/2024 @ 9pm       |
-| 9/17/2024 @ 8am        | 9/19/2024 @ 5pm      |
-| 3/25/2025 @ 9am        | 3/27/2025 @ 5pm      |
+<table>
+  <tr>
+    <th>Starting Date and Time</th>
+    <th>Ending Date and Time</th>
+  </tr>
+  <tr>
+    <td style="background-color:#ffb3c1">7/9/2024 @ 9am</td>
+    <td style="background-color:#ffb3c1">7/9/2024 @ 9pm</td>
+  </tr>
+    <tr>
+    <td style="background-color:#ffb3c1">9/17/2024 @ 8am</td>
+    <td style="background-color:#ffb3c1">9/19/2024 @ 5pm</td>
+  </tr>
+  <tr>
+    <td style="background-color:#caf0f8">3/25/2025 @ 9am</td>
+    <td style="background-color:#caf0f8">3/27/2025 @ 5pm</td>
+  </tr>
+</table>
