@@ -16,7 +16,7 @@
 title: Talapas Knowledge Base
 description: Public Wiki for Talapas2 Documentation served via GitHub Pages
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://uoracs.github.io/talapas2-knowledge-base" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://wiki.talapas.uoregon.edu" #"https://uoracs.github.io/talapas2-knowledge-base" # the base hostname & protocol for your site, e.g. http://example.com
 repository: uoracs/just-the-docs-uo # for github-metadata
 
 permalink: pretty
