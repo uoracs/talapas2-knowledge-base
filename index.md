@@ -16,6 +16,10 @@ On this site you will find a collection of How-To articles, best practices, and 
 * [T2 Release Notes]({% link docs/t2_release_notes.md %})
 * [How-To Articles]({% link docs/how-to_articles/how-to_articles.md %})
 
+## Have long running jobs?
+
+Look at [Scheduled Maintennce Windows]({% link docs/scheduled_maintenance.md %}) to see when the cluster is planned to be down next!
+
 ## Need Help?
 
 Struggling to navigate Talapas or have questions about services we offer?
