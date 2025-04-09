@@ -24,7 +24,14 @@ Look at [Scheduled Maintennce Windows]({% link docs/scheduled_maintenance.md %})
 
 Struggling to navigate Talapas or have questions about services we offer?
 
-Submit a request at the [Service Desk](https://hpcrcf.atlassian.net/servicedesk/customer/portal/1).
+* Submit a request at the [Service Desk](https://hpcrcf.atlassian.net/servicedesk/customer/portal/1).
+
+In addtion to our Service Desk, RACS is now offering office hours to provide in-person support to users regarding software and workflow questions/issues!
+
+2025 Spring Term Office Hours:
+
+* Where: Dream Lab room 122C in the Knight Library
+* When: Every Wednesday 10am-12pm
 
 ## More Resources
 
