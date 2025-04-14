@@ -23,33 +23,35 @@ Once miniconda3 is loaded successfully, choose a method in which to create your 
 
 ## Using an `environment.yml`
 
-- **Creating** `environment.yml`
-  start by creating a new text file named `environment.yml` in your project directory
-  `$ touch environment.yml`
-- **installing R packages**
-  Conda also allows users to be able to create environments for R and allows users to create and manage their own R environments. To do this, you will need to specify a few additional channels for the `R` libraries. An example `environment.yml` with the necessary channels and some example packages can be seen below:
-
+- **Prepping your** `environment.yml`
+  start by obtaining your desired `environment.yml` and ensure that all dependencies have corresponding versions numbers. An example ` environemt.yml ` file can be seen below. 
 ```bash
-name: name-of-your-choosing
+name: my-r-env
 channels:
   - defaults
   - conda-forge
   - bioconda
   - R
 dependencies:
-  - r-base=4.4 # change to desired R version
-  - r-scales
-  - r-seqinr
-  - r-ape
-  - r-castor
-  - r-phytools
-  - and any other additionall packages...
+  - r-base=4.4.0
+  - r-scales=1.3.0
+  - r-seqinr=4.2-30
+  - r-ape=5.7-1
+  - r-castor=1.8.8
+  - r-phytools=1.8-6
+  - r-tidyverse=2.0.0
+  - r-data.table=1.15.2
+  - r-ggtree=3.10.0
+  - r-dplyr=1.1.4
+  - r-ggplot2=3.5.0
+  - r-optparse=1.7.4
+  - r-readr=2.1.5
 ```
 
 {: .note }
 The conda channels `defaults` and `conda-forge` are standard conda channels which are, as the first name implies, the default channels. Conda will look here first when trying to satisfy package installations. However, this is not enough to satisfy installing R and its available packages. This is why the `bioconda` and `R` channels need to be specified.
 
-- **Creating the conda environment with miniconda3:** Once the `environment.yml` is complete with all required dependencies, we can create the environemnt with the following commands
+- **Creating the conda environment with miniconda3:** Once the `environment.yml` is verified to be complete with all required dependencies, we can create the environemnt with the following commands
   `$ conda env create --solver=libmamba -f environment.yml`
   Upon successful completion, you can activate the environment by using:
   `$ conda activate name-specified-in-environment-file`
