@@ -24,7 +24,7 @@ Once miniconda3 is loaded successfully, choose a method in which to create your 
 ## Using an `environment.yml`
 
 - **Prepping your** `environment.yml`
-  start by obtaining your desired `environment.yml` and ensure that all dependencies have corresponding versions numbers. An example ` environemt.yml ` file can be seen below. 
+  : Start by obtaining your desired `environment.yml` and ensure that all dependencies have corresponding versions numbers. An example ` environment.yml ` file can be seen below. 
 ```bash
 name: my-r-env
 channels:
