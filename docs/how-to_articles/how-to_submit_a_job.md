@@ -30,10 +30,10 @@ See Slurm [sbatch](https://slurm.schedmd.com/sbatch.html) documentation for more
 
 ```bash
 #SBATCH --account=<myPIRG>
+#SBATCH --partition=compute
 #SBATCH --job-name=HiWorld
 #SBATCH --output=Hi.out
 #SBATCH --error=Hi.err
-#SBATCH --partition=computelong
 #SBATCH --time=0-00:01:00
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=1
@@ -62,10 +62,10 @@ Example of a job script:
 #!/bin/bash
 
 #SBATCH --account=<myPIRG>
+#SBATCH --partition=compute
 #SBATCH --job-name=hiworld
 #SBATCH --output=hi.out
 #SBATCH --error=hi.err
-#SBATCH --partition=compute
 #SBATCH --time=0-00:01:00
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=1

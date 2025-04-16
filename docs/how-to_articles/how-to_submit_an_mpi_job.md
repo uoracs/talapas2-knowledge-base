@@ -75,7 +75,7 @@ Batch script example using`srun`:
 
 ```bash
 #!/bin/bash
-#SBATCH --account=racs
+#SBATCH --account=<myPIRG>
 #SBATCH --partition=compute
 #SBATCH --job-name=intel-mpi
 #SBATCH --output=intel-mpi.out
@@ -102,7 +102,7 @@ mpicc helloworld_mpi.c -o helloworld_mpich.x
 
 ```bash
 #!/bin/bash
-#SBATCH --account=racs
+#SBATCH --account=<myPIRG>
 #SBATCH --partition=compute,computelong
 #SBATCH --job-name=mpich-mpi-test
 #SBATCH --output=mpich-mpi-test.out

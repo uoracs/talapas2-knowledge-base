@@ -17,7 +17,7 @@ To enable email notifications, include the following options in your SLURM job s
 
 ```bash
 #!/bin/bash -l
-#SBTACH --account=racs
+#SBTACH --account=<myPIRG>
 #SBATCH --partition=preempt
 #SBATCH --job-name=testSlurmEmail
 #SBATCH --output=testSlurm.out
