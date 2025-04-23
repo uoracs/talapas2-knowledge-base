@@ -27,7 +27,7 @@ To enable email notifications, include the following options in your SLURM job s
 #SBATCH --cpus-per-task=1
 #SBATCH --mem-per-cpu=500M
 #SBATCH --mail-type=BEGIN,END,FAIL
-#SBATCH --mail-user=flopez2@uoregon.edu
+#SBATCH --mail-user=<duckID>@uoregon.edu
 ```
 
 ### Key Options

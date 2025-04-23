@@ -30,7 +30,6 @@ In a strictly OMP job (for hybrid jobs see the [[How-to Submit a Hybrid Job]] ar
 #SBATCH --ntasks-per-node=1 ### Number of tasks (MPI processes)
 #SBATCH --cpus-per-task=28  ### Number of threads per task (OMP threads)
 
-
 export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
 
 ./hello_omp
