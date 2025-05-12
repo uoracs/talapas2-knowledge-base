@@ -32,7 +32,7 @@ After activating the environment, export its details into a `.yml` file. This fi
 
 Run the following command to export the environment to a file:
 
-`$ conda env export --from-history | sed '/prefix:/d' > environment.yml`
+`$ conda env export | sed '/prefix:/d' > environment.yml`
 
 This will create an `environment.yml` file in the current directory. The file will contain:
 

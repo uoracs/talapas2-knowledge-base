@@ -158,7 +158,7 @@ export CKPT_DIR=/scratch/<MY_PIRG>/<MY_USERNAME>/dmtcp_ckpts/
 
 #make the ckpt dir if it does not exist
 if [ -d "$CKPT_DIR" ]; then
-    mkdir $CKPT_DIR
+    mkdir -p $CKPT_DIR
 fi
 
 #running w/ regular checkpoint freq 1/min
