@@ -18,13 +18,15 @@ Let's look at a simple example:
 
 ```bash
 #!/bin/bash
-#SBATCH --partition=compute    ### Partition
-#SBATCH --job-name=ArrayJob    ### Job Name
-#SBATCH --time=00:10:00        ### WallTime
-#SBATCH --nodes=1              ### Number of Nodes
-#SBATCH --ntasks=1             ### Number of tasks per array job
-#SBATCH --array=0-19           ### Array index
-#SBATCH --account=hpcrcf       ### Account used for job submission
+
+#SBATCH --account=<myPIRG>     ### Account used for job submission
+#SBATCH --partition=compute    ### Partition
+#SBATCH --job-name=ArrayJob    ### Job Name
+#SBATCH --time=00:10:00        ### WallTime
+#SBATCH --nodes=1              ### Number of Nodes
+#SBATCH --ntasks=1             ### Number of tasks per array job
+#SBATCH --array=0-19           ### Array index
+
 echo "I am Slurm job ${SLURM_JOB_ID}, array job ${SLURM_ARRAY_JOB_ID}, and array task ${SLURM_ARRAY_TASK_ID}."
 ```
 

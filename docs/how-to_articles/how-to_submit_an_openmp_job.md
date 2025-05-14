@@ -22,13 +22,13 @@ In a strictly OMP job (for hybrid jobs see the [[How-to Submit a Hybrid Job]] ar
 
 ```bash
 #!/bin/bash
-#SBATCH --partition=short   ### Partition
+#SBATCH --account=<myPIRG>    ### Account used for job submission
+#SBATCH --partition=compute   ### Partition
 #SBATCH --job-name=HelloOMP ### Job Name
 #SBATCH --time=00:10:00     ### WallTime
 #SBATCH --nodes=1           ### Number of Nodes
 #SBATCH --ntasks-per-node=1 ### Number of tasks (MPI processes)
 #SBATCH --cpus-per-task=28  ### Number of threads per task (OMP threads)
-#SBATCH --account=hpcrcf    ### Account used for job submission
 
 export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
 
