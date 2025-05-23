@@ -165,13 +165,13 @@ Here is an example SLURM `sbatch` script to invoke the program:
 ```bash
 #!/bin/bash
 
+#SBATCH --account=<myPIRG>
 #SBATCH --partition=preempt
 #SBATCH --job-name=test-verbose-srun
 #SBATCH --output=%x.out
 #SBATCH --time=4:00:00
-#SBATCH --account=hpcrcf
-###SBATCH --nodes=2
-###SBATCH --ntasks-per-node=28
+#SBATCH --nodes=2
+#SBATCH --ntasks-per-node=28
 #SBATCH --ntasks=16
 #SBATCH --cpus-per-task=8
 #SBATCH --mem-per-cpu=1G

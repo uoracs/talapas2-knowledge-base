@@ -17,14 +17,15 @@ Most of the GPU equipped compute nodes on Talapas have 4 GPUs per node (Run `/pa
 
 ```bash
 #!/bin/bash
-#SBATCH --job-name=GPUjob     ### Job Name
-#SBATCH --partition=gpu       ### Similar to a queue in PBS
-#SBATCH --time=1-00:00:00     ### Wall clock time limit in Days-HH:MM:SS
-#SBATCH --nodes=1             ### Node count required for the job
-#SBATCH --ntasks-per-node=1   ### Nuber of tasks to be launched per Node
-#SBATCH --gpus=1              ### General REServation of gpu:number of gpus
-#SBATCH --account=<myPIRG>    ### Account used for job submission
-my_executable $SLURM_JOB_GPUS
+
+#SBATCH --account=<myPIRG>    ### Account used for job submission
+#SBATCH --partition=gpu       ### Similar to a queue in PBS
+#SBATCH --job-name=GPUjob     ### Job Name
+#SBATCH --time=1-00:00:00     ### Wall clock time limit in Days-HH:MM:SS
+#SBATCH --nodes=1             ### Node count required for the job
+#SBATCH --ntasks-per-node=1   ### Nuber of tasks to be launched per Node
+#SBATCH --gpus=1              ### General REServation of gpu:number of gpus
+./my_executable $SLURM_JOB_GPUS
 ```
 
 In this example, the program `my_executable` expects the GPU ordinal as an input. We use of the variable `SLURM_JOB_GPUS` to pass that information from SLURM without knowing a-priori which GPU I will run on.
@@ -37,14 +38,16 @@ There is also an old form that is similar.  For most purposes, the new form is 
 
 ```bash
 #!/bin/bash
-#SBATCH --job-name=GPUjob     ### Job Name
-#SBATCH --partition=gpu       ### Similar to a queue in PBS
-#SBATCH --time=1-00:00:00     ### Wall clock time limit in Days-HH:MM:SS
-#SBATCH --nodes=1             ### Node count required for the job
-#SBATCH --ntasks-per-node=1   ### Nuber of tasks to be launched per Node
-#SBATCH --gres=gpu:1          ### General REServation of gpu:number of gpus
-#SBATCH --account=<myPIRG>    ### Account used for job submission
-my_executable $SLURM_JOB_GPUS
+
+#SBATCH --account=<myPIRG>    ### Account used for job submission
+#SBATCH --partition=gpu       ### Similar to a queue in PBS
+#SBATCH --job-name=GPUjob     ### Job Name
+#SBATCH --time=1-00:00:00     ### Wall clock time limit in Days-HH:MM:SS
+#SBATCH --nodes=1             ### Node count required for the job
+#SBATCH --ntasks-per-node=1   ### Nuber of tasks to be launched per Node
+#SBATCH --gpus=1              ### General REServation of gpu:number of gpus
+
+./my_executable $SLURM_JOB_GPUS
 ```
 
 ## GPU types
