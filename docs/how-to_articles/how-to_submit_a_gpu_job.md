@@ -45,7 +45,7 @@ There is also an old form that is similar.  For most purposes, the new form is 
 #SBATCH --time=1-00:00:00     ### Wall clock time limit in Days-HH:MM:SS
 #SBATCH --nodes=1             ### Node count required for the job
 #SBATCH --ntasks-per-node=1   ### Nuber of tasks to be launched per Node
-#SBATCH --gres=gpu:1          ### General REServation of gpu:number of gpus
+#SBATCH --gpus=1              ### General REServation of gpu:number of gpus
 
 ./my_executable $SLURM_JOB_GPUS
 ```
