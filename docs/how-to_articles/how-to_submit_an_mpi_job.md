@@ -31,7 +31,7 @@ With this approach the job will probably be scheduled sooner since Slurm is free
 Another method is to specify the number nodes you want the job to run on and how many tasks to run on each node.
 
 ```bash
-#SBATCH --partition=compute
+#SBATCH --partition=compute_intel
 #SBATCH --nodes=3
 #SBATCH --ntasks-per-node=28
 #SBATCH --mem-per-cpu=500m
