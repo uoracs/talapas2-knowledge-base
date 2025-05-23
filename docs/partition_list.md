@@ -8,9 +8,17 @@ nav_order: 5
 
 The computational resources of Talapas are divided into groups of nodes called partitions. A partition needs to be specified when submitting a job to tell the workload manager Slurm where to run the job.
 
-Partitions are separate queues for submitted jobs and each partition has different resources and constraints that the user should be aware of when submitting a job.
+Partitions are separate queues for submitted jobs and each partition has different resources and constraints that the user should be aware of when submitting a job. Talapas partitions fall into two categories: open-use shared partitions and "condo" partitions (i.e. research group-owned). The open-use shared partitions are freely open to all Talapas users to submit jobs to. These partitions are grouped by what types of jobs are most applicable, listed below:
+* `compute`: generic CPU jobs, max time limit of 1day
+* `computelong`: generic CPU jobs, max time limit of 14days
+* `gpu`: jobs that need a GPU, max time limit of 1day
+* `gpulong`: jobs that need a GPU, max time limit of 14days
+* `interactive`: meant for shorter interactive CPU jobs, max time limit of 12 hours
+* `interactivegpu`: meant for shorter interactive GPU jobs, max time limit of 8 hours
+* `memory`: CPU jobs that need LOTS of memory (up to 4tb), max time limit of 1day
+* `memorylong`: CPU jobs that need lots of memory (up to 4tb), max time limit of 14days
 
-The tables below lists Slurm partitions on Talapas. This includes partitions with resources that you may not have access to (you’re not a member of the PIRG) but the resources are available through the `preempt` partition.
+This table lists *ALL* Slurm partitions on Talapas. This includes the "condo" partitions (those listed in the table below `memorylong`) that have resources that you may not have access to (you’re not a member of the PIRG). These resources are available through the `preempt` partition, but jobs on the `preempt` partition could be canceled if/when the owner of those resources requests them. See the [How-To Use the preempt Partition]({% link docs/how-to_articles/how-to_use_the_preempt_parition.md %}) page for more details.
 
 ```bash
 # sinfo -o "%12P %8D %8c %10m %50f"|grep -v preempt
