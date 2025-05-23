@@ -18,7 +18,7 @@ Partitions are separate queues for submitted jobs and each partition has differe
 * `memory`: CPU jobs that need LOTS of memory (up to 4tb), max time limit of 1day
 * `memorylong`: CPU jobs that need lots of memory (up to 4tb), max time limit of 14days
 
-This table lists *ALL* Slurm partitions on Talapas. This includes the "condo" partitions (those listed in the table below `memorylong`) that have resources that you may not have access to (you’re not a member of the PIRG). These resources are available through the `preempt` partition, but jobs on the `preempt` partition could be canceled if/when the owner of those resources requests them. See the [How-To Use the preempt Partition]({% link docs/how-to_articles/how-to_use_the_preempt_parition.md %}) page for more details.
+This table lists *ALL* Slurm partitions on Talapas. This includes the "condo" partitions (those listed in the table below `memorylong`) that have resources that you may not have access to (you’re not a member of the PIRG). These resources are available through the `preempt` partition, but jobs on the `preempt` partition could be canceled if/when the owner of those resources requests them. See the [How-To Use the preempt Partition]({% link docs/how-to_articles/how-to_use_the_preempt_partition.md %}) page for more details.
 
 ```bash
 # sinfo -o "%12P %8D %8c %10m %50f"|grep -v preempt
