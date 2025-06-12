@@ -28,10 +28,10 @@ Struggling to navigate Talapas or have questions about services we offer?
 
 In addtion to our Service Desk, RACS is now offering office hours to provide in-person support to users regarding software and workflow questions/issues!
 
-2025 Spring Term Office Hours:
+2025 Summer Term Office Hours:
 
 * Where: Dream Lab room 122C in the Knight Library
-* When: Every Wednesday 10am-12pm
+* When: TBD
 
 ## More Resources
 
