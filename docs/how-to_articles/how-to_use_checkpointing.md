@@ -53,7 +53,7 @@ We currently do not support the DMTCP plugins required to support checkpointing 
 
 DMTCP uses a central coordinator process to accept user instructions and manage Checkpointing/Restarting operations as shown in the figure below. There is one DMTCP coordinator for each application to be checkpointed; the `dmtcp_coordinator` command runs this on one of the nodes allocated to the job. Second, application tasks are started with DMTCP integration using `dmtcp_launch` which connects to the coordinator. For each user process in the application, a checkpoint thread is spawned that executes C/R instructions from the coordinator. When prompted by either a user command to the coordinator or automatically with a given frequency, DMTCP checkpoints the state of the launched application and preserves everything on disk. The application can then be restarted from the checkpoint data on disk using the `dmtcp_restart` command.
 
-![DMTCP Arch](../../assets/images/dmtcp_arch.png)
+![DMTCP Arch](../../../assets/images/dmtcp_arch.png)
 
 {: .warning }
 Transparent System-level checkpointing, while extremely useful in some use cases, does not come without its own issues.
