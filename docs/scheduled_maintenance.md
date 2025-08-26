@@ -35,6 +35,13 @@ The cluster will be unavailable during the time frames below with past (i.e. com
 
 When a maintenance window starts, **all** running SLURM jobs will be cancelled, with the job queue preserved so that pending jobs will start once the cluster is online.
 
-Leading up to the start of the maintenance outage, all jobs that cannot be completed before the beginning of the maintenance window will not be allowed to start. This is done to prevent users from starting long-running jobs that would be cancelled before they finish when the cluster goes down. That is if you submit a job with the requested time set to 24 hours or a full day (i.e. `--time=1-00:00:00`) less than 24 hours before the maintenance window starts, then your job will remain in the queue and will wait to start until the cluster comes back online at the end of maintenance.
+Leading up to the start of the maintenance outage, all jobs that cannot be completed before the beginning of the maintenance window will be **held in the queue** until the cluster comes back online. This is done to prevent users from starting long-running jobs that would be cancelled before they finish when the cluster goes down. That is if you submit a job with the requested time set to 24 hours or a full day (i.e. `--time=1-00:00:00`) less than 24 hours before the maintenance window starts, then your job will remain in the queue and will wait to start until the cluster comes back online at the end of maintenance.
 
-Make sure and specify the time argument for your SLURM jobs leading up to the outage window with a time limit less than the remaining time before the outage to allow them to start.
+This is often what you'd want. But, sometimes you might want a job to start right away, even if the entire optimal running time is not available. You can specify this using the `--time-min` flag to specify a minimum acceptable time limit for the job.
+
+```bash
+#SBATCH --time=0-8:00:00
+#SBATCH --time-min=0-1:00:00
+```
+
+Using the above flag, you'll normally get a time limit of eight hours. But, if there are reservations that would delay the start of your job, SLURM will consider any time limit down to one hour to be acceptable and start the job immediately. (SLURM will prefer the largest available time limit.)
