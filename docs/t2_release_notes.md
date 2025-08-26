@@ -33,15 +33,13 @@ Links are provided below for external collaborators, graduating researchers, or 
 - Automation Accounts (Role Accounts)
   - [Role/Department Account Request](https://service.uoregon.edu/TDClient/2030/Portal/Requests/ServiceDet?ID=20173)
 
-### Talapas VPN
+### UO VPN
 
-A virtual private network (VPN) connection is recommended to access the cluster. This adds an extra layer of security.
+A virtual private network (VPN) connection is recommended to access the cluster. This adds an extra layer of security, and enables passwordless authentication for logging into Talapas with the use of SSH keys. See the [How-To Login to Talapas]({% link docs/how-to_articles/how-to_login_to_talapas.md %}) page for instructions on setting up SSH keys.
 
 Instructions here: [Article - Getting Started with UO VPN](https://service.uoregon.edu/TDClient/2030/Portal/KB/ArticleDet?ID=31471)
 
-We have a Talapas profile in UO VPN which _should_ provide all the same capabilities as UO VPN as well as adding access to Talapas.
-
-Use “`uovpn.uoregon.edu/talapas`" as the connection URL and your duckid and password.
+Use “`uovpn.uoregon.edu`" as the connection URL and your duckid and password.
 
 Do not repeatedly attempt to log in when you’re getting error messages. As with other uses of your DuckID at UO, if you generate a large number of login failures, all DuckID access (including things like e-mail) will be locked University-wide. Similarly, be aware of automated processes like cron jobs that might trigger this situation without your notice.
 

@@ -224,16 +224,16 @@ See the [Memory]({% link docs/memory.md %}) documetation page for more details.
 
 ## Special Handling for Quarterly Maintenance Events
 
-Approximately once per quarter, Talapas is taken down for maintenance, to update software and hardware, make repairs, etc.  To minimize the disruption, SLURM reservations are added to "block out" those times.  If you take no special steps, a job request that you make that runs into a maintenance window will be held and run _after_ the window.
+Approximately once per quarter, Talapas is taken down for maintenance, to update software and hardware, make repairs, etc. To minimize the disruption, SLURM reservations are added to "block out" those times. If you take no special steps, a job request that you make that runs into a maintenance window will be held and run _after_ the window.
 
-This is often what you'd want.  But, sometimes you might want a job to start right away, even if the entire optimal running time is not available.  You can specify this using the `--min-time` flag to specify a minimum acceptable time limit for the job.
+This is often what you'd want. But, sometimes you might want a job to start right away, even if the entire optimal running time is not available. You can specify this using the `--time-min` flag to specify a minimum acceptable time limit for the job.
 
 ```bash
 #SBATCH --time=0-8:00:00
 #SBATCH --time-min=0-1:00:00
 ```
 
-Using the above flag, you'll normally get a time limit of eight hours.  But, if there are reservations that would delay the start of your job, SLURM will consider any  time limit down to one hour to be acceptable and start the job immediately.  (SLURM will prefer the largest available time limit.)
+Using the above flag, you'll normally get a time limit of eight hours. But, if there are reservations that would delay the start of your job, SLURM will consider any time limit down to one hour to be acceptable and start the job immediately. (SLURM will prefer the largest available time limit.)
 
 ## Being a Good Cluster Citizen
 
