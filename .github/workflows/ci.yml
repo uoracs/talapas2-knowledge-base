@@ -25,6 +25,8 @@ jobs:
         with:
           ruby-version: ${{ matrix.ruby-version }}
           bundler-cache: false
+      - name: Bundle install
+        run: bundle install
       - name: Build with Jekyll
         run: bundle exec jekyll build
 
