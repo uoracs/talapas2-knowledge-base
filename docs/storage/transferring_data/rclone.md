@@ -14,6 +14,6 @@ Rclone is a powerful open-source command-line tool that lets you manage, move, a
 There is a module for rclone on Talapas that can be loaded by running: `module load rclone`. We have a few tutorials on how to use rclone to transfer data to/from Talapas to a few different other storage providers:
 
 - [AWS S3]({% link docs/storage/transferring_data/aws_s3/accessing_s3_bucket_rclone.md %})
-- [DropBox]({% link docs/storage/transferring_data/dropbox.md %})
+- [Drop Box]({% link docs/storage/transferring_data/dropbox.md %})
 - [Google Drive]({% link docs/storage/transferring_data/google_drive.md %})
 - [UO Research Storage]({% link docs/storage/research_storage.md %})
