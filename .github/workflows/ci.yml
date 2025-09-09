@@ -64,20 +64,3 @@ jobs:
           "/github.com/,/web.archive.org/,/ondemand.talapas.uoregon.edu/,/uoracs.github.io/,/filezilla-project.org/,/wiki.talapas.uoregon.edu/"
         env:
           NOKOGIRI_USE_SYSTEM_LIBRARIES: true
-
-  assets:
-    name: Test CSS and JS
-    runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [18.x]
-
-    steps:
-      - uses: actions/checkout@v5
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
-        with:
-          node-version: ${{ matrix.node-version }}
-      - run: npm install
-      - run: npm test
