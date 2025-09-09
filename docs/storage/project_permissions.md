@@ -39,6 +39,9 @@ Now, the students should have access to the `students` directory, but **not** th
 
 ## Posix ACLs
 
-The other method for controlling access is using Posix ACLs. On our old cluster, T1, we used Posix ACLs within `/projects/<myPIRG>` directory to grant users individual and differing permissions than those of the group. On T2, we no longer _support_ the use of ACLs.
+The other method for controlling access is using Posix ACLs. On our old cluster, T1, we used Posix ACLs within `/projects/<myPIRG>` directory to grant users individual and differing permissions than those of the group. On T2, **we no longer _support_ the use of ACLs**.
 
-You’re welcome to do your own research and apply whatever ACLs you’d like, but we are no longer providing guidance on setting them up, or support on how to configure them correctly. In the event of catastrophic failure, we will not restore the ACLs if files need to be recovered.
+You’re welcome to do your own research and apply whatever ACLs you’d like, but we are no longer providing guidance on setting them up, or support on how to configure them correctly.
+
+{: .warning }
+In the event of catastrophic failure, we will **not** restore the ACLs if files need to be recovered.

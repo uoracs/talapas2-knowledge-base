@@ -15,13 +15,13 @@ RACS offers two storage systems for researchers to store their data. The first i
 The primary storage device for Talapas is an IBM Elastic Storage System. The filesystem is mounted at `/gpfs` on all nodes in the cluster providing roughly 3 [petabytes](https://en.wikipedia.org/wiki/Petabyte "https://en.wikipedia.org/wiki/Petabyte") of storage using [GPFS (General Parallel File System)](https://en.wikipedia.org/wiki/IBM_General_Parallel_File_System "https://en.wikipedia.org/wiki/IBM_General_Parallel_File_System"). Storage on Talapas is grouped into three different areas, each with different purposes as follows:
 
 * **Home Directories**: Each user of Talapas as their own home directory at `/home/<USER>/` with a 250GB quota at no cost. This space is ideal for users to install their own software in or to store personal data/work that do not need to regularly share with other Talapas users.
-* **PIRG Project Directories**: Each PIRG on Talapas has their own project directory at `/projects/<PIRG>/` with a 2TB quota at no cost. This is where any data and work from shared projects among your group should live, and it will be accessible to all members of the PIRG. If your group requires additional **fast** (i.e. on GPFS) storage, you can purchase additional quota at a rate of **$270/TB/yr**, billed annually at the beginning of each fiscal year and prorated for allocations purchased during the fiscal year.
+* **PIRG Project Directories**: Each PIRG on Talapas has their own project directory at `/projects/<PIRG>/` with a 2TB quota at no cost. This is where any data and work from shared projects among your group should live, and it will be accessible to all members of the PIRG. If your group requires additional **fast** (i.e. on GPFS) storage, we are currently in the process of phasing in the option for PIRGs to purchase additional quota on GPFS. The cost is currently getting settled but will be much more expensive than the Research storage options listed below. Additional allocations will be billed annually at the beginning of each fiscal year and prorated for allocations purchased during the fiscal year.
 * **Scratch Directories**: Each PIRG on Talapas has a scratch directory at `/scratch/<PIRG>/` with a 20TB quota at no cost. This space is meant for **hot** storage for data that you are accessing often. The scratch space has a **strict 90-day purge** policy where contents will regularly be deleted once it has not been accessed in the previous 90 days.
 
 {: .note }
 All files stored in your PIRG's `/scratch/<PIRG>/` directory **must** have group ownership set to your PIRG's group name (i.e. `is.racs.pirg.<PIRG>`) and **not** have the group set to "uoregon".
 
-To purchase additional PIRG project directory quota or request a larger quota on your research groups scratch directory, please submit a ticket to our [Service Desk](https://hpcrcf.atlassian.net/servicedesk/customer/portal/1).
+To inquire about purchasing additional PIRG project directory quota or request a larger quota on your research groups scratch directory, please submit a ticket to our [Service Desk](https://hpcrcf.atlassian.net/servicedesk/customer/portal/1).
 
 {: .warning }
 **You are responsible for backing up all of your data on Talapas.  This data is not backed up by RACS.**
@@ -54,6 +54,6 @@ For more details about the LSRS system and other ways to interact with data on i
 
 ## Other Storage Solutions
 
-UO provides cheap cloud storage through DropBox at a rate of **$40/TB/yr** that researchers can purchase through Information Services.
+UO provides cheap cloud storage through Drop Box at a rate of **$40/TB/yr** that researchers can purchase through Information Services.
 
 If your research group is looking for archival storage, as mandadated by certain grants and funding sources, we reccomend using AWS Glacier. Please submit a ticket if you need help obtaining an AWS account for Glacier archival storage. The approximate price for AWS Glacier archival storage at the time of writing this document is **$12/TB/yr**, but with the caveat of extra costs for actually *retrieving* the data from their storage. UO Information services also has a very useful "Storage Finder" tool that you can use to find the best storage solution for your specific use case.
