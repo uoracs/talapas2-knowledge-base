@@ -24,7 +24,7 @@ to copy the named file to your Talapas home directory.
 
 There are also GUI tools available for file transfer via SCP or SFTP.  [Filezilla](https://filezilla-project.org/) is available for all common platforms.
 
-Globus is the fastest method of file transfering and the one that RACS reccomends the most. For more information see the [Globus]({% link docs/data_movement/globus/globus.md %}) pages.
+Globus is the fastest method of file transfering and the one that RACS reccomends the most. For more information see the [Globus]({% link docs/storage/transferring_data/globus/globus.md %}) pages.
 
 ## Storing your Data
 
@@ -39,7 +39,7 @@ As a Talapas user, you have these directories available for storing and manipula
 **You are responsible for backing up all of your data on Talapas.  This data is not backed up by RACS.**
 Some snapshotting is performed for all directories except for the host temporary directory, and in some cases lost files can be recovered from a snapshot.  This cannot be relied on as a backup, however.
 
-See the [Storage]({% link docs/storage.md %}) documentation page for more details.
+See the [Storage]({% link docs/storage/storage.md %}) documentation page for more details.
 
 ## Software
 

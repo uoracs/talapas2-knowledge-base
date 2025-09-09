@@ -200,20 +200,20 @@ python3 my_test.py > my_test_output
 * Now submit the job! `sbatch submit_gpu_test`
 * That's it wait for your job to finish, and you'll see the training log in ~\my_test_output
 
-## Using the Latest Tensorflow with Singularity
+## Using the Latest Tensorflow with Apptainer
 
-If you need the latest version of tensorflow for your code, it is possible to pull a pre-made docker image and run it with singularity.
+If you need the latest version of tensorflow for your code, it is possible to pull a pre-made docker image and run it with Apptainer.
 
 For example in an interactive GPU session (see above):
 
 1. Build your image from the online repository - this will create a tf-l.simg file that can be executed with singularities other commands. This will take some time, but only needs to be done once.
-  `$ singularity build tf-l.simg docker://tensorflow/tensorflow:latest-gpu`
+  `$ apptainer build tf-l.simg docker://tensorflow/tensorflow:latest-gpu`
 2. Try an interactive shell - Note: --nv is required for gpu usage, and -B will just mount a local directory to /tmp in the virtual image.
 
 ```bash
-$ singularity shell -B my_dir:/tmp --nv tf-l.simg
+$ apptainer shell -B my_dir:/tmp --nv tf-l.simg
 
-Singularity tf-l.simg:~> python
+apptainer tf-l.simg:~> python
 Python 2.7.12 (default, Dec  4 2017, 14:50:18)
 [GCC 5.4.0 20160609] on linux2
 Type "help", "copyright", "credits" or "license" for more information.
@@ -225,4 +225,4 @@ Type "help", "copyright", "credits" or "license" for more information.
 '2.2.2'
 ```
 
-That's it you now have a working tensorflow environment. For more information about running jobs in singularity on Talapas see the [Singularity]({% link docs/software/singularity/singularity.md %}) pages.
+That's it you now have a working tensorflow environment. For more information about running jobs in Apptainer on Talapas see the [Apptainer]({% link docs/software/apptainer/apptainer.md %}) pages.
