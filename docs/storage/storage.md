@@ -15,7 +15,7 @@ RACS offers two storage systems for researchers to store their data. The first i
 The primary storage device for Talapas is an IBM Elastic Storage System. The filesystem is mounted at `/gpfs` on all nodes in the cluster providing roughly 3 [petabytes](https://en.wikipedia.org/wiki/Petabyte "https://en.wikipedia.org/wiki/Petabyte") of storage using [GPFS (General Parallel File System)](https://en.wikipedia.org/wiki/IBM_General_Parallel_File_System "https://en.wikipedia.org/wiki/IBM_General_Parallel_File_System"). Storage on Talapas is grouped into three different areas, each with different purposes as follows:
 
 * **Home Directories**: Each user of Talapas as their own home directory at `/home/<USER>/` with a 250GB quota at no cost. This space is ideal for users to install their own software in or to store personal data/work that do not need to regularly share with other Talapas users.
-* **PIRG Project Directories**: Each PIRG on Talapas has their own project directory at `/projects/<PIRG>/` with a 2TB quota at no cost. This is where any data and work from shared projects among your group should live, and it will be accessible to all members of the PIRG. If your group requires additional **fast** (i.e. on GPFS) storage, you can purchase additional quota at a rate of **$XX/TB/yr**, billed annually at the beginning of each fiscal year and prorated for allocations purchased during the fiscal year.
+* **PIRG Project Directories**: Each PIRG on Talapas has their own project directory at `/projects/<PIRG>/` with a 2TB quota at no cost. This is where any data and work from shared projects among your group should live, and it will be accessible to all members of the PIRG. If your group requires additional **fast** (i.e. on GPFS) storage, you can purchase additional quota at a rate of **$270/TB/yr**, billed annually at the beginning of each fiscal year and prorated for allocations purchased during the fiscal year.
 * **Scratch Directories**: Each PIRG on Talapas has a scratch directory at `/scratch/<PIRG>/` with a 20TB quota at no cost. This space is meant for **hot** storage for data that you are accessing often. The scratch space has a **strict 90-day purge** policy where contents will regularly be deleted once it has not been accessed in the previous 90 days.
 
 {: .note }
@@ -47,8 +47,13 @@ To purchase storage allocations on the LSRS system, please submit a "Research St
 
 The LSRS system is connceted to Talapas's network and the data-transfer nodes with fast 100gb connections providing quick speeds for transfering data to/from Talapas's filesystem. The method for transferring files to/from the LSRS will be through [Globus](https://www.globus.org/), which will be able to quickly perform data transfers between personal computers, cloud providers, RACS's two storage systems, and even collaborators at outside institutions. Read more about Globus in our documentation pages on Data Movement: [Globus]({% link docs/storage/transferring_data/globus/globus.md %}).
 
+For more details about the LSRS system and other ways to interact with data on it, see the [Research Storage]({% link docs/storage/research_storage.md %}) page.
+
 {: .warning }
 **This data is not backed up by RACS.** If you require this data to be backed up to another place in addition to the LSRS, you must do this yourself. This can be done easily through automated Globus transfers, and RACS can help users set this up if requested.
 
+## Other Storage Solutions
 
-If your research group is looking for archival storage, as mandadated by certain grants and funding sources, we reccomend using AWS Glacier. Please submit a ticket if you need help obtaining an AWS account for Glacier archival storage. UO Information services also has a very useful tool that you can use to find the best storage solution for your specific use case.
+UO provides cheap cloud storage through DropBox at a rate of **$40/TB/yr** that researchers can purchase through Information Services.
+
+If your research group is looking for archival storage, as mandadated by certain grants and funding sources, we reccomend using AWS Glacier. Please submit a ticket if you need help obtaining an AWS account for Glacier archival storage. The approximate price for AWS Glacier archival storage at the time of writing this document is **$12/TB/yr**, but with the caveat of extra costs for actually *retrieving* the data from their storage. UO Information services also has a very useful "Storage Finder" tool that you can use to find the best storage solution for your specific use case.

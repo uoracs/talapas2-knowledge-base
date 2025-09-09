@@ -1,7 +1,7 @@
 ---
 layout: default
 title: AWS S3
-nav_order: 1
+nav_order: 3
 has_children: true
 parent: Transferring Data
 grand_parent: Storage

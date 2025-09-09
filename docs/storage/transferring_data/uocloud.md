@@ -1,7 +1,7 @@
 ---
 layout: default
 title: UO Cloud
-nav_order: 5
+nav_order: 6
 parent: Transferring Data
 grand_parent: Storage
 ---
