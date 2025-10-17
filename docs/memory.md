@@ -8,7 +8,7 @@ nav_order: 9
 
 ## Hardware Memory Quantities
 
-Most of the current compute nodes have 128GB RAM (for 28 CPU cores).  The compute nodes that have GPUs installed have 256GB RAM (again, for 28 CPU cores).
+Most of the current compute nodes have 512GB RAM (for 128 CPU cores).  The compute nodes that have GPUs installed have either 256GB or 512GB RAM (for 48 CPU cores).
 
 A small number of compute nodes have 1TB, 2TB, or 4TB RAM (in these cases for 56 cores).  These are a relatively precious resource, intended to support computation that's difficult or impossible to perform on the standard compute nodes.
 
@@ -71,11 +71,11 @@ When estimating, keep in mind that the amount of memory your job uses might be d
 
 **As general advice, if you're running out of memory or seeing other unexpected results, try raising the memory limits to see if this seems to solve the issue.**
 
-## Fat Partitions
+## Memory and MemoryLong Partitions
 
-As mentioned above, some of the SLURM partitions (queues) contain nodes with more memory.  Specifically, the partitions with "fat" in their name currently provide much larger amounts of RAM than the standard nodes.  If it appears that your job will not run correctly or efficiently on standard nodes, try running on a "fat" node instead.
+As mentioned above, some of the SLURM partitions (queues) contain nodes with more memory.  Specifically, the partitions with "memory" in their name currently provide much larger amounts of RAM than the standard nodes.  If it appears that your job will not run correctly or efficiently on standard nodes, try running on a "memory" node instead.
 
-There are only a relatively small number of fat nodes, so in general you can expect to wait longer before your job is scheduled.
+There are only a relatively small number of memory nodes, so in general you can expect to wait longer before your job is scheduled.
 
 ## Partition default memory settings
 

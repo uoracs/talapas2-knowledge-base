@@ -146,7 +146,7 @@ Here is the current architecture layout (this is subject to change):
 
 ## Storage
 
-See the [Directory Structure]({% link docs/directory_structure.md %}) document.
+See the [Directory Structure]({% link docs/storage/directory_structure.md %}) document.
 
 ## Software
 
