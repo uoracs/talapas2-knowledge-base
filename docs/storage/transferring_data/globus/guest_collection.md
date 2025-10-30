@@ -34,7 +34,8 @@ Next, enter information associated with this Guest Collection.
 
 Finally, click the 'Create Collection' button.
 
-**_Note:_** Select the checkbox 'Force encryption on tranfers to and from this collection' as needed. Click 'view more fields' to add more information and settings to the Guest Collection.
+{: .note }
+Select the checkbox 'Force encryption on tranfers to and from this collection' as needed. Click 'view more fields' to add more information and settings to the Guest Collection.
 
 ![Globus File Manager Page](../../../../../assets/images/globus_cephfs_collection_guest_collection_settings.png)
 

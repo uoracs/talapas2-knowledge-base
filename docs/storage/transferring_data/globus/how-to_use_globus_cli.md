@@ -87,7 +87,7 @@ Task ID: b3ad3038-109e-11ea-bea0-02fcc9cdd752
 ```
 
 {: .note }
-Note: The UO - Information Services endpoint ID, stored in "ep2", refers to “/”. You have to specify the full path to your individual share on the endpoint, e.g. "ep2:/globus/marka”. At initial login through the web app to the UO - Information Services endpoint, your Path is displayed as “/~/”. If you wish, you can use the up arrow to navigate up the directory hierarchy then back down into your individual share to display the actual Path.
+The UO - Information Services endpoint ID, stored in "ep2", refers to “/”. You have to specify the full path to your individual share on the endpoint, e.g. "ep2:/globus/marka”. At initial login through the web app to the UO - Information Services endpoint, your Path is displayed as “/~/”. If you wish, you can use the up arrow to navigate up the directory hierarchy then back down into your individual share to display the actual Path.
 
 New contents of the destination endpoint showing the new file, mk_script_for_Talapas.R.
 

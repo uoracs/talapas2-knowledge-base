@@ -25,4 +25,5 @@ The Globus landing zone page is the File Manager.
 
 ![Globus File Manager Page](../../../../../assets/images/globus_default_filemanager.png)
 
-**_Note:_** It is best to disconnect from the UO VPN when using Globus.
+{: .note }
+It is best to disconnect from the UO VPN when using Globus.

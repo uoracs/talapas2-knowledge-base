@@ -117,7 +117,8 @@ Transfer file from one endpoint to another
 
 For example, transfer a directory on my local macbook endpoint to an endpoint I've created on Talapas.
 
-_Note:_ A destination directory name is required. Also, `$dest_ep` has a 'Host Path' of `/projects/hpcrcf/marka/testing/` this is not visible in the CLI command ouput '`globus endpoint show $dest_ep`'
+{: .note }
+A destination directory name is required. Also, `$dest_ep` has a 'Host Path' of `/projects/hpcrcf/marka/testing/` this is not visible in the CLI command ouput '`globus endpoint show $dest_ep`'
 
 ```bash
 Marks-MacBook-Pro:~ marka$ source_ep=97e58874-d33f-11e9-939f-02ff96a5aa76
