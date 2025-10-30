@@ -13,14 +13,14 @@ The Globus web interface is a browser-based portal for managing data transfers a
 
 Step 1. Open a web browser and navigate to Globus, https://app.globus.org
 
-Step 2. Select affiliation. In the dropdown select the 'University of Oregon' as your organization then click 'Continue'.
+Step 2. Log in. In the dropdown select the 'University of Oregon' as your organizational login then click 'Continue'.
 
 ![Globus Login](../../../../../assets/images/globus_org_login.png)
 
-Step 3. Redirect to the University of Oregon authentication page Here, enter your duckid and your password then click 'Login'.
+Step 3. Enter your Duckid and password at the University of Oregon authentication page then click 'Login'.
 
 ![Duck ID Login](../../../../../assets/images/globus_uo_shibb.png)
 
-After authentication you will be redirected to the Globus File Manager page.
+The Globus landing zone is the File Manager page.
 
 ![Globus File Manager Page](../../../../../assets/images/globus_default_filemanager.png)

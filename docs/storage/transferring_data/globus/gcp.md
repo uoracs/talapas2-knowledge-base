@@ -13,7 +13,7 @@ Globus Connect Personal (GCP) is an application that lets you turn your own comp
 
 Install GCP:
 
-Step 1. Navigate to the Globus Connect Personal website, https://www.globus.org/globus-connect-personal
+Step 1. Navigate to the Globus Connect Personal website, (https://www.globus.org/globus-connect-personal)
 
 Step 2. Click the 'INSTALL NOW' button associated with the Operating System on your computer.
 
