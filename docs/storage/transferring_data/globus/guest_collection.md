@@ -27,21 +27,17 @@ The example below shows no Guest Collections have been created.
 
 Step 4. Click 'Add Guest Collection' button in the top right to create a new Guest Collection.
 
-Step 5. Setup the Guest Collection. Click the 'Browse' button and select the top level Directory for the Guest Collection. All files and folders under this will be shared. Enter necessary information associated with this Guest Collection.
+Step 5. Setup the Guest Collection. First, the 'Browse' button and select the top level Directory for the Guest Collection. All files and folders under this will be shared. Next, enter information associated with this Guest Collection. Finally, click the 'Create Collection' button.
 
-> [!NOTE]
-> Select the checkbox 'Force encryption on tranfers to and from this collection' as needed.
-> Click 'view more fields' to add more information and settings to the Guest Collection.
-
-Step 6. Click 'Create Collection' button.
+**Note:** Select the checkbox 'Force encryption on tranfers to and from this collection' as needed. Click 'view more fields' to add more information and settings to the Guest Collection.
 
 ![Globus File Manager Page](../../../../../assets/images/globus_cephfs_collection_guest_collection_settings.png)
 
-Step 7. In the Permissions tab of the Guest Collection, click the 'Add Permissions - Share With' button.
+Step 6. In the Permissions tab of the Guest Collection, click the 'Add Permissions - Share With' button.
 
 ![Globus File Manager Page](../../../../../assets/images/globus_cephfs_racs_t1_collection.png)
 
-Step 8. Setup permissions and share. The default Path displayed is '/' which is mapped to the top level Directory which was set in Step 5. Select 'Share With' user, Email notification, and Permissions, then click 'Add Permission'. Select 'Add Another Permission' as needed.
+Step 7. Setup permissions and share. The default Path displayed is '/' which is mapped to the top level Directory which was set in Step 5. Select 'Share With' user, Email notification, and Permissions, then click 'Add Permission'. Select 'Add Another Permission' as needed.
 
 ![Globus File Manager Page](../../../../../assets/images/globus_cephfs_racs_t1_add_perm.png)
 

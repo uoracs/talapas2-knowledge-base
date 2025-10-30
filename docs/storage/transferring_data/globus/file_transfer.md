@@ -23,14 +23,13 @@ The example below shows the Talapas2 Collection is in left panel at path '/proje
 ![Globus File Manager Page](../../../../../assets/images/globus_filemanager_transfer.png)
 
 Step 3. Submit a data transfer job by clicking the 'Start' button in the source Collection panel.
-> [!NOTE]
-> The arrow of the Start button points to the destination Collection.
+
+**Note:** The arrow of the Start button points to the destination Collection.
 
 At the completion of the transfer an email is sent with summary information.
 
 Click the 'Activity' button in the left pane to check the status of current or past data transfers.
 
-> [!NOTE]
-> Click the 'Transfer & Timer Options' arrow for more transfer settings and to create a schedule.
+**Note:** Click the 'Transfer & Timer Options' arrow for more transfer settings and to create a schedule.
 
 ![Globus Transfer and Sync](../../../../../assets/images/globus_filemanager_transfertimer_options.png)

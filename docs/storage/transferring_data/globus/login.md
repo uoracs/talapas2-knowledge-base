@@ -11,9 +11,9 @@ ancestor: Storage
 
 The Globus web interface is a browser-based portal for managing data transfers and sharing on the Globus platform. It lets you work with research data across storage systems — without needing command-line tools — while handling authentication, endpoints, and transfers for you.
 
-Step 1. Open a web browser and navigate to Globus, https://app.globus.org
+Step 1. Open a web browser and navigate to Globus, [https://app.globus.org](https://app.globus.org)
 
-Step 2. Log in. In the dropdown select the 'University of Oregon' as your organizational login then click 'Continue'.
+Step 2. Select the 'University of Oregon' as your organizational login then click 'Continue'.
 
 ![Globus Login](../../../../../assets/images/globus_org_login.png)
 
@@ -21,6 +21,8 @@ Step 3. Enter your Duckid and password at the University of Oregon authenticatio
 
 ![Duck ID Login](../../../../../assets/images/globus_uo_shibb.png)
 
-The Globus landing zone is the File Manager page.
+The Globus landing zone page is the File Manager page.
 
 ![Globus File Manager Page](../../../../../assets/images/globus_default_filemanager.png)
+
+**Note:** It is best to disconnect from the UO VPN when using Globus.
