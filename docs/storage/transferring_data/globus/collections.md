@@ -26,4 +26,5 @@ Step 2. Enter the name of the Collection or some portion of it, such as Universi
 
 ![Globus File Manager Collections](../../../../../assets/images/globus_filemanager_collection_search.png)
 
-**_Note:_** Connecting to the University of Oregon - Dropbox Collection requires additional authentication. Your UO email address is your Dropbox Account username; click Continue and Allow as prompted.
+{: .note }
+Connecting to the University of Oregon - Dropbox Collection requires additional authentication. Your UO email address is your Dropbox Account username; click Continue and Allow as prompted.
