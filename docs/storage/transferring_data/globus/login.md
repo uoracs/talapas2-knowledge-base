@@ -21,8 +21,8 @@ Step 3. Enter your Duckid and password at the University of Oregon authenticatio
 
 ![Duck ID Login](../../../../../assets/images/globus_uo_shibb.png)
 
-The Globus landing zone page is the File Manager page.
+The Globus landing zone page is the File Manager.
 
 ![Globus File Manager Page](../../../../../assets/images/globus_default_filemanager.png)
 
-**Note:** It is best to disconnect from the UO VPN when using Globus.
+**_Note:_** It is best to disconnect from the UO VPN when using Globus.

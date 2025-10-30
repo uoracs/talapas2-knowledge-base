@@ -11,7 +11,7 @@ ancestor: Storage
 
 A Globus Collection is an access point by which a set of data can be managed and used as a source or destination for a data transfer.
 
-RACS operates the Globus RACS-Endpoint which connects the following Collections, all accessible through dedicated data transfer nodes connected to UO's network through 100 GbE connections.
+RACS operates the Globus RACS-Endpoint which connects the following Collections, all accessible through dedicated data transfer nodes connected to UO's network through 100 GbE.
 
 - **University of Oregon - CephFS research storage**: collection connected to the research storage file store for POSIX-like data access. Allows data transfers to and from your CephFS research storage volumes.
 - **University of Oregon - Ceph S3 research storage**: collection connected to the research storage object store for S3-like data access. Allows data transfers to and from your Ceph S3 research storage volumes.
