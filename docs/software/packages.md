@@ -54,7 +54,7 @@ module avail ants
 | `ants` | `ants/2.1.0, ants/2.5.1, ants/2.5.2` |
 | `aocc` | `aocc/4.0.0, aocc/5.0.0` |
 | `aocl` | `aocl/4.2.0, aocl/5.0.0` |
-| ` arcs ` | `arcs/1.0.3` |
+| `arcs` | `arcs/1.0.3` |
 | `argweaver` | `argweaver/0.8.1` |
 | `armadillo` | `armadillo/12.2.0` |
 | `aspect` | `aspect/3.1.0` |
