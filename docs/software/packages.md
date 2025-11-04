@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Packages
-nav_order: 8
+nav_order: 5
 parent: Software
 ---
 
@@ -28,6 +28,8 @@ You can also search for available versions using:
 module avail ants
 ```
 
+## Available Software Packages
+##### (Last Updated: 11/04/2025)
 | Module | Versions |
 |--------|----------|
 | `Geneious` | `Geneious` |
