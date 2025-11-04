@@ -5,8 +5,28 @@ nav_order: 8
 parent: Software
 ---
 
+# Available Software on Talapas 
 
-# All available software 
+Talapas provides hundreds of software packages for research computing, including many versions of each package to support compatibility and reproducibility.
+The table below lists all currently available modules that users can load on the system.
+
+## Loading Software with LMOD
+
+Talapas uses the LMOD module system to manage software environments.
+To load a package, you must specify both the package name and the version you want to use.
+
+For example, to load version 2.1.0 of the ants package:
+```bash
+module load ants/2.1.0
+```
+And unload software with:
+```bash
+module unload ants/2.1.0
+```
+You can also search for available versions using:
+```bash
+module avail ants
+```
 
 | Module | Versions |
 |--------|----------|
@@ -31,7 +51,7 @@ parent: Software
 | `ants` | `ants/2.1.0, ants/2.5.1, ants/2.5.2` |
 | `aocc` | `aocc/4.0.0, aocc/5.0.0` |
 | `aocl` | `aocl/4.2.0, aocl/5.0.0` |
-| `arcs` | `arcs/1.0.3` |
+| ` arcs ` | `arcs/1.0.3` |
 | `argweaver` | `argweaver/0.8.1` |
 | `armadillo` | `armadillo/12.2.0` |
 | `aspect` | `aspect/3.1.0` |
