@@ -29,7 +29,6 @@ module avail ants
 ```
 
 ## Available Software Packages
-##### (Last Updated: 11/04/2025)
 
 
 | Module | Versions |
