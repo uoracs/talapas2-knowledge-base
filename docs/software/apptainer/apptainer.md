@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Apptainer
-nav_order: 1
+nav_order: 1.5
 has_children: true
 parent: Software
 permalink: /docs/software/apptainer

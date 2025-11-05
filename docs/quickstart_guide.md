@@ -73,7 +73,7 @@ If you would like to unload **all** currently loaded modules, you can use the co
 
 `module purge`
 
-See [How-To Use LMOD]({% link docs/how-to_articles/how-to_use_lmod.md %}) for more details.
+See [How-To Use LMOD]({% link docs/how-to_articles/how-to_use_lmod.md %}) for more details, and the [All Packages]({% link docs/software/packages.md %}) page to see all of the centrally installed software you can load with LMOD on Talapas.
 
 ## SLURM Accounts
 

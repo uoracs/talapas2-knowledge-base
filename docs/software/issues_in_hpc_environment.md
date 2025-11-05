@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Software Issues in an HPC Environment
-nav_order: 5
+nav_order: 10
 parent: Software
 ---
 
