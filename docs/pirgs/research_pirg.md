@@ -1,17 +1,20 @@
 ---
 layout: default
-title: Research PIRG
+title: Research
 nav_order: 2
-parent: PIRGs
+parent: Principal Investigator Research Group (PIRG)
 ---
 
-# Research PIRG
+# Principal Investigator Research Group (PIRG) for research
 
-To request a research PIRG on Talapas send an email to [racs@uoregon.edu](mailto:racs@uoregon.edu)
+Request a PIRG through the [Talapas customer portal](https://hpcrcf.atlassian.net/servicedesk/customer/portal/1/group/1/create/11)
 
 Include the following information:
 
-- PIRG name - used internally on Talapas (lowercase, no spaces, 12 characters or less)
-- PIRG PI - owner of the PIRG, responsible for members activity and costs
-- PIRG members - provide a list of members (please format: duckid FirstName LastName)
-- Storage requirements - 2TB is the entry level storage tier on Talapas
+* Name of the PIRG
+  * this name will be used internally on Talapas as the group name and top level directory name
+    * lowercase, no spaces, 12 characters or less
+* List of PIRG members
+  * Duckid only (UO 95 number is not needed)
+* Principal Investigator (PI)
+  * Duckid of the Faculty or research staff member responsible for data, compute, and any costs associated with PIRG usage on Talapas
