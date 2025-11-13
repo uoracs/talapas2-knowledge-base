@@ -7,7 +7,7 @@ parent: Principal Investigator Research Group (PIRG)
 
 # Principal Investigator Research Group (PIRG) for research
 
-Request a PIRG through the [Talapas customer portal](https://hpcrcf.atlassian.net/servicedesk/customer/portal/1/group/1/create/11)
+Request a *Research* PIRG through the [Talapas customer portal](https://hpcrcf.atlassian.net/servicedesk/customer/portal/1/group/1/create/11)
 
 Include the following information in the request:
 
