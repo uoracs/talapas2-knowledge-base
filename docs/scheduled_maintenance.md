@@ -26,8 +26,20 @@ The cluster will be unavailable during the time frames below with past (i.e. com
     <td style="background-color:#ffb3c1">3/27/2025 @ 5pm</td>
   </tr>
   <tr>
-    <td style="background-color:#caf0f8">9/23/2025 @ 9am</td>
-    <td style="background-color:#caf0f8">9/25/2925 @ 5pm</td>
+    <td style="background-color:#ffb3c1">9/23/2025 @ 9am</td>
+    <td style="background-color:#ffb3c1">9/25/2925 @ 5pm</td>
+  </tr>
+  <tr>
+    <td style="background-color:#caf0f8">12/15/2025 @ 9am</td>
+    <td style="background-color:#caf0f8">12/19/2025 @ 5pm</td>
+  </tr>
+    <tr>
+    <td style="background-color:#caf0f8">6/15/2026 @ 9am</td>
+    <td style="background-color:#caf0f8">6/19/2026 @ 5pm</td>
+  </tr>
+    <tr>
+    <td style="background-color:#caf0f8">12/14/2026 @ 9am</td>
+    <td style="background-color:#caf0f8">12/18/2026 @ 5pm</td>
   </tr>
 </table>
 

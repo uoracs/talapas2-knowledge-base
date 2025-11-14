@@ -162,6 +162,8 @@ We’ll provide all software centrally available, including conda environments, 
 
 `module load software/version`
 
+See [How-To Use LMOD]({% link docs/how-to_articles/how-to_use_lmod.md %}) for more details, and the [All Packages]({% link docs/software/packages.md %}) page to see all of the centrally installed software you can load with LMOD on Talapas.
+
 ### Conda
 
 Talapas2 uses `miniconda3` and new conda environments will be built with this base environment. If you have personal conda environments, you might need/want to recreate them using `miniconda3`. Note that _using_ existing Conda environments should work fine - it’s making changes that might cause problems.
