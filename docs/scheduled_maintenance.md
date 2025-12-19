@@ -30,8 +30,8 @@ The cluster will be unavailable during the time frames below with past (i.e. com
     <td style="background-color:#ffb3c1">9/25/2925 @ 5pm</td>
   </tr>
   <tr>
-    <td style="background-color:#caf0f8">12/16/2025 @ 9am</td>
-    <td style="background-color:#caf0f8">12/19/2025 @ 5pm</td>
+    <td style="background-color:#ffb3c1">12/16/2025 @ 9am</td>
+    <td style="background-color:#ffb3c1">12/19/2025 @ 5pm</td>
   </tr>
     <tr>
     <td style="background-color:#caf0f8">6/15/2026 @ 9am</td>
