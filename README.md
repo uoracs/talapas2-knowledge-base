@@ -1,6 +1,6 @@
 # Talapas Knowledge Base
 
-This is the github repository for the user-facing documentation of UO RACS resaerch computing cluster, Talapas.
+This is the github repository for the user-facing documentation of UO RACS resaerch computing cluster, Talapas (i.e. wiki.talapas.uoregon.edu). 
 
 ## Repo Structure and Contributing
 
@@ -15,3 +15,7 @@ Some common formatting options for Just-the-docs used throughout the markdown fi
   - When adding a link to a different page within the documentation you do not need to add a normal markdown hyperlink to the url. Instead it is preferable to add a Just-the-docs internal link, which will get checked within the CI tests to confirm the link exists and is not broken. To add an internal link you start as a normal markdown hyperlink where the name goes in square brackets followed by parentheses. In the parentheses you tell it the path to the docs file you want to link to as if you are in the repo's root directory. For example: "\[Directory Structure\]({% link docs/storage/directory_structure.md %})" will create an internal link named "Directory structure" pointing to the page that contains the markdown file at the path: docs/storage/directory_structure.md. 
 
 For more details on the formmatting of specific details including navigation, callouts, code blocks, mermaid diagrams, page linking, etc see the documentation site for the Just-The-Docs theme [here](https://just-the-docs.github.io/just-the-docs/) (built with itself!).
+
+## Github Workflows
+
+There are two github workflows in this repo. One for performing CI tests, and one to deploy the github pages website. The "ci.yml" workflow will build the jekyll site, then run a few validation tests to confirm the Just-the-docs functionalities are correct and that all links correctly point to other pages that exist. If any of the ci.yml tests fail -- the deploy.yml workflow will complete (you will see a green check mark in the actions tab), but it does **NOTHING** if the ci.yml workflow fails in order to prevent deploying a broken site. Only once the ci.yml worklfow completes successfully will the deploy workflow actually deploy the site to github pages. 
