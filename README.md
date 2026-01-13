@@ -19,3 +19,5 @@ For more details on the formmatting of specific details including navigation, ca
 ## Github Workflows
 
 There are two github workflows in this repo. One for performing CI tests, and one to deploy the github pages website. The "ci.yml" workflow will build the jekyll site, then run a few validation tests to confirm the Just-the-docs functionalities are correct and that all links correctly point to other pages that exist. If any of the ci.yml tests fail -- the deploy.yml workflow will complete (you will see a green check mark in the actions tab), but it does **NOTHING** if the ci.yml workflow fails in order to prevent deploying a broken site. Only once the ci.yml worklfow completes successfully will the deploy workflow actually deploy the site to github pages. 
+
+If your CI job keeps failing on the html-proofer step when linking to outside pages you may need to add that website/url to the ignore list if you know it is correct in order for the CI test to pass and thus deploy the docs site. You can see previously ignored urls and add more [here](https://github.com/uoracs/talapas2-knowledge-base/blob/main/.github/workflows/ci.yml#L66). 
