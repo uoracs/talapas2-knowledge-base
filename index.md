@@ -30,8 +30,8 @@ In addtion to our Service Desk, RACS is now offering office hours to provide in-
 
 2026 Winter Term Office Hours:
 
-* Where: Dream Lab in the Knight Library
-* When: TBD
+* Where: Knight Campus 1st Floor Tables
+* When: Wednesdays 1-3pm
 
 ## More Resources
 
