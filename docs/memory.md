@@ -81,6 +81,6 @@ There are only a relatively small number of memory nodes, so in general you can 
 
 View default memory settings for each partition, run:
 
-`/packages/racs/bin/slurm-show-def-memVirtual Memory`
+`/packages/racs/bin/slurm-show-def-mem`
 
 To override the defaults, use slurm’s `--mem` flag.
