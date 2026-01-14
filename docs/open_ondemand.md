@@ -16,6 +16,9 @@ We've installed an [Open OnDemand](https://openondemand.org/ "http://openondema
 
 Use your DuckID to log in.
 
+{: .note }
+If you see a "Bad Request" error page when navigating to Talapas's Open OnDemand portal you may need to clear your browser cache. It is recommended to always use a private or incognito browser window to go to Open OnDemand to avoid this issue. 
+
 ## Web Browser Oddities
 
 There are a few things to know about web browser access.
