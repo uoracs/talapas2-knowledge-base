@@ -15,13 +15,13 @@ The commands `stata`, `stata-se`, and `stata-mp` run Stata in command-line mo
 
 The `stata-mp` command uses multiple CPU cores, which might be faster for some scenarios. By default, it will use all cores available on the host.  This behavior can be controlled using the Stata `set processors` command.
 
-There are corresponding commands `xstata`, `xstata-se`, and `xstata-mp` that will start Stata in GUI mode.  In order for this to work, you must use X forwarding, of which there are instructions in: [[How-to Run an X11 Application]].
+There are corresponding commands `xstata`, `xstata-se`, and `xstata-mp` that will start Stata in GUI mode.  In order for this to work, you must use X forwarding, of which there are instructions in: [How-to Run an X11 Application]({% link docs/how-to_articles/how-to_run_an_x11_app.md %}).
 
 ## Local Details
 
 The current license is _limited to three users_.  Please be sure to exit the program when you are done.
 
-When running `stata-mp`, it's important match the SLURM resource request to the number of cores used by `stata-mp`.  For the default behavior (use all cores), use the SLURM `--cpus-per-task` flag to request the cores.  See [[How-to Submit an OpenMP Job]] for an example of this in a batch script, or [[How-to Start an Interactive Job]] for an interactive session.
+When running `stata-mp`, it's important match the SLURM resource request to the number of cores used by `stata-mp`.  For the default behavior (use all cores), use the SLURM `--cpus-per-task` flag to request the cores.  See [How-to Submit an OpenMP Job]({% link docs/how-to_articles/how-to_submit_an_openmp_job.md %}) for an example of this in a batch script, or [How-to Start an Interactive Job]({% link docs/how-to_articles/how-to_start_an_interactive_job.md %}) for an interactive session.
 
 ## Documentation
 

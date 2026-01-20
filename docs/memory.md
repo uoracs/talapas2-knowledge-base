@@ -69,6 +69,7 @@ For jobs that run on multiple nodes, the reported value is the maximum in use on
 
 When estimating, keep in mind that the amount of memory your job uses might be dependent on your input data sets (i.e., larger data will sometimes mean more memory is needed).  Additionally, if your job has multiple processes, the maximum amount of memory required might not even be deterministic–it might vary depending the specific timing of the how the multiple processes use and release memory. 
 
+{: .highlight }
 **As general advice, if you're running out of memory or seeing other unexpected results, try raising the memory limits to see if this seems to solve the issue.**
 
 ## Memory and MemoryLong Partitions
@@ -83,4 +84,4 @@ View default memory settings for each partition, run:
 
 `/packages/racs/bin/slurm-show-def-mem`
 
-To override the defaults, use slurm’s `--mem` flag.
+To override the defaults, use slurm’s `--mem` flag to set total memory per node or the `--mem-per-cpu` flag to set the memory per CPU requested. 

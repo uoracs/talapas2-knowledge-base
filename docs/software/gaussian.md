@@ -7,8 +7,9 @@ parent: Software
 
 # Gaussian
 
-In order to use this software, you must be a member of the “gaussian” Linux group, due to licensing restrictions. If you need to be added, please submit a ticket.
+In order to use this software, you must be a member of the “gaussian” Linux group, due to licensing restrictions. If you need to be added, please [submit a ticket](https://hpcrcf.atlassian.net/servicedesk/customer/portal/1).
 
+{: .note }
 Gaussian cannot use multiple hosts, but it can use multiple CPUs on the same host. **The Gaussian input file needs to include information about the number of CPUs and amount of memory available (per your SLURM job requests).**
 
 Your SLURM (sbatch) input file might look like this

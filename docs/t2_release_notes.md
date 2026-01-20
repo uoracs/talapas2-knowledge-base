@@ -150,9 +150,8 @@ See the [Directory Structure]({% link docs/storage/directory_structure.md %}) do
 
 ## Software
 
-_**Some existing software will run fine on the new cluster.**_
-
-_**But, with the operating system update to RHEL8 there will likely be cases where software requires rebuilding.**_
+{: .warning }
+**Some existing software will run fine on the new cluster. But, with the operating system update to RHEL8 there will likely be cases where software requires rebuilding.**
 
 Generally, issues would be due to differences with the new shared libraries in RHEL8. If you compile software in a way that specifically assumes one architecture (i.e. Intel IceLake) it might not run on all nodes.
 
