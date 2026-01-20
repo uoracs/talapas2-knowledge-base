@@ -90,7 +90,7 @@ This is the module that currently the new Open OnDemand Jupyter instance uses. (
 
 ### An Environment of One’s Own
 
-When we get requests to install combinations of packages that might disrupt other users, we often just create a custom conda environment. All of these are visible to all users (see ‘conda env list’), but their contents might be obscure. In any case, if you have a particular set of packages and versions that you need, we can often provide a custom environment for you (which will also be available to other Talapas users). Or, you are welcome to create your own conda env, and here are the steps to on how to do this: [How-to Create Personalized Conda Environments]({% link docs/how-to_articles/how-to_create_persoonal_conda_envs.md %}).
+When we get requests to install combinations of packages that might disrupt other users, we often just create a custom conda environment. All of these are visible to all users (see ‘conda env list’), but their contents might be obscure. In any case, if you have a particular set of packages and versions that you need, we can often provide a custom environment for you (which will also be available to other Talapas users). Or, you are welcome to create your own conda env, and here are the steps to on how to do this: [How-to Create Personalized Conda Environments]({% link docs/how-to_articles/how-to_create_personal_conda_envs.md %}).
 
 ## Out With the Old
 
