@@ -9,6 +9,12 @@ The website is built using the static site generator, [Jekyll](https://jekyllrb.
 To contribute feel free to edit any of the documentation markdown files. Preferrably if the change is significant in size, make the changes in a new feature branch, followed by creating a pull request to merge those changes into the main branch. Only the main branch is deployed to the site through [GitHub Pages](https://docs.github.com/en/pages) and is automatically deployed on any new changes to the main branch.
 
 Some common formatting options for Just-the-docs used throughout the markdown files are:
+- Front Matter:
+  - The yaml block at the top of each `.md` file separated with `---` is called the "Front Matter" and controls naming and navigation of documentation pages across the site.
+  - The front matter contains the page title, layout format (all pages currently use the default layout), and site navigation.
+  - Parents and children create hiearchical structure in the navigation side bar.
+  - Nav order determines ordering in thge navigation side by (ordered by increasing nav order numbers, which can be floats)
+  - See the [just-the-docs navigation page](https://just-the-docs.github.io/just-the-docs/docs/navigation/) for more details 
 - Callouts:
   - To add a callout, above the paragraph of text you want inside the callout message add: "{: .note }" where the note is the type of callout. See [this page](https://just-the-docs.github.io/just-the-docs/docs/ui-components/callouts/) for other callout options. 
 - Internal Links:
