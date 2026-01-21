@@ -10,7 +10,7 @@ parent: Software
 Stata is a general-purpose statistical software package.
 
 {: .warning }
-Current Stata installations on Talapas do not have site-wide licenses. If you wish to use Stata on Talapas, you will need to bring your own license and contact our [support portal](hpcrcf.atlassian.net/servicedesk/customer/portal/1) for installation help. 
+Current Stata installations on Talapas do not have site-wide licenses. If you wish to use Stata on Talapas, you will need to bring your own license and contact our [support portal](https://hpcrcf.atlassian.net/servicedesk/customer/portal/1) for installation help. 
 
 ## Commands
 
