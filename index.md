@@ -29,7 +29,9 @@ Struggling to navigate Talapas or have questions about services we offer?
 In addtion to our Service Desk, RACS is now offering office hours to provide in-person support to users regarding software and workflow questions/issues!
 
 {: .highlight } 
-**2026 Winter Term Office Hours:**\n* Where: Knight Campus 1st Floor Tables\n* When: Wednesdays 1-3pm
+  **2026 Winter Term Office Hours:**
+  * Where: Knight Campus 1st Floor Tables
+  * When: Wednesdays 1-3pm
 
 ## More Resources
 
