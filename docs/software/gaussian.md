@@ -43,7 +43,9 @@ export OMP_NUM_THREADS=${SLURM_CPUS_PER_TASK:-1}
 
 {: .note }
   The file `yourinput` should include the two mentioned “%” lines at the top, like so:
+ 
   `%NProcShared=28`
+   
   `%Mem=4GB`
 
 You can choose to use fewer or more CPUs, but not more than the hosts in the partition you select have.
