@@ -40,9 +40,8 @@ export OMP_NUM_THREADS=${SLURM_CPUS_PER_TASK:-1}
 
 \time g09 < yourinput > youroutput
 ```
-
-Note again that the file `yourinput` should include the two mentioned “%” lines at the top, like so
-
+{: .note }
+The file `yourinput` should include the two mentioned “%” lines at the top, like so: 
 `%NProcShared=28`
 `%Mem=4GB`
 
