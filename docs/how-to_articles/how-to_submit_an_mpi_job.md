@@ -149,7 +149,7 @@ srun ./helloworld_mpich.x
 
 ## Pitfalls
 
-Choosing parameters for MPI job submission can unfortunately be rather complicated. One pitfall you may encounter is failing to make use of all requested CPU cores, leading to needlessly long job times and wasted resources. To verify that all is well, check that you are getting significant speedups with increasing process count. If your jobs don't run faster when you add cores, something is probably wrong. You can also log into the compute nodes while your job is running to observe the processes and check that compute-bound processes are using 100% CPU; the `htop` command is useful here.
+Choosing parameters for MPI job submission can unfortunately be rather complicated. One pitfall you may encounter is failing to make use of all requested CPU cores, leading to needlessly long job times and wasted resources. To verify that all is well, check that you are getting significant speedups with increasing process (ntasks) count. If your jobs don't run faster when you add ntasks, something is probably wrong. You can also log into the compute nodes while your job is running to observe the processes and check that compute-bound processes are using 100% CPU; the `htop` command is useful here.
 
 One combination that we've seen work quite poorly is specifying `--nodes` and `--ntasks` (with no `--ntasks-per-node`). This seems to sometimes lead to the above wasted-resource problem.
 
