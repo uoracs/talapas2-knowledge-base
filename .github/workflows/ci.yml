@@ -63,6 +63,6 @@ jobs:
       - name: Test with html-proofer
         run:
           bundle exec htmlproofer _site --ignore-urls
-          "/github.com/,/web.archive.org/,/ondemand.talapas.uoregon.edu/,/uoracs.github.io/,/filezilla-project.org/,/wiki.talapas.uoregon.edu/"
+          "/github.com/,/web.archive.org/,/ondemand.talapas.uoregon.edu/,/uoracs.github.io/,/filezilla-project.org/,/wiki.talapas.uoregon.edu/,/slurm.schedmd.com/"
         env:
           NOKOGIRI_USE_SYSTEM_LIBRARIES: true
