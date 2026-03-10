@@ -61,7 +61,7 @@ Welcome to Talapas!
 myDuckID@login.talapas.uoregon.edu's password:
 Last login: Thu May 25 10:18:23 2017 from somewhere.uoregon.edu
 
-[myDuckID@ln1 ~]$
+[myDuckID@login1 ~]$
 
 ```
 
