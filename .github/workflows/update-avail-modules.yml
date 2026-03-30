@@ -2,11 +2,9 @@
 name: update available modules
 
 on:
-  workflow_call:
-    inputs: 
-      config-path:
-        required: true
-        type: string
+  repository_dispatch:
+    types: [update-modules]
+  workflow_dispatch:
 
 jobs:
   stub:
@@ -15,7 +13,6 @@ jobs:
       - name: print message
         run: | 
           echo "hello i am working"
-      - name: print current repo
-        run: |      
-            echo "Current directory (PWD): $PWD"
-            echo "GitHub workspace directory: $GITHUB_WORKSPACE"
+      - name: Print config path
+        run: |
+          echo "Config path: ${{ github.event.client_payload.config-path }}"
