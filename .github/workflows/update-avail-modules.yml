@@ -1,0 +1,17 @@
+---
+name: update available modules
+
+on:
+  workflow_call:
+    inputs: 
+      config-path:
+        required: true
+        type: string
+
+jobs:
+  stub:
+    runs-on: ubuntu-latest
+    steps:
+      - name: print message
+        run: | 
+          echo "hello i am working"
