@@ -15,3 +15,7 @@ jobs:
       - name: print message
         run: | 
           echo "hello i am working"
+      - name: print current repo
+        run: |      
+            echo "Current directory (PWD): $PWD"
+            echo "GitHub workspace directory: $GITHUB_WORKSPACE"
