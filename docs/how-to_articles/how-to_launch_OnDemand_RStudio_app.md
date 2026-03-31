@@ -7,7 +7,7 @@ nav_order: 17.5
 
 ## Navigating to RStudio on OnDemand
 
-1. Log in to [ondemand.uoregon.edu](https://ondemand.uoregon.edu)
+1. Log in to [ondemand.talapas.uoregon.edu](https://ondemand.talapas.uoregon.edu/)
 2. In the top menu bar, click **Interactive Apps**
 3. Select **RStudio**
 
