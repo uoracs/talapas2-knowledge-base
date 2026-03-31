@@ -30,11 +30,6 @@ Globus is the fastest method of file transfering and the one that RACS reccomend
 
 As a Talapas user, you have these directories available for storing and manipulating your files.
 
-- Your Linux home directory.  This is the directory you start in when you log in.  It's shared across all Talapas hosts.  This directory is for small configuration files, etc.  The quota is limited to 250GB and cannot be expanded.
-- Your project directory, `/projects/GROUP/`, where _GROUP_ is the name of your PIRG (and also your Linux primary group).  This is the directory you should use for large data files, etc.  This directory shares a large quota with your PIRG.
-- Your PIRG's shared directory, `/projects/GROUP/shared`.  This directory is for data that you want to share with other members of your PIRG.  It also shares the PIRG quota, which can be expanded as needed.
-- The host temporary directory, `/tmp`.  Unlike the other directories, this directory is on a local host disk drive and is not shared across hosts.  It's for temporary data during a job.  Using this directory for intermediary data may speed up your job.  Please delete files you create here at the end of your job.
-
 {: .warning }
 **You are responsible for backing up all of your data on Talapas.  This data is not backed up by RACS.**
 Some snapshotting is performed for all directories except for the host temporary directory, and in some cases lost files can be recovered from a snapshot.  This cannot be relied on as a backup, however.
