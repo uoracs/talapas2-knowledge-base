@@ -8,7 +8,6 @@ nav_order: 17.5
 ## Navigating to RStudio on OnDemand
 
 1. Log in to [ondemand.talapas.uoregon.edu](https://ondemand.talapas.uoregon.edu/)
-
 2. In the top menu bar, click **Interactive Apps**
 3. Select **RStudio**
 
@@ -24,7 +23,7 @@ Fill in the launch form with the following settings:
 | **Partition** | Your Slurm partition |
 | **Cores** | Default is 1 — sufficient for most workflows |
 | **Hours** | Duration you want the session to run |
-| **Memory (GB)** | Default is 4 GB |
+| **Memory (GB)** | 4 GB per core is a good default|
 
 Click **Launch** when ready.
 
