@@ -1,0 +1,18 @@
+---
+name: update available modules
+
+on:
+  repository_dispatch:
+    types: [update-modules]
+  workflow_dispatch:
+
+jobs:
+  stub:
+    runs-on: ubuntu-latest
+    steps:
+      - name: print message
+        run: | 
+          echo "hello i am working"
+      - name: Print payload
+        run: |
+          echo "received this payload: ${{ github.event.client_payload }}"
