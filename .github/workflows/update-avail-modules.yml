@@ -15,4 +15,4 @@ jobs:
           echo "hello i am working"
       - name: Print payload
         run: |
-          echo "received this payload: ${{ github.event.client_payload }}"
+          echo "received this payload: ${{ github.event.client_payload.modules }}"
