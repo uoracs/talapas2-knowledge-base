@@ -32,6 +32,9 @@ jobs:
           rm "$GITHUB_WORKSPACE/docs/software/packages.md"
           mv packages.md "$GITHUB_WORKSPACE/docs/software/"
           git status
-
+          git add "$GITHUB_WORKSPACE/docs/software/"
+          git status
+          git commit -m "Automatically triggered by lmod repo push, refresh of packages.md"
+          git push
 
       
