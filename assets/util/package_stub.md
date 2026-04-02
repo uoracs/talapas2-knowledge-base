@@ -31,3 +31,7 @@ module avail ants
 See the [How-to Use LMOD]({%link docs/how-to_articles/how-to_use_lmod.md %}) page for more details on using [LMOD](https://lmod.readthedocs.io/en/latest/010_user.html).
 
 ## Available Software Packages
+
+
+| Module Name | Module Versions/Variants |
+|:------------|:---------------------|
