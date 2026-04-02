@@ -35,6 +35,7 @@ jobs:
           mv packages.md "$GITHUB_WORKSPACE/docs/software/"
           git config --local user.email "action@racs.com"
           git config --local user.name "Automatic runner"
+          git pull
           git add "$GITHUB_WORKSPACE/docs/software/"
           git commit -m "Automatically triggered by lmod repo push, refresh of packages.md"
           git push
