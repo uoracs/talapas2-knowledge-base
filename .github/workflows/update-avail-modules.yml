@@ -10,9 +10,25 @@ jobs:
   stub:
     runs-on: ubuntu-latest
     steps:
-      - name: print message
-        run: | 
-          echo "hello i am working"
       - name: Print payload
         run: |
           echo "received this payload: ${{ toJSON(github.event.client_payload.modules) }}"
+
+      - name: checkout repo
+        uses: actions/checkout@v6
+
+      - name: make modules table
+        run: |
+          cd "$GITHUB_WORKSPACE/assets/util"
+          cat ${{ toJSON(github.event.client_payload.modules) }} > out.json
+          chmod +x ./make_packages_md.sh
+          ./make_packages_md.sh < out.json > modules.md
+          cat package_stub.md > packages.md 
+          cat modules.md >> packages.md 
+          rm "$GITHUB_WORKSPACE/docs/software/packages.md"
+          mv packages.md "$GITHUB_WORKSPACE/docs/software/"
+          cat packages.md
+          git status
+
+
+      
