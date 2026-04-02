@@ -21,6 +21,7 @@ jobs:
         run: |
           cd "$GITHUB_WORKSPACE/assets/util"
           echo github.event.client_payload.modules > out.json
+          cat out.json
           chmod +x ./make_packages_md.sh
           ./make_packages_md.sh < out.json > modules.md
           cat package_stub.md > packages.md 
