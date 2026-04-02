@@ -9,6 +9,8 @@ on:
 jobs:
   stub:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - name: Print payload
         run: |
