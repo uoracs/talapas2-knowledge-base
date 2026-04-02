@@ -23,14 +23,14 @@ jobs:
         run: |
           cd "$GITHUB_WORKSPACE/assets/util"
           echo "$MODULES_JSON" > out.json
-          cat out.json
           chmod +x ./make_packages_md.sh
           ./make_packages_md.sh < out.json > modules.md
+          touch packages.md
+          chmod +rw packages.md
           cat package_stub.md > packages.md 
           cat modules.md >> packages.md 
           rm "$GITHUB_WORKSPACE/docs/software/packages.md"
           mv packages.md "$GITHUB_WORKSPACE/docs/software/"
-          cat packages.md
           git status
 
 
