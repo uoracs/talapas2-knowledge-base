@@ -20,7 +20,7 @@ jobs:
       - name: make modules table
         run: |
           cd "$GITHUB_WORKSPACE/assets/util"
-          echo github.event.client_payload.modules > out.json
+          echo ${{ toJSON(github.event.client_payload.modules) }} > out.json
           cat out.json
           chmod +x ./make_packages_md.sh
           ./make_packages_md.sh < out.json > modules.md
