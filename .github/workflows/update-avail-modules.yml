@@ -7,15 +7,11 @@ on:
   workflow_dispatch:
 
 jobs:
-  stub:
+  update_modules:
     runs-on: ubuntu-latest
     permissions:
       contents: write
     steps:
-      - name: Print payload
-        run: |
-          echo "received this payload: ${{ toJSON(github.event.client_payload.modules) }}"
-
       - name: checkout repo
         uses: actions/checkout@v6
 
@@ -25,6 +21,10 @@ jobs:
         run: |
           cd "$GITHUB_WORKSPACE/assets/util"
           echo "$MODULES_JSON" > out.json
+          if [ ! -s "out.json" ]; then
+            echo "there is nothing in the out.json file."
+            exit 1
+          fi
           chmod +x ./make_packages_md.sh
           ./make_packages_md.sh < out.json > modules.md
           touch packages.md
