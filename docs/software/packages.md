@@ -35,17 +35,6 @@ See the [How-to Use LMOD]({%link docs/how-to_articles/how-to_use_lmod.md %}) pag
 
 | Module Name | Module Versions/Variants |
 |:------------|:---------------------|
-| `Geneious` | `Geneious` |
-| `MRIConvert` | `2.1.0` |
-| `Mathematica` | `11.3`<br>`12.0` |
-| `NonLinLoc` | `20221102` |
-| `OpenDX` | `4.4.4` |
-| `R` | `3.4.2-lcni`<br>`4.3.2`<br>`4.3.3`<br>`4.4.2` |
-| `RECON` | `1.08` |
-| `RFdiffusion1` | `RFdiffusion1` |
-| `RepeatMasker` | `4.0.7racs1` |
-| `RepeatModeler` | `1.0.10` |
-| `RepeatScout` | `1.0.5` |
 | `adapterremoval` | `2.1.7`<br>`2.3.3` |
 | `afni` | `24.1.22` |
 | `alphafold3` | `3.0.0` |
@@ -137,6 +126,7 @@ See the [How-to Use LMOD]({%link docs/how-to_articles/how-to_use_lmod.md %}) pag
 | `gausssum` | `1.0.5` |
 | `gcc` | `13.1.0`<br>`8.5.0` |
 | `gcta` | `1.94.4` |
+| `Geneious` | `Geneious` |
 | `genemark` | `4.33`<br>`4.46`<br>`4.71` |
 | `genomethreader` | `1.7.0`<br>`1.7.1` |
 | `geos` | `3.6.2` |
@@ -199,6 +189,7 @@ See the [How-to Use LMOD]({%link docs/how-to_articles/how-to_use_lmod.md %}) pag
 | `mafft` | `7.313` |
 | `maker` | `2.31.9` |
 | `mango` | `4.1` |
+| `Mathematica` | `11.3`<br>`12.0` |
 | `matlab` | `R2016b`<br>`R2017b`<br>`R2017b_pas`<br>`R2018b`<br>`R2019b`<br>`R2020b`<br>`R2021a`<br>`R2022a`<br>`R2024a` |
 | `maven` | `3.5.0` |
 | `maxssmap` | `v1` |
@@ -216,6 +207,7 @@ See the [How-to Use LMOD]({%link docs/how-to_articles/how-to_use_lmod.md %}) pag
 | `mpi4py` | `3.0` |
 | `mplus` | `demo` |
 | `mptp` | `0.2.4` |
+| `MRIConvert` | `2.1.0` |
 | `mricrogl` | `1.2.20210624` |
 | `mriqc` | `0.16.1`<br>`24.0.0-conda`<br>`24.0.0`<br>`24.0.2` |
 | `mrtrix` | `3.0.4`<br>`3.0_RC3`<br>`MRtrix3Tissue` |
@@ -234,11 +226,13 @@ See the [How-to Use LMOD]({%link docs/how-to_articles/how-to_use_lmod.md %}) pag
 | `ngsrelate` | `v2` |
 | `nipype` | `1.8.6-20240503`<br>`nipype-old`<br>`nipype` |
 | `node` | `20.16.0` |
+| `NonLinLoc` | `20221102` |
 | `nvhpc` | `25.7`<br>`25.9` |
 | `ondemand-jupyter` | `ondemand-jupyter` |
 | `oneapi-level-zero` | `1.9.9` |
 | `openbabel` | `3.1.1` |
 | `openblas` | `0.3.23` |
+| `OpenDX` | `4.4.4` |
 | `openfoam` | `12` |
 | `openmpi` | `4.1.5` |
 | `orca` | `6.0.1`<br>`6.1.0` |
@@ -275,8 +269,14 @@ See the [How-to Use LMOD]({%link docs/how-to_articles/how-to_use_lmod.md %}) pag
 | `pytorch-refinegnn` | `20240820` |
 | `pytorch-thermompnn` | `2.1.2` |
 | `quantum-espresso` | `7.1` |
+| `R` | `3.4.2-lcni`<br>`4.3.2`<br>`4.3.3`<br>`4.4.2` |
 | `racs-spack-t2-test` | `racs-spack-t2-test` |
 | `rclone` | `1.38`<br>`1.52.2`<br>`1.66.0`<br>`1.70.3` |
+| `RECON` | `1.08` |
+| `RepeatMasker` | `4.0.7racs1` |
+| `RepeatModeler` | `1.0.10` |
+| `RepeatScout` | `1.0.5` |
+| `RFdiffusion1` | `RFdiffusion1` |
 | `rfdiffusion2` | `20250919` |
 | `ribodetector` | `0.3.1` |
 | `ripser-plusplus` | `20200806` |
