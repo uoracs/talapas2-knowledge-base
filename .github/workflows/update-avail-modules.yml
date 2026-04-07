@@ -14,6 +14,8 @@ jobs:
     steps:
       - name: checkout repo
         uses: actions/checkout@v6
+        with:
+          persist-credentials: false
 
       - name: make modules table
         env:
@@ -38,6 +40,10 @@ jobs:
           git pull
           git add "$GITHUB_WORKSPACE/docs/software/"
           git commit -m "Automatically triggered by lmod repo push, refresh of packages.md"
-          git push
-
+          
+      - name: push
+        uses: ad-m/github-push-action@main
+        with:
+          github_token: ${{ secrets.GH_PAT }}
+          branch: ${{ github.ref }}
       
