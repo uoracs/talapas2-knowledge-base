@@ -42,7 +42,7 @@ jobs:
           git commit -m "Automatically triggered by lmod repo push, refresh of packages.md"
           
       - name: push
-        uses: ad-m/github-push-action@main
+        uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.GH_PAT }}
           branch: ${{ github.ref }}
