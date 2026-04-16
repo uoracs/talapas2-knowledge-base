@@ -35,7 +35,7 @@ Links are provided below for external collaborators, graduating researchers, or 
 
 ### UO VPN
 
-A virtual private network (VPN) connection is recommended to access the cluster. This adds an extra layer of security, and enables passwordless authentication for logging into Talapas with the use of SSH keys. See the [How-To Login to Talapas]({% link docs/how-to_articles/how-to_login_to_talapas.md %}) page for instructions on setting up SSH keys.
+A virtual private network (VPN) connection is recommended to access the cluster. This adds an extra layer of security, and enables passwordless authentication for logging into Talapas with the use of SSH keys. See the [How-To Login to Talapas]({% link docs/connecting_to_talapas/how-to_login_to_talapas.md %}) page for instructions on setting up SSH keys.
 
 Instructions here: [Article - Getting Started with UO VPN](https://service.uoregon.edu/TDClient/2030/Portal/KB/ArticleDet?ID=31471)
 
@@ -71,7 +71,7 @@ memory
 memorylong
 ```
 
-For more information see the [Partition List]({% link docs/partition_list.md %}) page.
+For more information see the [Partition List]({% link docs/about_talapas/partition_list.md %}) page.
 
 ### Job control
 
@@ -161,7 +161,7 @@ We’ll provide all software centrally available, including conda environments, 
 
 `module load software/version`
 
-See [How-To Use LMOD]({% link docs/how-to_articles/how-to_use_lmod.md %}) for more details, and the [All Packages]({% link docs/software/packages.md %}) page to see all of the centrally installed software you can load with LMOD on Talapas.
+See [How-To Use LMOD]({% link docs/software/how-to_use_lmod.md %}) for more details, and the [All Packages]({% link docs/software/packages.md %}) page to see all of the centrally installed software you can load with LMOD on Talapas.
 
 ### Conda
 
