@@ -164,7 +164,7 @@ See the [How-to Use LMOD]({%link docs/how-to_articles/how-to_use_lmod.md %}) pag
 | `intel-oneapi-tbb` | `2021.9.0` |
 | `intel-oneapi-vpl` | `2023.1.0` |
 | `intel-oneapi-vtune` | `2023.1.0` |
-| `interproscan` | `5.27-66.0`<br>`5.77-108.0` |
+| `interproscan` | `5.77-108.0` |
 | `ior` | `4.0.0` |
 | `issm` | `4.21`<br>`4.24` |
 | `itksnap` | `3.6.0` |
