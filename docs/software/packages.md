@@ -68,7 +68,7 @@ See the [How-to Use LMOD]({%link docs/software/how-to_use_lmod.md %}) page for m
 | `braker` | `2.0`<br>`2.1.0`<br>`2.1.3-WIP-20190826` |
 | `breseq` | `0.31.0` |
 | `bwa` | `0.7.17` |
-| `cactus` | `2.8.1` |
+| `cactus` | `2.8.1`<br>`3.1.4` |
 | `casa` | `6.7.0` |
 | `cdbfasta` | `20191010` |
 | `cellranger` | `3.0.2` |
@@ -164,7 +164,7 @@ See the [How-to Use LMOD]({%link docs/software/how-to_use_lmod.md %}) page for m
 | `intel-oneapi-tbb` | `2021.9.0` |
 | `intel-oneapi-vpl` | `2023.1.0` |
 | `intel-oneapi-vtune` | `2023.1.0` |
-| `interproscan` | `5.27-66.0` |
+| `interproscan` | `5.77-108.0` |
 | `ior` | `4.0.0` |
 | `issm` | `4.21`<br>`4.24` |
 | `itksnap` | `3.6.0` |

@@ -20,6 +20,7 @@ jobs:
       - name: make modules table
         env:
           MODULES_JSON: ${{ toJSON(github.event.client_payload.modules) }}
+        if: github.event.client_payload.modules != null
         run: |
           cd "$GITHUB_WORKSPACE/assets/util"
           echo "$MODULES_JSON" > out.json
