@@ -8,7 +8,7 @@ grand_parent: Software
 
 # How-To Run a Apptainer Container
 
-Running a container is similar to running a regular job in SLURM. Please visit [How-to Submit a Job]({% link docs/how-to_articles/how-to_submit_a_job.md %}) for further information on general job submission.
+Running a container is similar to running a regular job in SLURM. Please visit [How-to Submit a Job]({% link docs/slurm/how-to_submit_a_job.md %}) for further information on general job submission.
 
 Below is how to setup a job script to run Apptainer.
 

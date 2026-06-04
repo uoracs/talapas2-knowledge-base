@@ -37,7 +37,7 @@ User home and PIRG projects storage usage on Talapas is tracked using quotas, wi
 
 ### Local Node Storage
 
-Each compute node is equipped with a local SSD for the operating system as well as providing `/tmp` for fast local scratch space if desired. This local storage is relatively small and requires a step in your job workflow to copy results off (presumably to your PIRG project space) and remove old data. The `/tmp` directory on each node's local SSD will be cleared of all your data at the completion/end of your SLURM jobs, so make sure and copy over any data you need that is written here within your jobs. Local disks vary in size depending on the node type and generation. See the [Partition List]({% link docs/partition_list.md %}) page for more information.
+Each compute node is equipped with a local SSD for the operating system as well as providing `/tmp` for fast local scratch space if desired. This local storage is relatively small and requires a step in your job workflow to copy results off (presumably to your PIRG project space) and remove old data. The `/tmp` directory on each node's local SSD will be cleared of all your data at the completion/end of your SLURM jobs, so make sure and copy over any data you need that is written here within your jobs. Local disks vary in size depending on the node type and generation. See the [Partition List]({% link docs/about_talapas/partition_list.md %}) page for more information.
 
 ## Large-Scale Research Storage (LSRS)
 

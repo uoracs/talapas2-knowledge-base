@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Available Packages
-nav_order: 1
+nav_order: 5
 parent: Software
 ---
 
@@ -28,7 +28,7 @@ You can also search for available versions using:
 module avail ants
 ```
 
-See the [How-to Use LMOD]({%link docs/how-to_articles/how-to_use_lmod.md %}) page for more details on using [LMOD](https://lmod.readthedocs.io/en/latest/010_user.html).
+See the [How-to Use LMOD]({%link docs/software/how-to_use_lmod.md %}) page for more details on using [LMOD](https://lmod.readthedocs.io/en/latest/010_user.html).
 
 ## Available Software Packages
 
