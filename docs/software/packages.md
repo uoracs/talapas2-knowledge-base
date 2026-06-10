@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Available Packages
-nav_order: 5
+nav_order: 1
 parent: Software
 ---
 
@@ -28,7 +28,7 @@ You can also search for available versions using:
 module avail ants
 ```
 
-See the [How-to Use LMOD]({%link docs/software/how-to_use_lmod.md %}) page for more details on using [LMOD](https://lmod.readthedocs.io/en/latest/010_user.html).
+See the [How-to Use LMOD]({%link docs/how-to_articles/how-to_use_lmod.md %}) page for more details on using [LMOD](https://lmod.readthedocs.io/en/latest/010_user.html).
 
 ## Available Software Packages
 
@@ -120,8 +120,8 @@ See the [How-to Use LMOD]({%link docs/software/how-to_use_lmod.md %}) page for m
 | `fsleyes` | `0.23.0` |
 | `fxtract` | `fxtract` |
 | `gambit_bsm` | `2.4.4-miniconda3`<br>`2.4.4` |
-| `gamess` | `Jun302023R1` |
-| `gamess-us` | `20180930-R3` |
+| `gamess` | `Jul152024R2P1`<br>`Jun302023R1` |
+| `gamess-us` | `gamess-us` |
 | `gaussian` | `g09e01` |
 | `gausssum` | `1.0.5` |
 | `gcc` | `13.1.0`<br>`8.5.0` |
