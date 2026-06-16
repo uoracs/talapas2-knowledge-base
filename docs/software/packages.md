@@ -28,7 +28,7 @@ You can also search for available versions using:
 module avail ants
 ```
 
-See the [How-to Use LMOD]({%link docs/software/how-to_use_lmod.md %}) page for more details on using [LMOD](https://lmod.readthedocs.io/en/latest/010_user.html).
+See the [How-to Use LMOD]({%link docs/how-to_articles/how-to_use_lmod.md %}) page for more details on using [LMOD](https://lmod.readthedocs.io/en/latest/010_user.html).
 
 ## Available Software Packages
 
@@ -319,6 +319,7 @@ See the [How-to Use LMOD]({%link docs/software/how-to_use_lmod.md %}) page for m
 | `trim_galore` | `0.6.10` |
 | `ucsc-userapps` | `20191024` |
 | `usearch` | `11.0`<br>`8.0` |
+| `uv` | `0.11.21` |
 | `vasp` | `agnelab-6.5.1`<br>`nazingroup-6.5.1`<br>`racs-6.5.1` |
 | `vaspkit` | `1.5.1` |
 | `vcftools` | `0.1.17` |
