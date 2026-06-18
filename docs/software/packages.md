@@ -299,6 +299,7 @@ See the [How-to Use LMOD]({%link docs/how-to_articles/how-to_use_lmod.md %}) pag
 | `spades` | `3.13.0`<br>`3.15.3` |
 | `specfem3d` | `20190918-devel`<br>`3.0-gpu` |
 | `spines` | `1.15` |
+| `sratoolkit` | `3.4.1` |
 | `stable-diffusion` | `stable-diffusion` |
 | `stacks` | `2.0b`<br>`2.68` |
 | `star` | `2.7.11b` |
