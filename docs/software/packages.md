@@ -28,7 +28,7 @@ You can also search for available versions using:
 module avail ants
 ```
 
-See the [How-to Use LMOD]({%link docs/software/how-to_use_lmod.md %}) page for more details on using [LMOD](https://lmod.readthedocs.io/en/latest/010_user.html).
+See the [How-to Use LMOD]({%link docs/how-to_articles/how-to_use_lmod.md %}) page for more details on using [LMOD](https://lmod.readthedocs.io/en/latest/010_user.html).
 
 ## Available Software Packages
 
@@ -269,7 +269,7 @@ See the [How-to Use LMOD]({%link docs/software/how-to_use_lmod.md %}) page for m
 | `pytorch-refinegnn` | `20240820` |
 | `pytorch-thermompnn` | `2.1.2` |
 | `quantum-espresso` | `7.1` |
-| `R` | `3.4.2-lcni`<br>`4.3.2`<br>`4.3.3`<br>`4.4.2` |
+| `R` | `3.4.2-lcni`<br>`4.3.2`<br>`4.3.3`<br>`4.4.2`<br>`4.6.1` |
 | `racs-spack-t2-test` | `racs-spack-t2-test` |
 | `rclone` | `1.38`<br>`1.52.2`<br>`1.66.0`<br>`1.70.3` |
 | `RECON` | `1.08` |
