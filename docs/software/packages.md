@@ -190,7 +190,7 @@ See the [How-to Use LMOD]({%link docs/how-to_articles/how-to_use_lmod.md %}) pag
 | `maker` | `2.31.9` |
 | `mango` | `4.1` |
 | `Mathematica` | `11.3`<br>`12.0` |
-| `matlab` | `R2016b`<br>`R2017b`<br>`R2017b_pas`<br>`R2018b`<br>`R2019b`<br>`R2020b`<br>`R2021a`<br>`R2022a`<br>`R2024a` |
+| `matlab` | `R2016b`<br>`R2017b`<br>`R2017b_pas`<br>`R2018b`<br>`R2019b`<br>`R2020b`<br>`R2021a`<br>`R2022a`<br>`R2024a`<br>`R2025a`<br>`R2026a` |
 | `maven` | `3.5.0` |
 | `maxssmap` | `v1` |
 | `merlin` | `1.1.2` |
