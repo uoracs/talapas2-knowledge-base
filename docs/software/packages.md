@@ -149,7 +149,7 @@ See the [How-to Use LMOD]({%link docs/how-to_articles/how-to_use_lmod.md %}) pag
 | `intel-oneapi-advisor` | `2023.1.0` |
 | `intel-oneapi-aitools-deeplearning` | `20240416` |
 | `intel-oneapi-ccl` | `2021.9.0` |
-| `intel-oneapi-compilers` | `2023.1.0` |
+| `intel-oneapi-compilers` | `2023.1.0`<br>`2025.3.1-3uym2yo` |
 | `intel-oneapi-compilers-classic` | `2021.9.0` |
 | `intel-oneapi-dal` | `2023.1.0` |
 | `intel-oneapi-dnn` | `2023.1.0` |
@@ -159,8 +159,8 @@ See the [How-to Use LMOD]({%link docs/how-to_articles/how-to_use_lmod.md %}) pag
 | `intel-oneapi-ipp` | `2021.8.0` |
 | `intel-oneapi-ippcp` | `2021.7.0` |
 | `intel-oneapi-itac` | `2021.8.0` |
-| `intel-oneapi-mkl` | `2023.1.0` |
-| `intel-oneapi-mpi` | `2021.9.0` |
+| `intel-oneapi-mkl` | `2023.1.0`<br>`2025.3.0-3nd2whw` |
+| `intel-oneapi-mpi` | `2021.17.0-cx2mfd5`<br>`2021.9.0` |
 | `intel-oneapi-tbb` | `2021.9.0` |
 | `intel-oneapi-vpl` | `2023.1.0` |
 | `intel-oneapi-vtune` | `2023.1.0` |
