@@ -263,7 +263,7 @@ See the [How-to Use LMOD]({%link docs/how-to_articles/how-to_use_lmod.md %}) pag
 | `pypi-packages` | `pypi-packages` |
 | `python` | `2.7.18` |
 | `python2` | `2.7.13`<br>`2.7.14-old`<br>`2.7.14`<br>`2.7.15`<br>`2.7.17` |
-| `python3` | `3.10.13`<br>`3.11.4`<br>`3.6.1`<br>`3.6.5`<br>`3.6.7`<br>`3.6.9`<br>`3.7.5` |
+| `python3` | `3.10.13`<br>`3.11.4`<br>`3.14.0-pqpkhka`<br>`3.6.1`<br>`3.6.5`<br>`3.6.7`<br>`3.6.9`<br>`3.7.5` |
 | `python3-t2-test` | `3.7.5` |
 | `pytorch` | `2.1.2` |
 | `pytorch-refinegnn` | `20240820` |
