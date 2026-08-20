@@ -28,7 +28,7 @@ You can also search for available versions using:
 module avail ants
 ```
 
-See the [How-to Use LMOD]({%link docs/software/how-to_use_lmod.md %}) page for more details on using [LMOD](https://lmod.readthedocs.io/en/latest/010_user.html).
+See the [How-to Use LMOD]({%link docs/how-to_articles/how-to_use_lmod.md %}) page for more details on using [LMOD](https://lmod.readthedocs.io/en/latest/010_user.html).
 
 ## Available Software Packages
 
@@ -193,6 +193,7 @@ See the [How-to Use LMOD]({%link docs/software/how-to_use_lmod.md %}) page for m
 | `matlab` | `R2016b`<br>`R2017b`<br>`R2017b_pas`<br>`R2018b`<br>`R2019b`<br>`R2020b`<br>`R2021a`<br>`R2022a`<br>`R2024a`<br>`R2025a`<br>`R2026a` |
 | `maven` | `3.5.0` |
 | `maxssmap` | `v1` |
+| `megahit` | `1.2.9` |
 | `merlin` | `1.1.2` |
 | `mesos` | `1.9.0` |
 | `metabat` | `2.12.1` |
