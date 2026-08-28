@@ -124,7 +124,7 @@ See the [How-to Use LMOD]({%link docs/how-to_articles/how-to_use_lmod.md %}) pag
 | `gamess-us` | `gamess-us` |
 | `gaussian` | `g09e01` |
 | `gausssum` | `1.0.5` |
-| `gcc` | `13.1.0`<br>`8.5.0` |
+| `gcc` | `13.1.0`<br>`15.2.0-26fg2wf`<br>`8.5.0` |
 | `gcta` | `1.94.4` |
 | `Geneious` | `Geneious` |
 | `genemark` | `4.33`<br>`4.46`<br>`4.71` |
@@ -231,7 +231,7 @@ See the [How-to Use LMOD]({%link docs/how-to_articles/how-to_use_lmod.md %}) pag
 | `nvhpc` | `25.7`<br>`25.9` |
 | `ondemand-jupyter` | `ondemand-jupyter` |
 | `oneapi-level-zero` | `1.9.9` |
-| `openbabel` | `3.1.1` |
+| `openbabel` | `3.1.1`<br>`3.2.1` |
 | `openblas` | `0.3.23` |
 | `OpenDX` | `4.4.4` |
 | `openfoam` | `12` |
