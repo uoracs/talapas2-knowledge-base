@@ -206,6 +206,7 @@ See the [How-to Use LMOD]({%link docs/how-to_articles/how-to_use_lmod.md %}) pag
 | `moose-dev-gcc` | `20220124` |
 | `mpi` | `mpi` |
 | `mpi4py` | `3.0` |
+| `mpich` | `4.3.2-khdddkb` |
 | `mplus` | `demo` |
 | `mptp` | `0.2.4` |
 | `MRIConvert` | `2.1.0` |
