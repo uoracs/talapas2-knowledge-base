@@ -121,7 +121,6 @@ Note: Before logging into Talapas, make sure you're on the UO VPN.
 Windows has no builtin `SSH` client, but you can download and install one of several free clients:
 
 - [MobaXterm](https://mobaxterm.mobatek.net/)
-- [Putty](https://www.putty.org/)
 
 Configuration varies, but it's generally sufficient to specify `SSH` as the protocol and to use the hostname, username, and password information as specified above.
 
