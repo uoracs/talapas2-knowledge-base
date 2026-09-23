@@ -16,16 +16,6 @@ nav_order: 1.5
 > * **NVIDIA drivers** upgraded (580.178.04)
 > * **CUDA 13.0** now on all compute nodes
 
-## Semi-Annual Maintenance Window (09/15–09/18)
-
-- **Security patches** applied cluster-wide
-- **RHEL 8.10** OS updates
-- **Dell firmware/BIOS** updates
-- **OFED stack** upgraded
-- **Slurm** upgraded to 25.11.8
-- **NVIDIA drivers** upgraded (580.178.04)
-- **CUDA 13.0** now on all compute nodes
-
 ## Notable updates
 
 - Operating system - Red Hat Enterprise Linux 8 (RHEL8)
