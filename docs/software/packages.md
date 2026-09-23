@@ -124,7 +124,7 @@ See the [How-to Use LMOD]({%link docs/software/how-to_use_lmod.md %}) page for m
 | `gamess-us` | `gamess-us` |
 | `gaussian` | `g09e01` |
 | `gausssum` | `1.0.5` |
-| `gcc` | `13.1.0`<br>`15.2.0-26fg2wf`<br>`8.5.0` |
+| `gcc` | `13.1.0`<br>`15.2.0-5dhqpt3`<br>`8.5.0` |
 | `gcta` | `1.94.4` |
 | `Geneious` | `Geneious` |
 | `genemark` | `4.33`<br>`4.46`<br>`4.71` |
