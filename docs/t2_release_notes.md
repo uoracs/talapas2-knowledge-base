@@ -7,7 +7,7 @@ nav_order: 1.5
 # Talapas2 (T2) Release Notes
 
 {: .highlight } 
-> **Semi-Annual Maintenance Window (09/15–09/18)**
+> **Semi-Annual Maintenance Window Highlights (09/15–09/18)**
 > * **Security patches** applied cluster-wide
 > * **RHEL 8.10** OS updates
 > * **Dell firmware/BIOS** updates
