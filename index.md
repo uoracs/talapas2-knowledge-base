@@ -28,9 +28,9 @@ Struggling to navigate Talapas or have questions about services we offer?
 In addtion to our Service Desk, RACS is now offering office hours to provide in-person support to users regarding software and workflow questions/issues!
 
 {: .highlight } 
-> **2026 Summer Term Office Hours:**
-> * **Where:** Please email us if you would like to set up a 1-on-1 meeting!
-> * **When:** N/A
+> **2026 Fall Term Office Hours:**
+> * **Where:** Knight Campus Building 2 Second Floor Tables
+> * **When:** 1-3 PM Wednesdays
 
 ## More Resources
 
