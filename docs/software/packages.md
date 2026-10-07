@@ -149,7 +149,7 @@ See the [How-to Use LMOD]({%link docs/software/how-to_use_lmod.md %}) page for m
 | `intel-oneapi-advisor` | `2023.1.0` |
 | `intel-oneapi-aitools-deeplearning` | `20240416` |
 | `intel-oneapi-ccl` | `2021.9.0` |
-| `intel-oneapi-compilers` | `2023.1.0`<br>`2025.3.1-3uym2yo` |
+| `intel-oneapi-compilers` | `2023.1.0`<br>`2025.3.1-s7rb72e` |
 | `intel-oneapi-compilers-classic` | `2021.9.0` |
 | `intel-oneapi-dal` | `2023.1.0` |
 | `intel-oneapi-dnn` | `2023.1.0` |
