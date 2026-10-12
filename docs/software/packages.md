@@ -95,7 +95,7 @@ See the [How-to Use LMOD]({%link docs/software/how-to_use_lmod.md %}) page for m
 | `diploshic` | `diploshic` |
 | `discoal` | `0.1.4` |
 | `dmtcp` | `3.1.2` |
-| `dorado` | `0.8.2`<br>`1.0.0` |
+| `dorado` | `0.8.2`<br>`1.0.0`<br>`2.1.2` |
 | `duc` | `1.4.3` |
 | `duohmm` | `0.1.7` |
 | `dynare` | `6.0` |
