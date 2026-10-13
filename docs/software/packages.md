@@ -37,7 +37,7 @@ See the [How-to Use LMOD]({%link docs/software/how-to_use_lmod.md %}) page for m
 |:------------|:---------------------|
 | `adapterremoval` | `2.1.7`<br>`2.3.3` |
 | `afni` | `24.1.22` |
-| `alphafold3` | `3.0.0` |
+| `alphafold3` | `3.0.0`<br>`3.0.4` |
 | `amber` | `22` |
 | `ancestry_hmm` | `0.92-old`<br>`0.92` |
 | `angsd` | `0.941-22-gc877e7f` |
