@@ -62,7 +62,7 @@ See the [How-to Use LMOD]({%link docs/software/how-to_use_lmod.md %}) page for m
 | `bgc` | `1.0.3-patched`<br>`1.0.3` |
 | `bgchm` | `1.0.0` |
 | `binutils` | `binutils` |
-| `bismark` | `0.23.3` |
+| `bismark` | `0.22.3` |
 | `blast` | `2.14.1+`<br>`2.2.29+` |
 | `bowtie2` | `2.3.3`<br>`2.4.4` |
 | `brainiak` | `20240412` |
