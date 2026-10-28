@@ -311,8 +311,8 @@ See the [How-to Use LMOD]({%link docs/software/how-to_use_lmod.md %}) page for m
 | `subread` | `1.6.0`<br>`2.0.6` |
 | `sw4` | `3.0.0` |
 | `tau` | `2.33.2` |
-| `tensorflow-relernn5` | `20240904` |
 | `tensorflow` | `tensorflow` |
+| `tensorflow-relernn5` | `20240904` |
 | `tensorflow2` | `tensorflow2` |
 | `test-nbgrader` | `test-nbgrader` |
 | `tiptop` | `2.3` |
