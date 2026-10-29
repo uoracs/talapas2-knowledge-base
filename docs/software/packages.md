@@ -182,13 +182,13 @@ See the [How-to Use LMOD]({%link docs/software/how-to_use_lmod.md %}) page for m
 | `lcmlkin` | `20200212` |
 | `libconfig` | `1.7.3` |
 | `libra` | `1.1.2` |
-| `libvips` | `8.7.1` |
+| `libvips` | `libvips` |
 | `libxc` | `5.2.3` |
 | `llava` | `1.7.0` |
 | `lobster` | `5.1.1` |
 | `macs3` | `3.0.3-20250717` |
 | `mafft` | `7.313` |
-| `maker` | `2.31.9` |
+| `maker` | `maker` |
 | `mango` | `4.1` |
 | `Mathematica` | `11.3`<br>`12.0` |
 | `matlab` | `R2016b`<br>`R2017b`<br>`R2017b_pas`<br>`R2018b`<br>`R2019b`<br>`R2020b`<br>`R2021a`<br>`R2022a`<br>`R2024a`<br>`R2025a`<br>`R2026a` |
@@ -204,9 +204,9 @@ See the [How-to Use LMOD]({%link docs/software/how-to_use_lmod.md %}) page for m
 | `miniforge3` | `20240410`<br>`20260327` |
 | `mixtral` | `20240315` |
 | `moose` | `20231205` |
-| `moose-dev-gcc` | `20220124` |
+| `moose-dev-gcc` | `moose-dev-gcc` |
 | `mpi` | `mpi` |
-| `mpi4py` | `3.0` |
+| `mpi4py` | `mpi4py` |
 | `mpich` | `4.3.2-khdddkb` |
 | `mplus` | `demo` |
 | `mptp` | `0.2.4` |
