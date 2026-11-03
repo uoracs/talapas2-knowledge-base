@@ -117,8 +117,8 @@ See the [How-to Use LMOD]({%link docs/software/how-to_use_lmod.md %}) page for m
 | `fmriprep` | `23.2.0`<br>`23.2.1` |
 | `freebayes` | `1.3.1` |
 | `freesurfer` | `6.0.0`<br>`7.2.0`<br>`7.3.0`<br>`7.3.2`<br>`7.4.1`<br>`8.2.0` |
-| `fsl` | `5.0.10`<br>`5.0.9`<br>`6.0.1`<br>`6.0.7.9`<br>`6.0.7` |
-| `fsleyes` | `0.23.0` |
+| `fsl` | `5.0.9`<br>`6.0.7.9`<br>`6.0.7` |
+| `fsleyes` | `fsleyes` |
 | `fxtract` | `fxtract` |
 | `gambit_bsm` | `2.4.4-miniconda3`<br>`2.4.4` |
 | `gamess` | `Jul152024R2P1`<br>`Jun302023R1` |
@@ -245,7 +245,7 @@ See the [How-to Use LMOD]({%link docs/software/how-to_use_lmod.md %}) page for m
 | `parallel` | `20241222` |
 | `paraview` | `5.11.0-RC2`<br>`5.11.0`<br>`5.13.0`<br>`5.13.1`<br>`5.7.0`<br>`5.8.1`<br>`5.9.0-RC2`<br>`5.9.0`<br>`6.0.0` |
 | `pasa` | `2.3.3` |
-| `pbjelly` | `15.8.24` |
+| `pbjelly` | `pbjelly` |
 | `pear` | `0.9.10` |
 | `perl` | `5.24.2` |
 | `pgi` | `18`<br>`19` |
@@ -261,7 +261,7 @@ See the [How-to Use LMOD]({%link docs/software/how-to_use_lmod.md %}) page for m
 | `pycharm` | `2020.1.2`<br>`2022.3` |
 | `pyfftw3` | `3.3.10` |
 | `pylith` | `4.0.0` |
-| `pymer4` | `20240321`<br>`20240410` |
+| `pymer4` | `20240410` |
 | `pypi-env` | `pypi-env` |
 | `pypi-packages` | `pypi-packages` |
 | `python` | `2.7.18` |
@@ -282,7 +282,7 @@ See the [How-to Use LMOD]({%link docs/software/how-to_use_lmod.md %}) page for m
 | `RFdiffusion1` | `RFdiffusion1` |
 | `rfdiffusion2` | `20250919` |
 | `ribodetector` | `0.3.1` |
-| `ripser-plusplus` | `20200806` |
+| `ripser-plusplus` | `ripser-plusplus` |
 | `rmblastn` | `2.2.28` |
 | `rosetta` | `3.14` |
 | `rstudio` | `2022.07.1+554`<br>`2023.12.1+402`<br>`2024.04.1+748-condaGLIBX`<br>`2024.04.1+748-gdalgeos-20250121`<br>`2024.04.1+748`<br>`2024.09.1+394`<br>`base`<br>`rstudio-cont` |
@@ -300,7 +300,7 @@ See the [How-to Use LMOD]({%link docs/software/how-to_use_lmod.md %}) page for m
 | `sortmerna` | `4.3.7` |
 | `spack-rhel8` | `spack-rhel8` |
 | `spades` | `3.13.0`<br>`3.15.3` |
-| `specfem3d` | `20190918-devel`<br>`3.0-gpu` |
+| `specfem3d` | `specfem3d` |
 | `spines` | `1.15` |
 | `sratoolkit` | `3.4.1` |
 | `stable-diffusion` | `stable-diffusion` |
