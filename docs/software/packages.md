@@ -161,7 +161,7 @@ See the [How-to Use LMOD]({%link docs/software/how-to_use_lmod.md %}) page for m
 | `intel-oneapi-ippcp` | `2021.7.0` |
 | `intel-oneapi-itac` | `2021.8.0` |
 | `intel-oneapi-mkl` | `2023.1.0`<br>`2025.3.0-3nd2whw` |
-| `intel-oneapi-mpi` | `2021.17.0-cx2mfd5`<br>`2021.9.0` |
+| `intel-oneapi-mpi` | `2021.9.0` |
 | `intel-oneapi-tbb` | `2021.9.0` |
 | `intel-oneapi-vpl` | `2023.1.0` |
 | `intel-oneapi-vtune` | `2023.1.0` |
