@@ -14,7 +14,7 @@ grand_parent: Transferring Data
 
 In order to configure rclone to see your AWS S3 buckets and associated data, you will first need to load the `rclone` module.
 
-`$ module load rclone/1.66.0`
+`$ module load rclone/1.70.3`
 
 After loading the module, you will need to run the interactive configuration script with the following command.
 
@@ -229,9 +229,9 @@ After finishing the `rclone config` process, you should now be able to see the b
 You can verify this by running `rclone lsd <remote-name>:`. An example is shown below:
 
 ```bash
-[flopez2@login1 rclone]$ rclone lsd talapasS3:
+[duckid@login1 rclone]$ rclone lsd talapasS3:
           -1 2024-11-25 14:54:22        -1 mytalapastestbucket
-[flopez2@login1 rclone]$
+[duckid@login1 rclone]$
 ```
 
 This output should match the buckets that can be seen from your AWS S3 console:
@@ -249,27 +249,27 @@ I can perform an `ls` command on my bucket to see the contents. In my case its o
 Talapas view:
 
 ```bash
-[flopez2@login1 rclone]$ rclone ls talapasS3:mytalapastestbucket
+[duckid@login1 rclone]$ rclone ls talapasS3:mytalapastestbucket
       299 test_file.txt
-[flopez2@login1 rclone]
+[duckid@login1 rclone]
 ```
 
 AWS S3 Console view:
 ![AWS S3 Console3](../../../../../assets/images/aws_s3_console3.png)
 
-From here I can copy the entire bucket (one file in the case) from S3 to Talapas into my current directory with `rclone move s3:<bucket_name>/<directory_path> <destination_path>`.
+From here I can copy the entire bucket (one file in the case) from S3 to Talapas into my current directory with `rclone copy s3:<bucket_name>/<directory_path> <destination_path>`.
 
 An example of this can be seen below:
 
 ```bash
-[flopez2@login1 rclone]$ rclone copy talapasS3:mytalapastestbucket .
-[flopez2@login1 rclone]$ ls
+[duckid@login1 rclone]$ rclone copy talapasS3:mytalapastestbucket .
+[duckid@login1 rclone]$ ls
 test_file.txt
-[flopez2@login1 rclone]$
+[duckid@login1 rclone]$
 ```
 
 {: .note }
-`.` means current directory which in my case is `/home/flopez2/test-module/rclone/`
+`.` means current directory which in my case is `/home/duckid/test-module/rclone/`
 
 I now have successfully moved all the data in my S3 bucket onto Talapas.
 
