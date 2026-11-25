@@ -16,7 +16,7 @@ failures can interrupt computation.
 By checkpointing regularly, you can avoid restarting jobs from scratch in the event of failure. If your job can make use of checkpointing,
 then you can make better use of the "preempt" partition, allowing your job to take advantage of the condo resources on Talapas while they are not in use,
 without worrying about lost progress if/when your job is "preempted". Additionally, checkpointing enables you to have long-running jobs (longer than the partition walltime limits),
-without the danger of unexpected cluster failures or having to ask RACS admins to increaase your job's time limit.
+without the danger of unexpected cluster failures or having to ask RACS admins to increase your job's time limit.
 
 ## Checkpointing Strategies
 
@@ -37,7 +37,7 @@ Researchers writing their own code can implement checkpointing manually by:
 ### 3. System-Level (Transparent) Checkpointing
 
 When application-level or manual checkpointing is not feasible, transparent checkpointing can be used to checkpoint most generic user-space processes.
-The word "tansparent" in this case is in reference to that this process requires no modifications to your code or the kernel, and can be operated at the user-level.
+The word "transparent" in this case is in reference to that this process requires no modifications to your code or the kernel, and can be operated at the user-level.
 Talapas supports transparent checkpointing through the Distributed MultiThreaded CheckPointing ([DMTCP](https://dmtcp.sourceforge.net/)) software library.
 
 ## Using DMTCP on Talapas
@@ -97,9 +97,9 @@ The process for setting up DMTCP for interactive checkpointing is as follows:
     dmtcp_launch --join-coordinator ./your_program
     ```
 
-4. While the job is running in your first terminal session, you can interact with the `dmtcp_coordinator` in the second terminal session. Type '?' to list available commands, 'c' to intiate a checkpoint, 's' for querying the job status, and 'q' for terminating the job.
+4. While the job is running in your first terminal session, you can interact with the `dmtcp_coordinator` in the second terminal session. Type '?' to list available commands, 'c' to initiate a checkpoint, 's' for querying the job status, and 'q' for terminating the job.
 
-5. After intiating a checkpoint and then killing your program in your first terminal you can then restart from the checkpoint with:
+5. After initiating a checkpoint and then killing your program in your first terminal you can then restart from the checkpoint with:
 
     ```bash
     dmtcp_restart --join-coordinator ckpt_your_program_*.dmtcp
@@ -114,7 +114,7 @@ The quickest way to setup DMTCP for your job is to set it to checkpoint at regul
 dmtcp_launch -i <INTERVAL_IN_SECS> ./your_program
 ```
 
-With any arguments to pass to `./your_program` listed at the end of that line. This will create checkpoint files (`.dmtcp` file extenstion) in your working directory each time your requested interval passes,
+With any arguments to pass to `./your_program` listed at the end of that line. This will create checkpoint files (`.dmtcp` file extension) in your working directory each time your requested interval passes,
 and upon interruption, a bash script named `dmtcp_restart_script.sh`. Running this script will automatically restart the program from the latest checkpoint.
 
 ```bash
@@ -134,14 +134,14 @@ gets sent to a different compute node. In this case, use the `dmtcp_restart` com
 
 ### Checkpointing and Restarting Batch Jobs
 
-To setup checkpointing for SLURM batch jobs, the easiest and most reliable setup is to create two sbatch scripts for your job: one to submit the initial job with checkpointing, and another to restart from the latest checkpoint.
+To setup checkpointing for Slurm batch jobs, the easiest and most reliable setup is to create two sbatch scripts for your job: one to submit the initial job with checkpointing, and another to restart from the latest checkpoint.
 
-A sample sbatch script to submit a checkpointed job would like like this:
+A sample sbatch script to submit a checkpointed job would look like this:
 
 ```bash
 #!/bin/bash
 #SBATCH --account=<MY_PIRG>
-#SBATCH --name=test_submit
+#SBATCH --job-name=test_submit
 #SBATCH --partition=compute
 #SBATCH --time=0-00:10:00 ### 10 minutes
 #SBATCH -o %x-%j.out
@@ -157,7 +157,7 @@ export CKPT_INTERVAL=60
 export CKPT_DIR=/scratch/<MY_PIRG>/<MY_USERNAME>/dmtcp_ckpts/
 
 #make the ckpt dir if it does not exist
-if [ -d "$CKPT_DIR" ]; then
+if [ ! -d "$CKPT_DIR" ]; then
     mkdir -p $CKPT_DIR
 fi
 
@@ -170,7 +170,7 @@ And following a similar form the sbatch script to restart this job would look li
 ```bash
 #!/bin/bash
 #SBATCH --account=<MY_PIRG>
-#SBATCH --name=test_restart
+#SBATCH --job-name=test_restart
 #SBATCH --partition=compute
 #SBATCH --time=0-00:10:00 ### 10 minutes
 #SBATCH -o %x-%j.out

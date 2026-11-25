@@ -1,7 +1,7 @@
 ---
 layout: default
 title: How-To Submit a Hybrid Job
-parent: SLURM
+parent: Slurm
 nav_order: 5
 ---
 
@@ -9,9 +9,9 @@ nav_order: 5
 
 A hybrid job is one that uses both multiple processes and multiple threads within a process.  Typically, MPI is used to start the multiple processes, and each process will use a multithreading library like [OpenMP](https://en.wikipedia.org/wiki/OpenMP) to perform computation with multiple threads.
 
-Starting such jobs is very similar to starting an MPI job.  See the [How-to Submit an MPI Job]({% link docs/slurm/how-to_submit_an_mpi_job.md %}) and [How-to Submit an OpenMP Job]({% link docs/slurm/how-to_submit_an_openmp_job.md %}) pages for details.
+Starting such jobs is very similar to starting an MPI job.  See the [How-To Submit an MPI Job]({% link docs/slurm/how-to_submit_an_mpi_job.md %}) and [How-To Submit an OpenMP Job]({% link docs/slurm/how-to_submit_an_openmp_job.md %}) pages for details.
 
-The main difference is that you will have to tell SLURM that you intend for each task to be bound to multiple CPU cores (rather than just one).  If you omit this step, all threads for a process will be bound to the same core, and it's unlikely that you will see any speedup from threading.
+The main difference is that you will have to tell Slurm that you intend for each task to be bound to multiple CPU cores (rather than just one).  If you omit this step, all threads for a process will be bound to the same core, and it's unlikely that you will see any speedup from threading.
 
 To do this, add a parameter like this to your sbatch script
 
@@ -152,15 +152,15 @@ int main(int argc, char *argv[]) {
   MPI::Finalize();
 
   if (usemem_gb > 0)
-    sleep(90);       // long enough for SLURM to kill us if RAM usage too high
+    sleep(90);       // long enough for Slurm to kill us if RAM usage too high
 
   return 0;
 }
 ```
 
-The program takes one optional, integer parameter.  If specified, each task will allocate that number of gigabytes of RAM.  This is useful for testing the effects of SLURM memory allocation.
+The program takes one optional, integer parameter.  If specified, each task will allocate that number of gigabytes of RAM.  This is useful for testing the effects of Slurm memory allocation.
 
-Here is an example SLURM `sbatch` script to invoke the program:
+Here is an example Slurm `sbatch` script to invoke the program:
 
 ```bash
 #!/bin/bash
@@ -208,13 +208,13 @@ export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
 \time srun ./test-verbose ${1+"$@"}
 ```
 
-Note that only the `--ntasks` flag is used to determine the number of MPI worker processes.  This means that the individual tasks may be spread across available nodes as SLURM sees fit.  This is usually a good approach if the program does little inter-worker communication.  And indeed, this example program does very little–most of its computation is performed by each thread without communication.
+Note that only the `--ntasks` flag is used to determine the number of MPI worker processes.  This means that the individual tasks may be spread across available nodes as Slurm sees fit.  This is usually a good approach if the program does little inter-worker communication.  And indeed, this example program does very little–most of its computation is performed by each thread without communication.
 
-If the MPI program does a lot of inter-worker communication, it's generally better to specify a layout of tasks on nodes.  By uncommenting the `--nodes` and `--ntasks-per-node` flags (and commenting out the `--ntasks` flag), we could specify that two compute nodes are to be used, each with 28 tasks.  The advantage of packing lots of tasks onto a minimal number of nodes is that most of the inter-worker communication happens locally on the node, which is faster and more efficient.  The disadvantage is that it may take longer for SLURM to schedule such a job, since we're being more demanding about what we require.
+If the MPI program does a lot of inter-worker communication, it's generally better to specify a layout of tasks on nodes.  By uncommenting the `--nodes` and `--ntasks-per-node` flags (and commenting out the `--ntasks` flag), we could specify that two compute nodes are to be used, each with 28 tasks.  The advantage of packing lots of tasks onto a minimal number of nodes is that most of the inter-worker communication happens locally on the node, which is faster and more efficient.  The disadvantage is that it may take longer for Slurm to schedule such a job, since we're being more demanding about what we require.
 
-With either approach, the SLURM `srun` command will ensure that the total number of tasks is communicated to our program.  We don't need to pass this in explicitly.
+With either approach, the Slurm `srun` command will ensure that the total number of tasks is communicated to our program.  We don't need to pass this in explicitly.
 
-The `--cpus-per-task` flag specifies how many CPU cores are assigned to each task.  This can make the program run much faster if the tasks are able to make use of multiple CPUs.  In this example, we do so using OpenMP.  SLURM will constrain each task to use only the CPUs assigned to it (see below).  Note that we tell OpenMP how many CPUs are available to each task by setting the `$OMP_NUM_THREADS` variable.
+The `--cpus-per-task` flag specifies how many CPU cores are assigned to each task.  This can make the program run much faster if the tasks are able to make use of multiple CPUs.  In this example, we do so using OpenMP.  Slurm will constrain each task to use only the CPUs assigned to it (see below).  Note that we tell OpenMP how many CPUs are available to each task by setting the `$OMP_NUM_THREADS` variable.
 
 This script prints some diagnostic information, but these lines could be removed or commented out.
 
@@ -245,7 +245,7 @@ SLURM_CPUS_ON_NODE=32
 SLURM_CPUS_PER_TASK=16
 SLURM_GTIDS=0
 SLURM_JOBID=6112602
-SLURM_JOB_ACCOUNT=hpcrcf
+SLURM_JOB_ACCOUNT=<pirg>
 SLURM_JOB_CPUS_PER_NODE=32(x2)
 SLURM_JOB_GID=2000
 SLURM_JOB_ID=6112602
@@ -267,12 +267,12 @@ SLURM_NTASKS=4
 SLURM_PRIO_PROCESS=0
 SLURM_PROCID=0
 SLURM_SUBMIT_DIR=/gpfs/home/mkc/mpi/test
-SLURM_SUBMIT_HOST=talapas-ln2
+SLURM_SUBMIT_HOST=login2
 SLURM_TASKS_PER_NODE=2(x2)
 SLURM_TASK_PID=349764
 SLURM_TOPOLOGY_ADDR=ibcore[1-4].ib8.n177
 SLURM_TOPOLOGY_ADDR_PATTERN=switch.switch.node
-SLURM_WORKING_CLUSTER=slurm_cluster:hpc-hn1:6817:8192
+SLURM_WORKING_CLUSTER=slurm_cluster:login1:6817:8192
 Cpus_allowed count for main task before mpi startup is 32
 rank 0 of 4 running on n177 alloc 0GB cpu count 16 mask 6,8,10,12,14,16,18,20,22,24,26,28,30,32,34,36,
 rank 1 of 4 running on n177 alloc 0GB cpu count 16 mask 1,3,5,7,9,11,13,15,17,19,21,23,27,31,33,38,
@@ -280,11 +280,11 @@ rank 2 of 4 running on n180 alloc 0GB cpu count 16 mask 1,6,8,10,12,14,16,20,22,
 rank 3 of 4 running on n180 alloc 0GB cpu count 16 mask 3,5,9,11,15,17,19,21,23,25,27,29,31,35,37,39,
 ```
 
-We can see the various SLURM parameters passed in as environment variables.
+We can see the various Slurm parameters passed in as environment variables.
 
 Also, note that each MPI workers is restricted to its own set of CPUs, with no overlap.  (In the main task on n177, before MPI starts, the initial CPU mask has 32 CPUs, but when MPI starts, it allots 16 each to the two workers that end up running on n177.)
 
-Finally, adding a parameter (16) to have our program use more RAM per CPU than we have requested from SLURM, the job will fail with an error like this
+Finally, adding a parameter (16) to have our program use more RAM per CPU than we have requested from Slurm, the job will fail with an error like this
 
 ```bash
 slurmstepd: error: Detected 1 oom-kill event(s) in step 6139636.0 cgroup. Some of your processes may have been killed by the cgroup out-of-memory handler.

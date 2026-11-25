@@ -1,11 +1,11 @@
 ---
 layout: default
-title: How-to submit a batch job
-parent: SLURM
+title: How-To Submit a Batch Job
+parent: Slurm
 nav_order: 1
 ---
 
-# How-To Submit a batch job
+# How-To Submit a Batch Job
 
 You may be wondering why you can't simply run your applications in the same way that you do on your laptop or desktop. First, as a shared resource we need a method of coordinating the work of many researchers simultaneously so that users aren't stepping on each others' toes.
 
@@ -32,12 +32,12 @@ Tasks should be conducted on a "compute node." These are purpose-built for runni
 #SBATCH --cpus-per-task=1         # request 1 cpu per task, this is the default
 #SBATCH --mem-per-cpu=4096M       # request 4GB RAM for each cpu requested
 
-module load python3/3.11.4
+module load python3/3.14.0-cv7xe7d
 
 script.py
 ```
 
-## The indivdual components broken down
+## The individual components broken down
 
 ### The Shell
 
@@ -67,7 +67,7 @@ See Slurm [sbatch](https://slurm.schedmd.com/sbatch.html) documentation for more
 Load all software your job requires, for example python:
 
 ```bash
-module load python3/3.11.4
+module load python3/3.14.0-cv7xe7d
 ```
 
 ### Call the program or script
@@ -85,7 +85,7 @@ Next, we see a collection of specially formatted comments, each beginning with `
 ## Submit your job
 
 ```bash
-$ sbatch hellot.sbatch
+$ sbatch hello.sbatch
 Submitted batch job 20190
 ```
 
@@ -98,7 +98,7 @@ Use the `squeue` command.
 ```bash
 $ squeue
              JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
-             20190 compute  hellowworld   duckID R       1:09      1 n0111
+             20190 compute  helloworld   duckid R       1:09      1 n0111
              ...
 ```
 
@@ -106,4 +106,4 @@ Here we see that our job, number 20190, is running 'R' state. Jobs in the system
 
 To view your jobs, run the Slurm command `squeue -u <duckid>`.
 
-If you need to cancel your job for any reason, run the Slurm command `scancel <job_id>` for example `scancel 20190
+If you need to cancel your job for any reason, run the Slurm command `scancel <job_id>` for example `scancel 20190`.

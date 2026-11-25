@@ -1,7 +1,7 @@
 ---
 layout: default
 title: How-To Submit a GPU Job
-parent: SLURM
+parent: Slurm
 nav_order: 7
 ---
 
@@ -10,7 +10,7 @@ nav_order: 7
 Step-by-step guide
 
 1. Specify a partition containing GPU equipped compute nodes.
-2. Reserve some number of GPUs for your job using the SLURM gres option.
+2. Reserve some number of GPUs for your job using the Slurm gres option.
 3. (optional) Communicate the GPU ordinal to your executable using the SLURM_JOB_GPU variable.
 
 Most of the GPU equipped compute nodes on Talapas have 4 GPUs per node (Run `/packages/racs/bin/slurm-show-gpus` to see more information) Suppose we only needed one GPU for our simulation, then our job script may take the (new) form
@@ -23,12 +23,12 @@ Most of the GPU equipped compute nodes on Talapas have 4 GPUs per node (Run `/pa
 #SBATCH --job-name=GPUjob     ### Job Name
 #SBATCH --time=1-00:00:00     ### Wall clock time limit in Days-HH:MM:SS
 #SBATCH --nodes=1             ### Node count required for the job
-#SBATCH --ntasks-per-node=1   ### Nuber of tasks to be launched per Node
+#SBATCH --ntasks-per-node=1   ### Number of tasks to be launched per Node
 #SBATCH --gpus=1              ### General REServation of gpu:number of gpus
 ./my_executable $SLURM_JOB_GPUS
 ```
 
-In this example, the program `my_executable` expects the GPU ordinal as an input. We use of the variable `SLURM_JOB_GPUS` to pass that information from SLURM without knowing a-priori which GPU I will run on.
+In this example, the program `my_executable` expects the GPU ordinal as an input. We use the variable `SLURM_JOB_GPUS` to pass that information from Slurm without knowing a-priori which GPU I will run on.
 
 `SLURM_JOB_GPUS` is a list of the ordinal indexes of the gpus assigned to my job by slurm. With the request of a single GPU, this variable will store a single numeral from 0 to 3 (we have 4 GPUs on each node). If I wanted to use two GPUs, I would change `gres=gpu:1` to `gres=gpu:2`, and then `SLURM_JOB_GPUS` would store a list of the form 0,1 (for example).
 
@@ -44,7 +44,7 @@ There is also an old form that is similar.  For most purposes, the new form is 
 #SBATCH --job-name=GPUjob     ### Job Name
 #SBATCH --time=1-00:00:00     ### Wall clock time limit in Days-HH:MM:SS
 #SBATCH --nodes=1             ### Node count required for the job
-#SBATCH --ntasks-per-node=1   ### Nuber of tasks to be launched per Node
+#SBATCH --ntasks-per-node=1   ### Number of tasks to be launched per Node
 #SBATCH --gpus=1              ### General REServation of gpu:number of gpus
 
 ./my_executable $SLURM_JOB_GPUS

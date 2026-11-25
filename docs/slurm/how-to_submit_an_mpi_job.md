@@ -1,7 +1,7 @@
 ---
 layout: default
 title: How-To Submit an MPI Job
-parent: SLURM
+parent: Slurm
 nav_order: 4
 ---
 
@@ -93,7 +93,7 @@ srun ./helloworld_openmpi.x
 To access Intel OneAPI MPI compilers,
 
 ```bash
-module load intel-oneapi-compilers/2023.1.0
+module load intel-oneapi-compilers/2025.3.1-s7rb72e
 module load intel-oneapi-mpi/2021.9.0
 mpiicc helloworld_mpi.c -o helloworld_intelmpi.x
 ```
@@ -111,7 +111,7 @@ Batch script example using`srun`:
 #SBATCH --ntasks-per-node=16
 #SBATCH --ntasks-per-core=1
 
-module load intel-oneapi-compilers/2023.1.0
+module load intel-oneapi-compilers/2025.3.1-s7rb72e
 module load intel-oneapi-mpi/2021.9.0
 
 srun ./helloworld_intelmpi.x
@@ -124,8 +124,8 @@ GNU + MPICH
 To access MPICH MPI compilers:
 
 ```bash
-module load gcc/13.1.0
-module load mpich/4.1.1
+module load gcc/15.2.0-5dhqpt3
+module load mpich/4.3.2-khdddkb
 mpicc helloworld_mpi.c -o helloworld_mpich.x
 ```
 
@@ -141,8 +141,8 @@ mpicc helloworld_mpi.c -o helloworld_mpich.x
 #SBATCH --ntasks-per-core=1
 #SBATCH --constraint=7713
 
-module load gcc/13.1.0
-module load mpich/4.1.1
+module load gcc/15.2.0-5dhqpt3
+module load mpich/4.3.2-khdddkb
 
 srun ./helloworld_mpich.x
 ```

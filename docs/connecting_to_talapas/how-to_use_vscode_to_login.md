@@ -13,7 +13,7 @@ Let’s learn how to connect to Talapas using the `Remote-SSH` component of VSCo
 
 ## Steps
 
-1. Open VSCode !
+1. Open VSCode.
 2. Press `cmd+shift+p` for mac, or `ctrl+shift+p` for Windows, this is your “Command Palette”. Type `Remote-SSH`, and select `Remote-SSH: Connect to Host...`
 
     ![VSCode Step 1](../../../assets/images/vscode_1.png)

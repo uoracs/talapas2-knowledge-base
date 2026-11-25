@@ -56,7 +56,7 @@ NOTE: DATA statement used (Total process time):
       cpu time            0.00 seconds
 ```
 
-## Simple Statistics and Plot
+### Simple Statistics and Plot
 
 Given input file `example-1.sas`
 

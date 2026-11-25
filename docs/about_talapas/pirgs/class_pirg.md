@@ -14,7 +14,7 @@ Include the following information in the request:
 * Name of the course (i.e. actg662)
   * this name will be used internally on Talapas as the group name and top level directory name
 * Name of the Professor or Instructor
-  * Duckid of the Faculty member responsible for data, compute, and any costs associated with PIRG usage on Talapas
+  * DuckID of the Faculty member responsible for data, compute, and any costs associated with PIRG usage on Talapas
 * CRN of all lectures associated with the course
   * All students who are registered for the course CRNs are automatically added to the Course PIRG at the beginning of the academic term and automatically removed from the Course PIRG 30 days after the end of the term.
 

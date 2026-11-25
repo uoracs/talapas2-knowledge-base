@@ -8,17 +8,17 @@ grand_parent: Transferring Data
 
 # Accessing your S3 files via awscli
 
-Amazon S3 (Simple Storage Service) is a highly scalable, secure, and durable cloud storage service for storing and retrieving data. It uses "buckets" to organize objects and offers multiple storage tiers to optimize costs based on access needs. S3 is a great option for backups, data archiving, application hosting, and big data analytics. Amazon S3 an object storage service that offers industry-leading scalability, data availability, security, and performance. You can use Amazon S3 to store and retrieve data at any time, from anywhere.
+Amazon S3 (Simple Storage Service) is a highly scalable, secure, and durable cloud storage service for storing and retrieving data. It uses "buckets" to organize objects and offers multiple storage tiers to optimize costs based on access needs. S3 is a great option for backups, data archiving, application hosting, and big data analytics. Amazon S3 is an object storage service that offers industry-leading scalability, data availability, security, and performance. You can use Amazon S3 to store and retrieve data at any time, from anywhere.
 
 This article assumes that you have created an AWS S3 bucket and are either the owner **or** have access rights to the bucket. If you have not created an AWS S3 bucket, please see our [Creating and Configuring an AWS S3 Bucket]({% link docs/storage/transferring_data/aws_s3/creating_configuring_s3_bucket.md %}) page.
 
 ## Loading the `aws-cli` module
 
-In order to access S3 buckets from Talapas, one available method would be via the aws-cli tool that has been built on talapas for users. To load the module, run the following command:
+In order to access S3 buckets from Talapas, one available method would be via the aws-cli tool that has been built on Talapas for users. To load the module, run the following command:
 
 `$ module load awscli/2.22.5`
 
-In order to to have the aws-cli authenticate access to S3 buckets, you will have to run the `aws configure` command:
+In order to have the aws-cli authenticate access to S3 buckets, you will have to run the `aws configure` command:
 
 `$ aws configure`
 
@@ -51,7 +51,7 @@ To see what buckets you have access to, you can go ahead and run the `aws s3 ls`
 
 From here, you now have access to your AWS S3 buckets and can perform a variety of different commands in order to move data. AWS has some pretty verbose documentation detailing how to move files in a variety of different ways.
 
-## Recusivly copying data directory and all of its sub-contents
+## Recursively copying data directory and all of its sub-contents
 
 If you would like to move data within a directory (and all sub-directories), you can use the following command with a `--recursive` flag in order to achieve this.
 

@@ -27,19 +27,19 @@ First, the Safari web browser (and possibly others) lacks support for some OnDem
 
 Second, web browsers typically capture and interpret certain keystrokes themselves.  So, for example, Control-W might close the current tab, etc.  If you need to send such keystrokes through to your OnDemand session, an easy workaround is to put your browser in "full screen" mode.  Far fewer keystrokes are captured in this case.
 
-Third, due to a bug, the VNC client used for the Desktop app seems not to work correctly on some older hardware.  If this happens, you'll notice that characters on not properly echoed in a terminal, or screen repainting may stop.  At the moment, the best solution is to try a different machine.  The relatively new machines we've tried (with updated OSes and browsers) all seem to work fine.
+Third, due to a bug, the VNC client used for the Desktop app seems not to work correctly on some older hardware.  If this happens, you'll notice that characters are not properly echoed in a terminal, or screen repainting may stop.  At the moment, the best solution is to try a different machine.  The relatively new machines we've tried (with updated OSes and browsers) all seem to work fine.
 
 Fourth, on startup, the VNC client will try to resize to fill the enclosing tab.  Sometimes this doesn't happen, and instead you'll see a smaller desktop in the center of the tab with black borders around it.  Usually you can just close the tab, hit the "launch" button again, and it will properly resize.  (You might have to try this more than once.)
 
-## SLURM Jobs
+## Slurm Jobs
 
-The OnDemand interface has a mechanism for launching SLURM jobs.  We haven't experimented with it yet, but it seems to work.
+The OnDemand interface has a mechanism for launching Slurm jobs.  We haven't experimented with it yet, but it seems to work.
 
-Beyond that, some heavier OnDemand apps also run within SLURM jobs.  You'll recognize these as they have a start page asking you to choose a partition, core count, etc.  Once you submit the job, you'll be taken to your job list, and a "launch" button will appear once the job has started.
+Beyond that, some heavier OnDemand apps also run within Slurm jobs.  You'll recognize these as they have a start page asking you to choose a partition, core count, etc.  Once you submit the job, you'll be taken to your job list, and a "launch" button will appear once the job has started.
 
-You can use any partition, but for quick access, the `interactive` partition is ideal, since it usually has immediately available slots.  Please delete your job when you're done using it.  Also, note that like all SLURM jobs, your job will be unceremoniously killed when time runs out.  So plan ahead, save your work periodically, etc.
+You can use any partition, but for quick access, the `interactive` partition is ideal, since it usually has immediately available slots.  Please delete your job when you're done using it.  Also, note that like all Slurm jobs, your job will be unceremoniously killed when time runs out.  So plan ahead, save your work periodically, etc.
 
-Specifying an account for SLURM jobs is now required.  This is the PIRG account that will be charged for your usage.  A list of the accounts you can use is provided–just enter your choice into the box.  
+Specifying an account for Slurm jobs is now required.  This is the PIRG account that will be charged for your usage.  A list of the accounts you can use is provided–just enter your choice into the box.  
 
 Note that jobs continue running, even if you log out of OnDemand or close your browser.  This is good, in that even if your local computer disconnects or crashes, you'll be able to log into OnDemand anew and reconnect to the job.  But it also means that it's important to delete the job when you're done, as it will continue to use Talapas resources until you kill it (or time runs out).
 

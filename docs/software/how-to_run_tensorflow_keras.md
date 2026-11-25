@@ -20,11 +20,11 @@ import tensorflow as tf
 tf.keras
 ```
 
-### Several versions of TensorFlow exist on Talapas this article will cover the GPU version of TensorFlow available on all GPU nodes
+### Several versions of TensorFlow exist on Talapas. This article will cover the GPU version of TensorFlow available on all GPU nodes
 
 ## Step-by-step guide
 
-* We will start by launching and iterative GPU session from one of the talapas login nodes
+* We will start by launching an interactive GPU session from one of the talapas login nodes
     `$ srun --account=<your account> --pty --gres=gpu:1 --mem=4G --time=60 --partition=testgpu bash`
 * Wait for your interactive session to start
 * Load the modules for tensorflow
@@ -85,16 +85,16 @@ physical_device_desc: "device: 0, name: Tesla K80, pci bus id: 0000:04:00.0, com
 
 This also confirms you are correctly using the GPU version of tensorflow and have access to one cpu and one Tesla k-80 CTRL+D to exit
 
-* Lets try to fit a simple model. Copy the following text into a file called my_test.py using your favorite text editor (for example emacs)
+* Let's try to fit a simple model. Copy the following text into a file called my_test.py using your favorite text editor (for example emacs)
 
 ```python
 import tensorflow as tf
 
 (x_train,y_train),(x_test,y_test)=tf.keras.datasets.mnist.load_data()
-#Note this will download the mnist dataset to ~/.kears/datasets the first time you run it
+#Note this will download the mnist dataset to ~/.keras/datasets the first time you run it
 
 
-#Lets create a 2 hidden layer neural network
+#Let's create a 2 hidden layer neural network
 input=tf.keras.layers.Input(shape=(28,28))
 network=tf.keras.layers.Flatten()(input)
 network=tf.keras.layers.Dense(10)(network)
@@ -177,9 +177,9 @@ Epoch 10/10
 60000/60000 [==============================] - 6s 107us/step - loss: 0.4819 - acc: 0.8560 - val_loss: 0.3224 - val_acc: 0.9127s
 ```
 
-Congratulations you've trained your first network on Talapas! Let's try one more time in batch mode.
+Congratulations, you've trained your first network on Talapas! Let's try one more time in batch mode.
 
-* Use CRTL+D to close your interactive session
+* Use Ctrl+D to close your interactive session
 * Write a new submit script to run the same training code, by putting the following into a file named submit_gpu_test
 
 ```bash
@@ -188,7 +188,7 @@ Congratulations you've trained your first network on Talapas! Let's try one more
 #SBATCH --partition=gpu       ### Quality of Service (like a queue in PBS)
 #SBATCH --time=0-01:00:00     ### Wall clock time limit in Days-HH:MM:SS
 #SBATCH --nodes=1             ### Node count required for the job
-#SBATCH --ntasks-per-node=1   ### Nuber of tasks to be launched per Node
+#SBATCH --ntasks-per-node=1   ### Number of tasks to be launched per Node
 #SBATCH --gres=gpu:1          ### General REServation of gpu:number of gpus
 #SBATCH --account=<your account>
 
@@ -198,7 +198,7 @@ python3 my_test.py > my_test_output
 ```
 
 * Now submit the job! `sbatch submit_gpu_test`
-* That's it wait for your job to finish, and you'll see the training log in ~\my_test_output
+* That's it wait for your job to finish, and you'll see the training log in ~/my_test_output
 
 ## Using the Latest Tensorflow with Apptainer
 
@@ -206,7 +206,7 @@ If you need the latest version of tensorflow for your code, it is possible to pu
 
 For example in an interactive GPU session (see above):
 
-1. Build your image from the online repository - this will create a tf-l.simg file that can be executed with singularities other commands. This will take some time, but only needs to be done once.
+1. Build your image from the online repository - this will create a tf-l.simg file that can be executed with other Apptainer commands. This will take some time, but only needs to be done once.
   `$ apptainer build tf-l.simg docker://tensorflow/tensorflow:latest-gpu`
 2. Try an interactive shell - Note: --nv is required for gpu usage, and -B will just mount a local directory to /tmp in the virtual image.
 
@@ -225,4 +225,4 @@ Type "help", "copyright", "credits" or "license" for more information.
 '2.2.2'
 ```
 
-That's it you now have a working tensorflow environment. For more information about running jobs in Apptainer on Talapas see the [Apptainer]({% link docs/software/apptainer/apptainer.md %}) pages.
+That's it, you now have a working tensorflow environment. For more information about running jobs in Apptainer on Talapas see the [Apptainer]({% link docs/software/apptainer/apptainer.md %}) pages.

@@ -111,10 +111,10 @@ exit 0
 
 See `man rsync` for an explanation of the options as well as more examples.
 
-{: note }
+{: .note }
 rsync: include the trailing slash “/” on both source and destination directories. Makes the syntax easier to remember and gives the most desired behavior with rsync. For a deeper explanation, see man rsync
 
-{: bp }
+{: .note }
 redirect output to a log file so you can validate output and review any errors (2>&1 captures stderr and sends it to the logfile as well)
 
 Login to dtn01 from a login node
