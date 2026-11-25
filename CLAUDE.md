@@ -107,7 +107,7 @@ This is a public doc for a real system, so wrong examples cost users time.
 
 - **Never invent** partition names, limits, prices, quotas, module names/versions, or hostnames. Verify against an existing page that is known current, the generated `packages.md`, or ask the user.
 - Module versions in examples go stale. Prefer a version that appears in `packages.md`, or show `module avail <name>` and say to check for the current version.
-- Do not copy example output containing real usernames. Use `duckid` / `myDuckID` style placeholders.
+- **Real usernames in usage examples are fine and preferred** (e.g. `marka`, `flopez2`, `joec`, `Marks-MacBook-Pro:~ marka$`). We want examples to feel familiar and be real examples of what worked, so don't swap them for `duckid`-style placeholders and keep the original prompt style (including laptop prompts). The exception is secrets and identifiers that grant or reveal access (AWS account IDs, access keys, tokens; see `TODO.md` privacy items). `hpcrcf` account/path references still become `<pirg>`.
 - When updating a page, check it for the outdated items above plus dead external links and old screenshots, and mention what you could not verify in your summary.
 
 ## Working on the docs

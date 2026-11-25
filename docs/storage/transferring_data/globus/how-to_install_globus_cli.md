@@ -35,7 +35,7 @@ Globus Login
 After running `globus login` in your terminal window, you will be directed to a web page to login with your UO credentials.
 
 ```bash
-$ globus login
+Marks-MacBook-Pro:~ marka$ globus login
 You are running 'globus login', which should automatically open a browser window for you to login.
 If this fails or you experience difficulty, try 'globus login --no-local-server'
 ---
@@ -51,9 +51,9 @@ For information on which of your identities are in session use
 Logout of the Globus CLI with
   globus logout
 
-$ globus whoami
-duckid@uoregon.edu
-$ globus get-identities 'duckid@uoregon.edu'
+Marks-MacBook-Pro:~ marka$ globus whoami
+marka@uoregon.edu
+Marks-MacBook-Pro:~ marka$ globus get-identities 'marka@uoregon.edu'
 c7108429-4afb-44b0-9957-e28e56bdf396
 ```
 
@@ -64,7 +64,7 @@ List available commands
 Search for a Globus endpoint:
 
 ```bash
-$ globus endpoint search Talapas
+Marks-MacBook-Pro:~ marka$ globus endpoint search Talapas
 ID                                   | Owner                 | Display Name
 ------------------------------------ | --------------------- | ---------------
 b4221f50-6dc5-11e9-bf46-0e4a062367b8 | uoregon@globusid.org  | Talapas
@@ -73,17 +73,17 @@ b4221f50-6dc5-11e9-bf46-0e4a062367b8 | uoregon@globusid.org  | Talapas
 Search for a Globus endpoint with filter:
 
 ```bash
-$ globus endpoint search --filter-scope my-endpoints
+Marks-MacBook-Pro:~ marka$ globus endpoint search --filter-scope my-endpoints
 ID                                   | Owner             | Display Name
 ------------------------------------ | ----------------- | ----------------
-97e58874-d33f-11e9-939f-02ff96a5aa76 | duckid@uoregon.edu | duckid-MacBookPro
-79c2ad02-acd1-11e9-a379-0a2653bc2660 | duckid@uoregon.edu | duckid-testing
+97e58874-d33f-11e9-939f-02ff96a5aa76 | marka@uoregon.edu | marka-MacBookPro
+79c2ad02-acd1-11e9-a379-0a2653bc2660 | marka@uoregon.edu | marka-testing
 ```
 
 Display information about the Talapas endpoint:
 
 ```bash
-$ globus endpoint show b4221f50-6dc5-11e9-bf46-0e4a062367b8
+Marks-MacBook-Pro:~ marka$ globus endpoint show b4221f50-6dc5-11e9-bf46-0e4a062367b8
 Display Name:              Talapas
 ID:                        b4221f50-6dc5-11e9-bf46-0e4a062367b8
 Owner:                     uoregon@globusid.org
@@ -110,7 +110,7 @@ Activate/Authenticate against an endpoint
 You will be directed to a web page to login with your UO credentials. Click 'Advanced' to enter credential lifetime.
 
 ```bash
-$ globus endpoint activate --web 97e58874-d33f-11e9-939f-02ff96a5aa76
+Marks-MacBook-Pro:~ marka$ globus endpoint activate --web 97e58874-d33f-11e9-939f-02ff96a5aa76
 ```
 
 Transfer file from one endpoint to another
@@ -118,12 +118,12 @@ Transfer file from one endpoint to another
 For example, transfer a directory on my local macbook endpoint to an endpoint I've created on Talapas.
 
 {: .note }
-A destination directory name is required. Also, `$dest_ep` has a 'Host Path' of `/projects/<pirg>/duckid/testing/` this is not visible in the CLI command output '`globus endpoint show $dest_ep`'
+A destination directory name is required. Also, `$dest_ep` has a 'Host Path' of `/projects/<pirg>/marka/testing/` this is not visible in the CLI command output '`globus endpoint show $dest_ep`'
 
 ```bash
-$ source_ep=97e58874-d33f-11e9-939f-02ff96a5aa76
-$ dest_ep=79c2ad02-acd1-11e9-a379-0a2653bc2660
-$ globus transfer -r --verify-checksum $source_ep:/Users/duckid/globus_ep/linux-5.2.13-copy1/ $dest_ep:linux-copy1
+Marks-MacBook-Pro:~ marka$ source_ep=97e58874-d33f-11e9-939f-02ff96a5aa76
+Marks-MacBook-Pro:~ marka$ dest_ep=79c2ad02-acd1-11e9-a379-0a2653bc2660
+Marks-MacBook-Pro:~ marka$ globus transfer -r --verify-checksum $source_ep:/Users/marka/globus_ep/linux-5.2.13-copy1/ $dest_ep:linux-copy1
 Message: The transfer has been accepted and a task has been created and queued for execution
 Task ID: ad31ba86-d35d-11e9-939f-02ff96a5aa76
 ```
@@ -139,7 +139,7 @@ View only active tasks:
 Show details of a task:
 
 ```bash
-$ globus task show 4a86fc98-d358-11e9-9cf3-0edb67dd7a14
+Marks-MacBook-Pro:~ marka$ globus task show 4a86fc98-d358-11e9-9cf3-0edb67dd7a14
 Label:                   None
 Task ID:                 4a86fc98-d358-11e9-9cf3-0edb67dd7a14
 Is Paused:               False
@@ -157,9 +157,9 @@ Subtasks Failed:         0
 Subtasks Canceled:       0
 Subtasks Expired:        0
 Completion Time:         2019-09-09 23:24:40+00:00
-Source Endpoint:         duckid-MacBookPro
+Source Endpoint:         marka-MacBookPro
 Source Endpoint ID:      97e58874-d33f-11e9-939f-02ff96a5aa76
-Destination Endpoint:    duckid-testing
+Destination Endpoint:    marka-testing
 Destination Endpoint ID: 79c2ad02-acd1-11e9-a379-0a2653bc2660
 Bytes Transferred:       819556855
 Bytes Per Second:        2714391

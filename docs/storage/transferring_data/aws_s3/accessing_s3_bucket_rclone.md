@@ -229,9 +229,9 @@ After finishing the `rclone config` process, you should now be able to see the b
 You can verify this by running `rclone lsd <remote-name>:`. An example is shown below:
 
 ```bash
-[duckid@login1 rclone]$ rclone lsd talapasS3:
+[flopez2@login1 rclone]$ rclone lsd talapasS3:
           -1 2024-11-25 14:54:22        -1 mytalapastestbucket
-[duckid@login1 rclone]$
+[flopez2@login1 rclone]$
 ```
 
 This output should match the buckets that can be seen from your AWS S3 console:
@@ -249,9 +249,9 @@ I can perform an `ls` command on my bucket to see the contents. In my case its o
 Talapas view:
 
 ```bash
-[duckid@login1 rclone]$ rclone ls talapasS3:mytalapastestbucket
+[flopez2@login1 rclone]$ rclone ls talapasS3:mytalapastestbucket
       299 test_file.txt
-[duckid@login1 rclone]
+[flopez2@login1 rclone]
 ```
 
 AWS S3 Console view:
@@ -262,14 +262,14 @@ From here I can copy the entire bucket (one file in the case) from S3 to Talapas
 An example of this can be seen below:
 
 ```bash
-[duckid@login1 rclone]$ rclone copy talapasS3:mytalapastestbucket .
-[duckid@login1 rclone]$ ls
+[flopez2@login1 rclone]$ rclone copy talapasS3:mytalapastestbucket .
+[flopez2@login1 rclone]$ ls
 test_file.txt
-[duckid@login1 rclone]$
+[flopez2@login1 rclone]$
 ```
 
 {: .note }
-`.` means current directory which in my case is `/home/duckid/test-module/rclone/`
+`.` means current directory which in my case is `/home/flopez2/test-module/rclone/`
 
 I now have successfully moved all the data in my S3 bucket onto Talapas.
 

@@ -127,16 +127,16 @@ Submitted batch job 12345
 $ squeue -j 12345
 
    JOBID PARTITION     NAME        USER ST       TIME  NODES NODELIST(REASON)
-    12345  compute     myhostjob   duckid  R       5:08      1 n003
+    12345  compute     myhostjob   joec  R       5:08      1 n003
 
 # later, we see that the job has successfully completed
 $ sacct -j 12345
 
        JobID    JobName  Partition    Account  AllocCPUS      State ExitCode
 ------------ ---------- ---------- ---------- ---------- ---------- --------
-12345       myhostjob+    compute    mypirg         1     COMPLETED      0:0
-12345.batch      batch               mypirg         1     COMPLETED      0:0
-12345.exte+     extern               mypirg         1     COMPLETED      0:0
+12345       myhostjob+    compute    joegrp         1     COMPLETED      0:0
+12345.batch      batch               joegrp         1     COMPLETED      0:0
+12345.exte+     extern               joegrp         1     COMPLETED      0:0
 ```
 
 If needed, you can also kill a job using its job id.  This will terminate it if it has already started running, or remove it from the queue if it hasn't started yet.

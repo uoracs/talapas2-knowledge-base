@@ -37,7 +37,11 @@ Internal tracking list (excluded from the published site). Items are for team re
 Mechanical fixes (naming, typos, front matter, newest module versions from `packages.md`) were applied on `refresh/docs-refresh-2026-11`. Everything below needs a human. Per-area detail lives in the scan reports (see PR description).
 
 ### Privacy / security: check first
-- [ ] `aws_s3/creating_configuring_s3_bucket.md` contains what looks like a real AWS account ID (ARN and JSON policy text); `globus/` CLI pages contain an identity UUID and personal-share endpoint UUID. Screenshots may also show IDs or keys. Decide whether to redact (and whether git history matters).
+- [ ] **AWS S3 page** (`aws_s3/creating_configuring_s3_bucket.md`): a real-looking 12-digit AWS account ID appears in the IAM user ARN, in prose (line ~101) and in the JSON bucket policy. Decide whether to replace it (e.g. with `123456789012`) and whether the git history matters.
+- [ ] **AWS S3 screenshots:** `iam_user_step1-11.png`, `s3_bucket_step1-6.png`, `aws_s3_console*.png` and `aws_s3_term1-3.png` may show the account ID, access keys or account names. Needs a human look; screenshots were not inspected by the scan.
+- [ ] **AWS S3 access keys:** the steps for creating access keys contradict the note that UO accounts can't generate keys. Confirm the current policy before anyone follows the page, and make sure no real key appears in text or screenshots.
+- [ ] **Globus CLI pages:** a person's Globus identity UUID appears in `globus get-identities` output (`how-to_install_globus_cli.md`), plus a Globus subscription ID and personal-share endpoint UUIDs (`how-to_use_globus_cli.md`). Decide what to redact.
+- Usernames like `marka` / `flopez2` in usage examples are intentionally kept (see `CLAUDE.md`).
 
 ### Broken or empty pages
 - [ ] `software/apptainer/how-to_create_a_container.md`: empty front matter, "TBD" body. Write or remove.
