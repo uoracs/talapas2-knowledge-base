@@ -38,8 +38,8 @@ On the next screen, I like to tag my resources with some common value. For this 
 
 Next, we need to create access keys for this user.
 
-> [!NOTE]
-> Users are no longer allowed to generate access keys for UO accounts. To request an access key, [submit a ticket to the Cloud Service Support](https://service.uoregon.edu/TDClient/2030/Portal/Requests/Service/51666/Cloud-Service-Support) portal, making sure to include your account name or ID and which IAM user you want us to create the access key for.
+{: .note }
+Users are no longer allowed to generate access keys for UO accounts. To request an access key, [submit a ticket to the Cloud Service Support](https://service.uoregon.edu/TDClient/2030/Portal/Requests/Service/51666/Cloud-Service-Support) portal, making sure to include your account name or ID and which IAM user you want us to create the access key for.
 
 ![IAM USER STEP 6](../../../../../assets/images/iam_user_step6.png)
 
@@ -125,4 +125,5 @@ Save the policy.
 
 See [Accessing your S3 files via awscli]({% link docs/storage/transferring_data/aws_s3/accessing_files_awscli.md %}) or [Accessing your S3 Buckets via rclone]({% link docs/storage/transferring_data/aws_s3/accessing_s3_bucket_rclone.md %}) on how to easily access your S3 bucket files.
 
-See [Mounting an AWS S3 Bucket to your Filesystem]({% link docs/storage/transferring_data/aws_s3/mounting_s3_bucket.md %}) on how to mount your S3 bucket to your filesystem.
+{: .note }
+Mounting an S3 bucket as a filesystem on Talapas is not supported. Use `rclone` or `awscli` as described above to copy files between your bucket and Talapas.

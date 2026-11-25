@@ -5,7 +5,7 @@ nav_order: 2
 parent: Storage
 ---
 
-# Manging Project Permissions
+# Managing Project Permissions
 
 On Unix systems, permissions are fairly basic. Each filesystem item has an Owner and Group, and an associated permission for that item. [Here's a link to file permission basics if you'd like to learn more.](https://www.tutorialspoint.com/unix/unix-file-permission.htm)
 
@@ -39,7 +39,7 @@ Now, the students should have access to the `students` directory, but **not** th
 
 ## Posix ACLs
 
-The other method for controlling access is using Posix ACLs. On our old cluster, T1, we used Posix ACLs within `/projects/<myPIRG>` directory to grant users individual and differing permissions than those of the group. On T2, **we no longer _support_ the use of ACLs**.
+The other method for controlling access is using Posix ACLs. On our previous cluster, we used Posix ACLs within `/projects/<myPIRG>` directory to grant users individual and differing permissions than those of the group. On Talapas, **we no longer _support_ the use of ACLs**.
 
 You’re welcome to do your own research and apply whatever ACLs you’d like, but we are no longer providing guidance on setting them up, or support on how to configure them correctly.
 

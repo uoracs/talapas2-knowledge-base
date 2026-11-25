@@ -1,0 +1,133 @@
+# CLAUDE.md
+
+Guidance for Claude when working in this repo. This file is meant to be refined over time. When you learn something new about conventions, add it here (and ask the user first if you are unsure whether it is current).
+
+## What this repo is
+
+The public, user-facing knowledge base for **Talapas**, the University of Oregon's HPC cluster, run by Research Advanced Computing Services (RACS). Published at https://wiki.talapas.uoregon.edu. Readers are UO researchers and students, many of them not sysadmins or Linux experts.
+
+Built with Jekyll and the [Just the Docs](https://just-the-docs.github.io/just-the-docs/) theme, deployed through GitHub Pages from `main`. Everything is Markdown. `README.md` documents the contributor workflow; do not duplicate it here.
+
+## Current vs. outdated conventions
+
+**Do not assume something is current just because it is in the docs.** Parts of this site predate the current cluster. If you find something that looks stale and is not listed here, ask the user instead of guessing.
+
+Confirmed by the RACS team:
+
+- **Login node naming:** the current names are `login1`, `login2`, ... (e.g. `login1.talapas.uoregon.edu`), and the load balancer is `login.talapas.uoregon.edu`. Prompts in examples should look like `[duckid@login1 ~]$`.
+- **Outdated, replace when found:** anything using the old `hn1` / `ln1` style names (e.g. `talapas-ln1.uoregon.edu`, `talapas-ln*`, `[duckID@ln1 ...]`, `hpc-hn1`).
+- **Cluster name:** it is just **"Talapas"**. "Talapas2", "T2" and "Talapas 2" were used during the move from the first cluster to the current one and are now outdated. Don't introduce them; replace them when found (exceptions: the Globus collection is still really named "University of Oregon - Talapas2", so keep "Talapas2" wherever the docs refer to that collection by name, including prose like "the Talapas2 Collection" and the `uoregon#Talapas2` legacy name in CLI output; and the archived `docs/archive/t2_release_notes.md` is historical and keeps its T2 name, see below). The repo name `talapas2-knowledge-base` stays as-is.
+- **`hpcrcf` account/project references are old.** Example commands using `--account=hpcrcf`, `-A hpcrcf`, `SLURM_JOB_ACCOUNT=hpcrcf` or `/projects/hpcrcf/...` should be replaced with `<pirg>`-style placeholders. If a whole page depends on workflows current Talapas no longer supports, refresh it if still relevant, otherwise archive it (ask first). The Service Desk URL (`hpcrcf.atlassian.net`) is a separate question, see Open questions.
+- **Release notes are archived.** The T2 release notes describe an older cluster transition and now live in `docs/archive/t2_release_notes.md` (under the "Archive" section, not linked from the home page). They keep the "T2" name on purpose. Don't rewrite them to look current. New material that is out of date but worth keeping as history goes in `docs/archive/` with `parent: Archive`.
+- **Partition list is out of date** and will eventually be generated from `sinfo` (see `TODO.md`). Don't hand-edit numbers into it piecemeal, and don't rely on it for facts.
+- **Module versions: `docs/software/packages.md` is the source of truth.** It is auto-built from the lmod ecosystem and lists every available module and version. We want users on the **newest** version, so examples should use the newest version listed there (compare versions numerically, the table is not sorted by version; a name with a suffix like `3.14.0-cv7xe7d` is a build variant). If a module doesn't appear in `packages.md` at all, flag it rather than guess. Examples go stale as lmod changes, so keeping docs in sync automatically is still an open problem (see `TODO.md`). Never hand-edit `packages.md` itself.
+
+See "Open questions" at the bottom for things not yet confirmed.
+
+## Repo layout
+
+```
+index.md                      Landing page (nav_order 1)
+404.md
+_config.yml                   Site config, callout definitions, search, theme
+docs/
+  quickstart_guide/           Quick Start Guide
+  connecting_to_talapas/      Login (SSH, keys, VPN), VS Code
+  about_talapas/              Partition list, memory, PIRGs
+  slurm/                      how-to_* job guides
+  software/                   Per-software guides; conda/, apptainer/, r/ subfolders
+    packages.md               AUTO-GENERATED, do not edit by hand
+  storage/                    Storage tiers, directory structure, permissions
+    transferring_data/        globus/, aws_s3/, rclone, dropbox, google_drive, uocloud
+  open_ondemand.md, scheduled_maintenance.md
+  archive/                    Historical pages kept for reference (T2 release notes)
+assets/images/                Screenshots (Globus, AWS, VS Code, ...)
+assets/util/                  Scripts and the stub used to generate packages.md
+package_versions.json         Module data
+.github/workflows/            ci.yml, pages.yml, update-avail-modules.yml
+```
+
+Folder pattern: a section has an index page (`slurm/slurm.md`, `storage/storage.md`, ...) with `has_children: true`, and child pages are mostly named `how-to_<verb>_<thing>.md`.
+
+### Do not hand-edit
+
+- `docs/software/packages.md`: regenerated by the `update-avail-modules.yml` workflow whenever the lmod repo pushes (commits titled "Automatically triggered by lmod repo push..."). To change its prose, edit `assets/util/package_stub.md`; to change the table format, edit `assets/util/make_packages_md.sh`.
+- `assets/js/zzzz-search-data.json`, `_site/`: generated.
+
+## Page conventions
+
+### Front matter
+
+Every page uses:
+
+```yaml
+---
+layout: default
+title: How-To Do The Thing
+parent: Section Title        # exact title of the parent page
+nav_order: 3
+---
+```
+
+- Section index pages add `has_children: true` and usually `permalink: /docs/<section>`.
+- Third-level pages add `grand_parent:` (see `docs/storage/transferring_data/`).
+- `nav_order` is per-sibling-group and can be a float. Check siblings before choosing a number so ordering is deliberate.
+- `parent:` must match the parent's `title:` exactly, or the page silently falls out of the nav.
+- Note `quickstart_guide.md` has `has-children: "true"` (hyphen, quoted). That is a typo in the existing page, not a pattern. Use `has_children: true`.
+
+### Title style
+
+Titles are Title Case. Task pages begin with **`How-To`** (confirmed; fix any `How-to` you see) followed by a verb: "How-To Submit an Array Job". The H1 repeats the title.
+
+### Links, callouts, code
+
+- **Internal links must use the Liquid `link` tag**, which CI checks: `[Partition List]({% link docs/about_talapas/partition_list.md %})`. Never hard-code a path to another page on this site.
+- External links are plain Markdown. If html-proofer rejects a known-good external URL, add it to the `--ignore-urls` list in `.github/workflows/ci.yml`.
+- Callouts go on the line above the paragraph: `{: .note }`, `{: .warning }`, `{: .important }`, `{: .new }`, `{: .highlight }`. Use `warning` for data-loss or policy-critical items (e.g. no backups), `note` for gotchas and "use this instead" pointers, `highlight` for time-sensitive announcements.
+- Fenced code blocks with a language (`bash`). Show prompts as `$` for commands the user types; include sample output when it helps the reader confirm success.
+- Images live in `assets/images/` and are named by topic and step (e.g. `globus_*.png`, `iam_user_step3.png`).
+
+## Voice and tone
+
+Read a few existing pages (`how-to_submit_a_batch_job.md`, `quickstart_guide.md`, `storage.md`) before writing. The established voice is:
+
+- **Direct and practical.** Tell the reader what to do, in order. Short intro, then steps.
+- **Second person, plain language.** "You can...", "Your files will be present on all login nodes". Explain jargon the first time (PIRG, partition, login node).
+- **Explain why, briefly.** E.g. why jobs don't run on a laptop-style workflow, why a login node isn't for computation.
+- **Example-first.** Show a complete, working job script, then break it down line by line with `#SBATCH` comments.
+- **Warn clearly about the things that burn people:** login nodes are not for compute, scratch is purged at 90 days, RACS does not back up data, Slurm requires `--account` and `--partition`.
+- **Point to the Service Desk** for requests (storage purchases, software installs, accounts) rather than describing internal processes.
+- Terms: "Talapas" (not "the Talapas cluster" every time), "RACS", "PIRG", "**Slurm**" (confirmed spelling; fix "SLURM" in prose and titles when you touch a page, but leave env vars like `SLURM_ACCOUNT` and literal command output alone), "DuckID".
+
+Avoid: marketing language, internal-only details (hostnames of management nodes, staff names), unverified claims about limits and prices.
+
+## Accuracy rules
+
+This is a public doc for a real system, so wrong examples cost users time.
+
+- **Never invent** partition names, limits, prices, quotas, module names/versions, or hostnames. Verify against an existing page that is known current, the generated `packages.md`, or ask the user.
+- Module versions in examples go stale. Prefer a version that appears in `packages.md`, or show `module avail <name>` and say to check for the current version.
+- **Real usernames in usage examples are fine and preferred** (e.g. `marka`, `flopez2`, `joec`, `Marks-MacBook-Pro:~ marka$`). We want examples to feel familiar and be real examples of what worked, so don't swap them for `duckid`-style placeholders and keep the original prompt style (including laptop prompts). The exception is secrets and identifiers that grant or reveal access (AWS account IDs, access keys, tokens; see `TODO.md` privacy items). `hpcrcf` account/path references still become `<pirg>`.
+- When updating a page, check it for the outdated items above plus dead external links and old screenshots, and mention what you could not verify in your summary.
+
+## Working on the docs
+
+- **Build and check locally** (CI runs the same): `bundle install`, then `bundle exec jekyll build`, then `bundle exec htmlproofer _site --ignore-urls "<same list as ci.yml>"`. CI also runs the Nu HTML validator (`fixtures/html5validator-config.yml`).
+- `jekyll serve` for a live preview. `_config.yml` is not hot-reloaded.
+- **Authorship and review:** there is no per-page owner; RACS as a team owns the docs. Claude will draft much of the new content from prompts, and **a RACS team member reviews it before anything is pushed to `main`**. Never push to `main` directly; work on a branch and open a PR.
+- Only `main` deploys, and the deploy is skipped if CI fails.
+- `CLAUDE.md` and `TODO.md` are internal and excluded from the published site in `_config.yml`. Keep them there. Any new internal-only markdown file at the repo root must be added to the `exclude:` list too, or Jekyll will publish it.
+- Outstanding refresh work is tracked in `TODO.md`. Add to it rather than leaving stale pages unmentioned.
+- Commit messages: short, imperative, describing the doc change. Auto-generated `packages.md` commits come from the workflow, not from us.
+- When asked to refresh a page, make the smallest edit that makes it correct and consistent with the conventions above. Don't restructure pages or rename files without asking (renames break inbound links and search).
+
+## Open questions
+
+Not yet confirmed with the RACS team. Do not treat any of these as settled; ask before acting on them. Remove each item when it is answered and its answer is recorded above.
+
+_None at the moment._ Add new ones here as they come up.
+
+## Settled notes
+
+- The Service Desk URL `https://hpcrcf.atlassian.net/servicedesk/customer/portal/1` is still correct for now, even though it contains "hpcrcf". RACS is planning to move it; the team will say when. Don't change it before then.
+- The Sept 2026 maintenance window is listed as 9/15-9/17 in `scheduled_maintenance.md`. The archived release notes say 09/15-09/18; the maintenance page was kept as the version of record by arbitrary choice, not verified.

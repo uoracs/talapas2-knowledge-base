@@ -13,7 +13,6 @@ On this site you will find a collection of How-To articles, best practices, and 
 ## New to Talapas?
 
 * [Talapas Quick Start Guide]({% link docs/quickstart_guide/quickstart_guide.md %})
-* [T2 Release Notes]({% link docs/t2_release_notes.md %})
 
 ## Have long running jobs?
 

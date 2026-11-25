@@ -1,7 +1,7 @@
 ---
 layout: default
 title: How-To Submit an MPI Job
-parent: SLURM
+parent: Slurm
 nav_order: 4
 ---
 
@@ -16,7 +16,7 @@ Most parts of job setup are the same for all MPI flavors. Notably, you'll want 
 
 ## Specifying Node and Task Counts
 
-You can simply specify the number of tasks and let Slurm place them on available nodes in the partition as it sees fit (the default is one task per node) for example:
+You can simply specify the number of tasks and let Slurm place them on available nodes in the partition as it sees fit for example:
 
 ```bash
 #SBATCH --partition=compute
@@ -26,9 +26,9 @@ You can simply specify the number of tasks and let Slurm place them on available
 #SBATCH --constraint=7713
 ```
 
-With this approach the job will probably be scheduled sooner since Slurm is free to use any available cores. It’s recommended to keep the job tied to cores of the same type through use of Slurm’s `--constraint` flag.
+With this approach the job will probably be scheduled sooner since Slurm is free to use any available cores. It’s recommended to keep the job tied to cores of the same type through use of Slurm’s `--constraint` flag (here `7713` is a node feature, the AMD EPYC 7713 processors in the `compute` partition).
 
-You can also specify the maximum number of tasks a nodes can run. The example below will launch 64 tasks and run on at least 4 different nodes:
+You can also specify the maximum number of tasks a nodes can run. The example below will launch 64 tasks, with at most 16 on any one node, so it runs on at least 4 different nodes:
 
 ```bash
 #SBATCH --partition=compute
@@ -38,7 +38,6 @@ You can also specify the maximum number of tasks a nodes can run. The example be
 #SBATCH --mem-per-cpu=500m
 #SBATCH --constraint=7713
 ```
-
 
 See `sinfo -o "%14R %4D %22N %8c %14m %40f %40G"|grep -v preempt` for a complete list of nodes properties and features relative to their partitions.
 
@@ -54,8 +53,10 @@ For multi-node jobs use the Slurm `--mem-per-cpu` flag to specify the amount of
 
 Slurm provides two slightly different ways to invoke your MPI program.
 
-1. The preferred way is to invoke it directly with the `srun` command within your `sbatch` script. `srun` will inherit defined Slurm variables.
-2. An alternative is to invoke it using the `mpirun/mpiexec` program within your `sbatch` script.
+1. The preferred way is to invoke it directly with the `srun` command within your `sbatch` script. `srun` uses the task count and layout you requested from `sbatch`, so you don't need to pass them again.
+2. An alternative is to invoke it using the `mpirun`/`mpiexec` program within your `sbatch` script.
+
+If `srun` fails to start your MPI program (for example, MPI reports that it cannot initialize), the MPI library may need to be told how to talk to Slurm. Use `srun --mpi=list` to see the supported types and, for example, `srun --mpi=pmix ./program` or `srun --mpi=pmi2 ./program` to select one. If you can't get `srun` working, `mpirun` inside the job script is a reasonable fallback; contact RACS and we will help.
 
 See the [Slurm MPI guide](https://slurm.schedmd.com/mpi_guide.html) for more information.
 
@@ -67,14 +68,14 @@ To access OpenMPI compilers,
 
 ```bash
 module load openmpi/4.1.5
-mpiicc helloworld_mpi.c -o helloworld_openmpi.x
+mpicc helloworld_mpi.c -o helloworld_openmpi.x
 ```
 
-Batch script example using`srun`:
+Batch script example using `srun`:
 
 ```bash
 #!/bin/bash
-#SBATCH --account=<myPIRG>
+#SBATCH --account=<pirg>
 #SBATCH --partition=compute
 #SBATCH --job-name=openmpi
 #SBATCH --output=openmpi.out
@@ -90,19 +91,22 @@ srun ./helloworld_openmpi.x
 
 ### Intel
 
-To access Intel OneAPI MPI compilers,
+To access the Intel oneAPI compilers and Intel MPI,
 
 ```bash
 module load intel-oneapi-compilers/2023.1.0
 module load intel-oneapi-mpi/2021.9.0
-mpiicc helloworld_mpi.c -o helloworld_intelmpi.x
+mpiicx helloworld_mpi.c -o helloworld_intelmpi.x
 ```
 
-Batch script example using`srun`:
+{: .note }
+`intel-oneapi-mpi` 2021.9.0 is part of the oneAPI 2023.1 release, so it is paired here with `intel-oneapi-compilers/2023.1.0`. `mpiicx` is the oneAPI (LLVM-based) C compiler wrapper; use `mpiicpx` for C++ and `mpiifx` for Fortran. Run `module avail intel-oneapi` to check for newer versions. When launching Intel MPI with `srun`, you may also need to point Intel MPI at Slurm's PMI library (the `I_MPI_PMI_LIBRARY` variable) or run `srun --mpi=pmi2`.
+
+Batch script example using `srun`:
 
 ```bash
 #!/bin/bash
-#SBATCH --account=<myPIRG>
+#SBATCH --account=<pirg>
 #SBATCH --partition=compute
 #SBATCH --job-name=intel-mpi
 #SBATCH --output=intel-mpi.out
@@ -119,19 +123,19 @@ srun ./helloworld_intelmpi.x
 
 ### MPICH
 
-GNU + MPICH
-
-To access MPICH MPI compilers:
+To access GNU compilers and MPICH:
 
 ```bash
-module load gcc/13.1.0
-module load mpich/4.1.1
+module load gcc/15.2.0-5dhqpt3
+module load mpich/4.3.2-khdddkb
 mpicc helloworld_mpi.c -o helloworld_mpich.x
 ```
 
+Batch script example using `srun`:
+
 ```bash
 #!/bin/bash
-#SBATCH --account=<myPIRG>
+#SBATCH --account=<pirg>
 #SBATCH --partition=compute,computelong
 #SBATCH --job-name=mpich-mpi-test
 #SBATCH --output=mpich-mpi-test.out
@@ -141,8 +145,8 @@ mpicc helloworld_mpi.c -o helloworld_mpich.x
 #SBATCH --ntasks-per-core=1
 #SBATCH --constraint=7713
 
-module load gcc/13.1.0
-module load mpich/4.1.1
+module load gcc/15.2.0-5dhqpt3
+module load mpich/4.3.2-khdddkb
 
 srun ./helloworld_mpich.x
 ```
@@ -156,3 +160,9 @@ One combination that we've seen work quite poorly is specifying `--nodes` and `-
 If you have concerns, please reach out to us—we'd be happy to check for problems and make recommendations.
 
 Also see [sbatch script parameters](https://slurm.schedmd.com/sbatch.html) for more information.
+
+## See also
+
+* [How-To Submit a Hybrid Job]({% link docs/slurm/how-to_submit_a_hybrid_job.md %})
+* [How-To Submit an OpenMP Job]({% link docs/slurm/how-to_submit_an_openmp_job.md %})
+* [How-To Use the preempt Partition]({% link docs/slurm/how-to_use_the_preempt_partition.md %})

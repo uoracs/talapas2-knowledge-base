@@ -10,26 +10,27 @@ parent: Software
 In order to use this software, you must be a member of the “gaussian” Linux group, due to licensing restrictions. If you need to be added, please [submit a ticket](https://hpcrcf.atlassian.net/servicedesk/customer/portal/1).
 
 {: .note }
-Gaussian cannot use multiple hosts, but it can use multiple CPUs on the same host. **The Gaussian input file needs to include information about the number of CPUs and amount of memory available (per your SLURM job requests).**
+Gaussian cannot use multiple hosts, but it can use multiple CPUs on the same host. **The Gaussian input file needs to include information about the number of CPUs and amount of memory available (per your Slurm job requests).**
 
-Your SLURM (sbatch) input file might look like this
+Your Slurm (sbatch) input file might look like this
 
 ```bash
 #!/bin/bash
-#SBATCH --partition=compute
-#SBATCH --mem=4G
-#SBATCH --job-name=yourjob
-#SBATCH --output=yourjob.slurm.out
-#SBATCH --nodes=1
-#SBATCH --ntasks-per-node=1
-#SBATCH --cpus-per-task=28
-#SBATCH --account=youraccount
+#SBATCH --account=<pirg>           # your slurm account is the name of your pirg
+#SBATCH --partition=compute        # specify the partition, see Partition List
+#SBATCH --job-name=yourjob         # name of your job
+#SBATCH --output=yourjob.slurm.out # name of batch script's standard output
+#SBATCH --time=0-04:00:00          # set a limit on the total run time of the job
+#SBATCH --nodes=1                  # Gaussian cannot use more than one node
+#SBATCH --ntasks=1                 # request 1 task
+#SBATCH --cpus-per-task=28         # request 28 cpus for that task
+#SBATCH --mem=4G                   # request 4GB RAM for the job
 
 module load gaussian
 
 export OMP_NUM_THREADS=${SLURM_CPUS_PER_TASK:-1}
 
-# The CPU and memory parameters requested from SLURM should match those in the
+# The CPU and memory parameters requested from Slurm should match those in the
 # Gaussian input file.  For the above, use
 
 # %NProcShared=28
@@ -50,4 +51,4 @@ export OMP_NUM_THREADS=${SLURM_CPUS_PER_TASK:-1}
 
 You can choose to use fewer or more CPUs, but not more than the hosts in the partition you select have.
 
-If your jobs crashes (or produces an “oom” or “out of memory” error), you should increase the memory request. Gaussian doesn’t seem to use a lot of memory, but for some jobs, you might have to double or quadruple this value.
+If your job crashes (or produces an “oom” or “out of memory” error), you should increase the memory request. Gaussian doesn’t seem to use a lot of memory, but for some jobs, you might have to double or quadruple this value.

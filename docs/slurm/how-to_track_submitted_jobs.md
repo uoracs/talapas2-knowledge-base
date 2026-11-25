@@ -1,23 +1,27 @@
 ---
 layout: default
 title: How-To Track Submitted Jobs
-parent: SLURM
+parent: Slurm
 nav_order: 9
 ---
 
 # How-To Track Submitted Jobs
 
-When submitting jobs to Talapas using SLURM, tracking their progress can become tedious, especially when using manual commands like `squeue` to monitor the queue. Using SLURM's built-in email notification options can streamline this process, providing automated updates about your job status without needing to manually check or run expensive watch scripts.
+When submitting jobs to Talapas using Slurm, tracking their progress can become tedious, especially when using manual commands like `squeue` to monitor the queue. Using Slurm's built-in email notification options can streamline this process, providing automated updates about your job status without needing to manually check or run expensive watch scripts.
+
+## Checking a job with `squeue` and `sacct`
+
+To see your queued and running jobs, run `squeue --me` (or `squeue -u <duckid>`). To see a job after it has finished, use `sacct`, for example `sacct -j 20190 --format=JobID,JobName,Partition,State,Elapsed,ExitCode`. See the [Quick Start Guide]({% link docs/quickstart_guide/quickstart_guide.md %}) for more on `squeue`, `sacct` and `seff`.
 
 ## How to Use `#SBATCH --mail-type` and `#SBATCH --mail-user`
 
-To enable email notifications, include the following options in your SLURM job submission script:
+To enable email notifications, include the following options in your Slurm job submission script:
 
 ### Example
 
 ```bash
-#!/bin/bash -l
-#SBTACH --account=<myPIRG>
+#!/bin/bash
+#SBATCH --account=<pirg>
 #SBATCH --partition=preempt
 #SBATCH --job-name=testSlurmEmail
 #SBATCH --output=testSlurm.out
@@ -37,9 +41,11 @@ To enable email notifications, include the following options in your SLURM job s
         - `BEGIN`: Notify when the job starts.
         - `END`: Notify when the job completes.
         - `FAIL`: Notify if the job fails.
-    You can use multiple types, separated by commas (As seen in the above example)
+        - `ALL`: Notify on all of the above and more (`BEGIN`, `END`, `FAIL`, `INVALID_DEPEND`, `REQUEUE` and `STAGE_OUT`).
+        - `TIME_LIMIT`: Notify when the job reaches its time limit (`TIME_LIMIT_90`, `TIME_LIMIT_80` and `TIME_LIMIT_50` notify at that percentage of the limit).
+    You can use multiple types, separated by commas (as seen in the above example).
 2. `--mail-user`**:**
-    - Defines the email address to receive the notifications. Enter your `<duckID>@uoregon` email.
+    - Defines the email address to receive the notifications. Enter your `<duckID>@uoregon.edu` email.
 
 ## Why Use `#SBATCH --mail-type` and `#SBATCH --mail-user` over `watch`
 
@@ -56,4 +62,4 @@ To enable email notifications, include the following options in your SLURM job s
 
 ## Key Takeaway
 
-Running commands such as `watch` in combination with `squeue` every two seconds can significantly impact the clusters performance. This constant querying generates unnecessary computational and network load, reducing the efficiency of resource allocation and potentially delaying job scheduling for all users. Please, if you would like to track your jobs status, utilize SLURM’s email notifications with `#SBATCH --mail-type` and `#SBATCH --mail-user`.
+Running commands such as `watch` in combination with `squeue` every two seconds can significantly impact the cluster's performance. This constant querying generates unnecessary computational and network load, reducing the efficiency of resource allocation and potentially delaying job scheduling for all users. Please, if you would like to track your jobs status, utilize Slurm’s email notifications with `#SBATCH --mail-type` and `#SBATCH --mail-user`.

@@ -18,7 +18,7 @@ The Jupyter interface runs in a web browser, and this browser talks to a back-en
 
 ## Initial Setup
 
-First, you will want to determine which version of Jupyter to run.  For almost all users, the tensorflow (Python3) version is best.  This provides access to Python 3 and R.  If you need Python 2, `anaconda2` is the best choice.  Whichever module you choose, load the same one now and in the SLURM script below.
+First, you will want to determine which version of Jupyter to run.  For almost all users, the tensorflow (Python3) version is best.  This provides access to Python 3 and R.  If you need Python 2, `anaconda2` is the best choice.  Whichever module you choose, load the same one now and in the Slurm script below.
 
 `module load tensorflow`
 
@@ -30,28 +30,30 @@ This will create a configuration file in `~/.jupyter`.  You can edit this if ne
 
 `jupyter notebook password`
 
-### Create a SLURM script
+### Create a Slurm Script
 
 Next we need to create an `sbatch` script to start the Jupyter server.  You'll need a directory for your Jupyter notebooks, and it's probably easy to place this there.  Copy the contents below into a file named `jupyter.sbatch`, for example.
 
-The SLURM parameters given are suitable for small-scale usage.  Edit them as needed, or override them on the `sbatch` command-line.  Unless you are using special parallelization libraries, Jupyter will not benefit from multiple CPUs.
+The Slurm parameters given are suitable for small-scale usage.  Edit them as needed, or override them on the `sbatch` command-line.  Unless you are using special parallelization libraries, Jupyter will not benefit from multiple CPUs.
 
 In order to set up the required port forwarding, two port numbers need to be chosen.  In the script below, they're chosen randomly.  Alternatively you could stick with fixed ports, for convenience.
 
 At the bottom of the script, modules are loaded and `jupyter` is invoked.  Edit these as needed.
 
 ```bash
-`#!/bin/bash
+#!/bin/bash
 
-#SBATCH --account=<youraccount>
-#SBATCH --partition=interactive
-#SBATCH --cpus-per-task=1
-#SBATCH --mem-per-cpu=4G
-#SBATCH --time 0-4:00:00
-#SBATCH --job-name jupyter
-#SBATCH --output jupyter-%J.log
+#SBATCH --account=<pirg>          # your slurm account is the name of your pirg
+#SBATCH --partition=interactive   # specify the partition, see Partition List
+#SBATCH --job-name=jupyter        # name of your job
+#SBATCH --output=jupyter-%j.log   # name of batch script's standard output and error
+#SBATCH --time=0-04:00:00         # set a limit on the total run time of the job
+#SBATCH --nodes=1                 # request 1 node
+#SBATCH --ntasks=1                # request 1 task
+#SBATCH --cpus-per-task=1         # request 1 cpu per task
+#SBATCH --mem-per-cpu=4G          # request 4GB RAM for each cpu requested
 
-case $(hostname) in talapas-ln*)
+case $(hostname) in login*)
     echo 'this script should be run with sbatch'; exit 1;;
 esac
 
@@ -71,7 +73,7 @@ hostport=$(shuf -i8000-64000 -n1)
 node=$(hostname -s)
 user=$(whoami)
 
-loginnode=${SLURM_SUBMIT_HOST:?'error: you must use sbatch to submit this script'}.uoregon.edu
+loginnode=${SLURM_SUBMIT_HOST:?'error: you must use sbatch to submit this script'}.talapas.uoregon.edu
 
 # print tunneling instructions to above output log
 cat <<EOF
@@ -102,7 +104,7 @@ module purge
 # uncomment just one: tensorflow is a good start for most purposes
 module load tensorflow
 # module load tensorflow2
-# module load anaconda3
+# module load miniconda3
 # module load python3
 # module load anaconda2
 # module load python2
@@ -112,21 +114,21 @@ jupyter lab --no-browser --port=${hostport} --port-retries=0 --ip='*' --Notebook
 # jupyter notebook --no-browser --port=${hostport} --port-retries=0 --ip='*' --NotebookApp.shutdown_no_activity_timeout=600
 ```
 
-## Starting a Jupyter SLURM job and Session
+## Starting a Jupyter Slurm Job and Session
 
-To start a session, `cd` to your Jupyter directory and submit the SLURM script.
+To start a session, `cd` to your Jupyter directory and submit the Slurm script.
 
 `sbatch jupyter.sbatch`
 
-Once the job starts, port information information will be provided in the job output log (`jupyter-<jobid>.log`).  At this point, you will need to start port forwarding from your local PC to the compute node.  If your local PC runs MacOS or Linux, open a terminal and run the provided `ssh` command.  If your local PC runs Windows, you will need to start forwarding via whatever means your SSH client provides.  If you're using MobaXterm, go to the _Tools_ menu, choose _MobaSSHTunnel_, and follow the instructions.
+Once the job starts, port information will be provided in the job output log (`jupyter-<jobid>.log`).  At this point, you will need to start port forwarding from your local PC to the compute node.  If your local PC runs MacOS or Linux, open a terminal and run the provided `ssh` command.  If your local PC runs Windows, you will need to start forwarding via whatever means your SSH client provides.  If you're using MobaXterm, go to the _Tools_ menu, choose _MobaSSHTunnel_, and follow the instructions.
 
 After port forwarding is started, you can then visit the provided URL to access Jupyter.
 
-## Ending a Jupyter Session and SLURM job
+## Ending a Jupyter Session and Slurm Job
 
-When you're done with Jupyter, you'll want your SLURM job to terminate.  There are several ways that this can happen.
+When you're done with Jupyter, you'll want your Slurm job to terminate.  There are several ways that this can happen.
 
-1. If your job hits the time limit specified with the `--time` flag, it will be killed by the SLURM scheduler.
+1. If your job hits the time limit specified with the `--time` flag, it will be killed by the Slurm scheduler.
 2. You can manually kill it with the `scancel` command.
 3. If you kill all of your Jupyter kernels and terminals, `jupyter` will exit by itself after ten minutes, as long as you have included the `shutdown_no_activity_timeout` flag as above.
 4. Some versions of Jupyter have a _Quit_ button on the web page that you can press to kill the server.
