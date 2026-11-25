@@ -25,7 +25,7 @@ In order to make your job "requeue-friendly", you might need to have your script
 
 (There is an environment variable `SLURM_RESTART_COUNT` that will be set for requeued runs, though you'll almost never need to notice this in your job.)
 
-A requeued job starts over from the beginning of your script, and its output file is overwritten by default. Add `--open-mode=append` if you want output from every run kept in the same file. If your program can write checkpoints, have it resume from the latest one when it starts.
+A requeued job starts over from the beginning of your script, and its output file may be overwritten (the default depends on cluster configuration). Add `--open-mode=append` if you want output from every run kept in the same file. If your program can write checkpoints, have it resume from the latest one when it starts.
 
 Here is an example job script for the `preempt` partition:
 

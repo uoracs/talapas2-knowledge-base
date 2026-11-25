@@ -45,7 +45,7 @@ nvidia-smi                        ### list the GPU(s) assigned to this job
 Submit it with `sbatch gpu_job.sbatch`.
 
 {: .note }
-Request GPUs with `--gpus` (total for the job), `--gpus-per-node` or `--gpus-per-task`. You can also use the older `--gres=gpu:<count>` form, but don't mix `--gres=gpu` and `--gpus` in the same script. If you need all of your GPUs on a single node, also specify `--nodes=1`.
+Request GPUs with `--gpus` (total for the job), `--gpus-per-node` or `--gpus-per-task`. You can also use the older `--gres=gpu:<count>` form (equivalent to `--gpus-per-node=<count>`); pick one style and use it consistently in your script. If you need all of your GPUs on a single node, also specify `--nodes=1`.
 
 Check the current CUDA versions with `module avail cuda`. At the time of writing they are `11.8.0`, `12.4.1` and `13.0`; see the [Packages]({% link docs/software/packages.md %}) list.
 
@@ -53,14 +53,14 @@ Check the current CUDA versions with `module avail cuda`. At the time of writing
 
 Slurm sets the environment variable `CUDA_VISIBLE_DEVICES` for your job to the GPU(s) assigned to it, and CUDA programs honor it automatically, so most programs need no extra configuration. The numbering starts at 0 within your job, regardless of which physical GPU on the node you were given.
 
-If your program expects the GPU index as an argument, you can pass it along using the `SLURM_JOB_GPUS` variable, which lists the indexes of the GPUs assigned to the job (a single number for one GPU, or something like `0,1` for two):
+If your program needs the GPU index as an argument, pass it `$CUDA_VISIBLE_DEVICES` (for one GPU this is a single number such as `0`; for two it looks like `0,1`):
 
 ```bash
-./my_executable $SLURM_JOB_GPUS
+./my_executable $CUDA_VISIBLE_DEVICES
 ```
 
 {: .note }
-`SLURM_JOB_GPUS` is set in batch jobs, but inside job steps launched with `srun` Slurm sets `SLURM_STEP_GPUS` instead. `CUDA_VISIBLE_DEVICES` is set in both. (Unverified on Talapas; please report anything different to RACS.)
+Slurm also sets `SLURM_JOB_GPUS` in batch and interactive jobs, but it holds the _global_ GPU IDs on the node, which are not renumbered from 0 for your job, so it can differ from `CUDA_VISIBLE_DEVICES`. Inside job steps launched with `srun`, Slurm sets `SLURM_STEP_GPUS` (global IDs, again) instead. `CUDA_VISIBLE_DEVICES` is set for each job step. (Unverified on Talapas; please report anything different to RACS.)
 
 ## GPU types
 

@@ -23,4 +23,7 @@ srun --account=<pirg> --partition=interactive --nodes=1 --ntasks=1 --time=02:00:
 ```
 
 {: .note }
+`srun --x11` only works when the cluster has X11 forwarding enabled in Slurm (the `PrologFlags=X11` setting, which RACS controls).
+
+{: .note }
 The older `xrun` (or `idev`) wrapper script is deprecated. Use `srun --x11` instead.

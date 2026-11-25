@@ -11,7 +11,7 @@ When submitting jobs to Talapas using Slurm, tracking their progress can become 
 
 ## Checking a job with `squeue` and `sacct`
 
-To see your queued and running jobs, run `squeue -u <duckid>`. To see a job after it has finished, use `sacct`, for example `sacct -j 20190 --format=JobID,JobName,Partition,State,Elapsed,ExitCode`. See the [Quick Start Guide]({% link docs/quickstart_guide/quickstart_guide.md %}) for more on `squeue`, `sacct` and `seff`.
+To see your queued and running jobs, run `squeue --me` (or `squeue -u <duckid>`). To see a job after it has finished, use `sacct`, for example `sacct -j 20190 --format=JobID,JobName,Partition,State,Elapsed,ExitCode`. See the [Quick Start Guide]({% link docs/quickstart_guide/quickstart_guide.md %}) for more on `squeue`, `sacct` and `seff`.
 
 ## How to Use `#SBATCH --mail-type` and `#SBATCH --mail-user`
 
@@ -41,7 +41,8 @@ To enable email notifications, include the following options in your Slurm job s
         - `BEGIN`: Notify when the job starts.
         - `END`: Notify when the job completes.
         - `FAIL`: Notify if the job fails.
-        - `ALL`: Notify on all of the above and more (including requeue and stage-out).
+        - `ALL`: Notify on all of the above and more (`BEGIN`, `END`, `FAIL`, `INVALID_DEPEND`, `REQUEUE` and `STAGE_OUT`).
+        - `TIME_LIMIT`: Notify when the job reaches its time limit (`TIME_LIMIT_90`, `TIME_LIMIT_80` and `TIME_LIMIT_50` notify at that percentage of the limit).
     You can use multiple types, separated by commas (as seen in the above example).
 2. `--mail-user`**:**
     - Defines the email address to receive the notifications. Enter your `<duckID>@uoregon.edu` email.

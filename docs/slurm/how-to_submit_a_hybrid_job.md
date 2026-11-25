@@ -86,7 +86,7 @@ export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
 export OMP_PROC_BIND=close
 export OMP_PLACES=cores
 
-# srun does not inherit --cpus-per-task from sbatch, so pass it explicitly
+# pass --cpus-per-task to srun explicitly so every task gets all of its cores
 srun --cpus-per-task=$SLURM_CPUS_PER_TASK ./hybrid_hello
 ```
 
@@ -94,7 +94,7 @@ A few notes on this script:
 
 * `--nodes` and `--ntasks-per-node` determine the number of MPI processes (here 2 \* 2 = 4). If your program does little communication between processes, you can instead specify only `--ntasks` and let Slurm place the tasks wherever there is room. If the program communicates a lot, it's generally better to specify the layout, so that more of the communication stays within a node. The trade-off is that a job with a more demanding layout may take longer to be scheduled.
 * `--cpus-per-task` sets how many CPU cores each task gets. We tell OpenMP to use that many threads by setting `OMP_NUM_THREADS` from `$SLURM_CPUS_PER_TASK`.
-* Since Slurm 22.05, `srun` no longer inherits `--cpus-per-task` from the `sbatch` allocation, so we repeat it on the `srun` line. (Alternatively, `export SRUN_CPUS_PER_TASK=$SLURM_CPUS_PER_TASK`.) Without it, every task may be confined to a single core.
+* We repeat `--cpus-per-task` on the `srun` line so that each task is given all of the cores you requested for it. Being explicit costs nothing, and it avoids the case where tasks end up confined to a single core.
 * `OMP_PROC_BIND` and `OMP_PLACES` pin threads to cores within each task's allocation. Slurm itself already keeps each task on its own cores.
 * The same pattern works with OpenMPI or Intel MPI; only the `module load` lines, the compiler wrapper and the OpenMP flag (for example `-qopenmp` or `-fopenmp` for Intel compilers) change. See the MPI page for details.
 

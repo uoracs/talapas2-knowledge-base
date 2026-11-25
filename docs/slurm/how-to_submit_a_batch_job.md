@@ -107,7 +107,7 @@ $ squeue
 
 Here we see that our job, number 20190, is running 'R' state. Jobs in the system may be in R, PD, or CG state (running, pending, completing).
 
-To view your jobs, run the Slurm command `squeue -u <duckid>`, replacing `<duckid>` with your DuckID.
+To view just your jobs, run `squeue --me`, or `squeue -u <duckid>`, replacing `<duckid>` with your DuckID.
 
 If you need to cancel your job for any reason, run the Slurm command `scancel <job_id>` for example `scancel 20190`.
 

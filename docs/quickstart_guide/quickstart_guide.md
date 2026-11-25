@@ -174,7 +174,7 @@ Note that on Talapas, using `--ntasks` (or `-n`) instead of `--cpus-per-task` (o
 
 If your interactive job will involve a program like Rstudio, which uses X11 to provide graphical output, there are several options.  You can use the `srun --x11` flag like so to forward your X11 connection back to your workstation X server.
 
-`srun --account=<pirg> --x11 --pty --partition=compute --mem=4G --time=4:00 bash`
+`srun --account=<pirg> --x11 --pty --partition=compute --mem=4G --time=4:00:00 bash`
 
 For some cases, the alternative script `xrun` works better.
 

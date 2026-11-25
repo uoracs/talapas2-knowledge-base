@@ -45,6 +45,7 @@ exclude:
   - README.md
   - CLAUDE.md
   - TODO.md
+  - claude/
   - CODE_OF_CONDUCT.md
   - docker-compose.yml
   - Dockerfile

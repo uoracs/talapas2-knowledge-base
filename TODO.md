@@ -94,7 +94,7 @@ Mechanical fixes (naming, typos, front matter, newest module versions from `pack
 
 ## Slurm 25.11.8 doc review: needs RACS confirmation
 
-Every `#SBATCH` block in the docs passes a script check (valid option names, directives before commands, no `--mem` with `--mem-per-cpu`, no `--gres` with `--gpus`) and all internal links resolve. Slurm behavior was written from memory: slurm.schedmd.com returned 403 to the agents, and nothing was run on a real cluster. Please test or confirm:
+Every `#SBATCH` block in the docs passes a script check (valid option names, directives before commands, no `--mem` with `--mem-per-cpu`, no `--gres` with `--gpus`) and all internal links resolve. A second pass checked every Slurm option and behavior against the official 25.11.8 docs (`slurm.schedmd.com/archive/slurm-25.11.8/`); what it could not confirm is listed here. Nothing was run on a real cluster. Please test or confirm:
 
 - [ ] Is an `--account` required and is there **no default partition**? Docs now say so (from the archived release notes).
 - [ ] `interactivegpu` time limit: 12h on the interactive page vs 8h in the partition list.
@@ -107,3 +107,12 @@ Every `#SBATCH` block in the docs passes a script check (valid option names, dir
 - [ ] Mathematica `math -script`, MATLAB `-batch`, Gaussian `--mem` vs `%Mem` (`--mem` should be larger), Jupyter `anaconda2/3` modules and deprecated `NotebookApp` flag, Apptainer `--bind` paths.
 - [ ] `memory.md`: hardware numbers, the once-a-minute RSS check paragraph, `slurm-show-def-mem`.
 - [ ] Automate: a CI job that runs `sbatch --test-only` on the example scripts against a test Slurm 25.11 would catch drift.
+
+### Result of the 25.11.8 documentation check
+Corrections made: `--time=4:00` (4 minutes) -> `4:00:00` in the quickstart X11 example; `--mail-type=ALL` values spelled out; `squeue --me` added; GPU page now uses `$CUDA_VISIBLE_DEVICES` instead of treating `SLURM_JOB_GPUS` as a 0-based index, and no longer says `--gres=gpu` and `--gpus` can't be mixed (they're equivalent styles; pick one); preempt page output-overwrite wording softened (depends on `JobFileAppend`); a "Slurm 22.05 srun stops inheriting --cpus-per-task / `SRUN_CPUS_PER_TASK`" claim was removed because the 25.11.8 srun docs list `SLURM_CPUS_PER_TASK` as an input and have no `SRUN_CPUS_PER_TASK`.
+Could not confirm from the Slurm docs:
+- [ ] `ReqNodeNotAvail, Reserved for maintenance` reason string (maintenance page); exact `oom_kill` log line; memory-ulimit claim and "CANCELLED" state wording in `memory.md`; `3800Mc` ReqMem suffix; `seff` availability.
+- [ ] Is `srun --x11` enabled (`PrologFlags=X11`, built with X11 support)? X11 page now carries a note saying it depends on RACS configuration.
+- [ ] Does `SLURM_SUBMIT_HOST` give a short name or an FQDN on Talapas? `jupyter.md` appends `.talapas.uoregon.edu`.
+- [ ] Intel oneAPI wrapper names (`mpiicx`) are unchecked against Intel docs. Job state names PREEMPTED / REQUEUED / NODE_FAIL are unchecked.
+- [ ] Site-specific, only RACS can confirm: default partition and required account; interactive/interactivegpu limits and GPU constraint names; node sizes and default memory per CPU; default time limits; how memory limits are enforced (the "once per minute" check is now "periodically"); maintenance hold behavior; `PreemptMode`/`GraceTime`, preempt 7-day limit and requeue default; `MpiDefault`.
