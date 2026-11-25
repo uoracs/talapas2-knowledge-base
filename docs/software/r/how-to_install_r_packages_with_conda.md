@@ -1,11 +1,11 @@
 ---
 layout: default
-title: How-To Install R and R Packaged with Conda
+title: How-To Install R and R Packages with Conda
 parent: R
 nav_order: 3
 ---
 
-# How-To Install R and R Packaged with Conda
+# How-To Install R and R Packages with Conda
 
 R is a programming language used for statistical computing and data analysis, while Conda is a package manager that simplifies software installation and environment management across platforms. You can use Conda to create environments where R can be run, and install R packages within these environments, ensuring a consistent and isolated setup for your projects. This method will also allow you to share your exact custom `R` environments with others.
 
@@ -15,9 +15,9 @@ There are two methods in which you can create a conda environment with your desi
 
 ## Loading miniconda3
 
-In order to create a conda environment, we need to have conda available within out session. To do this, simply load miniconda using `module load`:
+In order to create a conda environment, we need to have conda available within our session. To do this, simply load miniconda using `module load`:
 
-`$ module load miniconda3/20240410`
+`$ module load miniconda3/20260319`
 
 Once miniconda3 is loaded successfully, choose a method in which to create your environment.
 
@@ -25,7 +25,7 @@ Once miniconda3 is loaded successfully, choose a method in which to create your 
 
 - **Prepping your** `environment.yml`
   : Start by obtaining your desired `environment.yml` and ensure that all dependencies have corresponding versions numbers. An example ` environment.yml ` file can be seen below. 
-```bash
+```yaml
 name: my-r-env
 channels:
   - defaults
@@ -51,12 +51,12 @@ dependencies:
 {: .note }
 The conda channels `defaults` and `conda-forge` are standard conda channels which are, as the first name implies, the default channels. Conda will look here first when trying to satisfy package installations. However, this is not enough to satisfy installing R and its available packages. This is why the `bioconda` and `R` channels need to be specified.
 
-- **Creating the conda environment with miniconda3:** Once the `environment.yml` is verified to be complete with all required dependencies, we can create the environemnt with the following commands
+- **Creating the conda environment with miniconda3:** Once the `environment.yml` is verified to be complete with all required dependencies, we can create the environment with the following commands
   `$ conda env create --solver=libmamba -f environment.yml`
   Upon successful completion, you can activate the environment by using:
   `$ conda activate name-specified-in-environment-file`
 
-- **Deactivating conda environment:**Once finished with your session, simply enter:
+- **Deactivating conda environment:** Once finished with your session, simply enter:
   `$ conda deactivate`
 
 This will quit the conda environment until you reactivate it again when needed.
@@ -64,12 +64,12 @@ This will quit the conda environment until you reactivate it again when needed.
 ## Not using `environment.yml`
 
 - **Create a conda environment:**
-  - To create a conda environment without using an `environment.yml` file, simply provide a name (“example_environemnt")for your environment in the command below:
+  - To create a conda environment without using an `environment.yml` file, simply provide a name (“example_environment") for your environment in the command below:
     `$ conda create --solver=libmamba --name example_environment r=4.2.0`
-    Note: This documents focuses on using `R` you can specify the version of python as seen above with `python=VERSION` and `r=VERSION` If not specified, conda will use its default python version.
+    Note: This document focuses on using `R` you can specify the version of python as seen above with `python=VERSION` and `r=VERSION` If not specified, conda will use its default python version.
 - **Activate environment:**
-  - Once the environemnt has been created, simply activate it via the command: `$ conda activate example_environment` (where “example_environment” is the name you specifed in the previous command).
-- **Using R to install packages:** Once activated, you have the flexibility to incrementally add new packages and dependencies to your environment as needed to adapt to changing workflow requirements using R’s `install.packages()` or using conda. This allows you to create a tailor the environment with only the packages you need.
+  - Once the environment has been created, simply activate it via the command: `$ conda activate example_environment` (where “example_environment” is the name you specified in the previous command).
+- **Using R to install packages:** Once activated, you have the flexibility to incrementally add new packages and dependencies to your environment as needed to adapt to changing workflow requirements using R’s `install.packages()` or using conda. This allows you to tailor the environment with only the packages you need.
   - **Using** `install.packages()`
 
 ```R
@@ -108,7 +108,7 @@ This will quit the conda environment until you reactivate it again when needed.
 To reactivate an existing environment that was created:
 
 - **Load miniconda3:**
-  `$ module load miniconda3/20240410`
+  `$ module load miniconda3/20260319`
 - **Find environment name:**
   - If you forgot what your environments name was, you can either refer back to your `environment.yml` file or use the command: `$ conda env list`. This will produce a list of all the available conda environments and should help you remember what the name was.
 - **Activate environment:**

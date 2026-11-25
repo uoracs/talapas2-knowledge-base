@@ -7,7 +7,7 @@ nav_order: 12
 
 # How-To Run MATLAB
 
-This article gives a 3 simple examples showing how to run MATLAB on Talapas.
+This article gives 3 simple examples showing how to run MATLAB on Talapas.
 
 ## Versions
 
@@ -22,8 +22,8 @@ We have several versions available, to view run, `module available matlab`
 
 ## Interactive
 
-1. ssh onto a talapas login node ([How-to Login to Talapas]({% link docs/connecting_to_talapas/how-to_login_to_talapas.md %}))
-2. Start an interactive job ([How-to Start an Interactive Job]({% link docs/slurm/how-to_start_an_interactive_job.md %}))
+1. ssh onto a talapas login node ([How-To Login to Talapas]({% link docs/connecting_to_talapas/how-to_login_to_talapas.md %}))
+2. Start an interactive job ([How-To Start an Interactive Job]({% link docs/slurm/how-to_start_an_interactive_job.md %}))
 3. Once on the allocated node run:
 
 ```bash

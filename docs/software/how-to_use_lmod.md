@@ -9,7 +9,7 @@ nav_order: 14
 
 Software on Talapas is managed via "environment modules".  If you need to run a particular software package, you can search for a module associated with that package, and load it.  The module contains everything required by your shell environment for running the software, including any dependencies the software may have.  Using environment modules makes it very convenient to switch from one version of a software package to another.
 
-LMod is used to manage your software environment on Talapas.   This HOWTO contains some common use cases for LMod.
+LMod is used to manage your software environment on Talapas.   This guide contains some common use cases for LMod.
 
 **To see modules currently loaded in your environment:**
 
@@ -23,15 +23,15 @@ LMod is used to manage your software environment on Talapas.   This HOWTO cont
 
 `$ module load matlab`
 
-If there are multiple versions of a software package (e.g. matlab/r2016b and matlab/r2017a), then the most recent version (matlab/r2017a) is often the version loaded by default.
+If there are multiple versions of a software package (e.g. matlab/R2025a and matlab/R2026a), then the most recent version (matlab/R2026a) is often the version loaded by default.
 
-**To load a specific version of a package, e.g. matlab/r2016b:**
+**To load a specific version of a package, e.g. matlab/R2026a:**
 
-`$ module load matlab/r2016b`
+`$ module load matlab/R2026a`
 
 **To unload a software package, e.g. matlab:**
 
-`$ module unload matlab` or `$ module unload matlab/r2016b
+`$ module unload matlab` or `$ module unload matlab/R2026a`
 
 LMod supports module hierarchy. An hierarchy is a family of modules that were built using the same environment using a particular compiler.  Hierarchies help prevent conflicts that can occur between packages built using different environments or compilers.  Packages that conflict with your current environment may not be available or visible via "module avail" - conflicting packages are under a different hierarchy.  An example of this would be an MVAPICH package that was built with a recent version of a GCC6 compiler and sits under the "Bright" hierarchy, but it is not visible because it conflicts with the MPI packages under the "Intel" hierarchy that was built using the Intel compiler, which is loaded into your environment by default.
 

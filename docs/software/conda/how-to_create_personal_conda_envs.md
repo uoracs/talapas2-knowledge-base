@@ -7,7 +7,7 @@ nav_order: 1
 
 # How-To Create Personal Conda Environments
 
-Conda is an open-source package management and environment management system that simplifies the process of installing, updating, and managing software packages and their dependencies across various programming languages. It is particularly useful for creating isolated environments for different projects, ensuring compatibility and reproducibility. miniconda3 is currently available on Talapas2, enabling users to create and manage their own environments at their convenience and according to their workflow needs.
+Conda is an open-source package management and environment management system that simplifies the process of installing, updating, and managing software packages and their dependencies across various programming languages. It is particularly useful for creating isolated environments for different projects, ensuring compatibility and reproducibility. miniconda3 is currently available on Talapas, enabling users to create and manage their own environments at their convenience and according to their workflow needs.
 
 ## Methods for Creating Conda Environment
 
@@ -15,9 +15,9 @@ There are two primary methods for creating conda environments. The first method 
 
 ## Loading miniconda3
 
-In order to create a conda environment, we need to have conda available within out session. To do this, simply load miniconda using `module load`:
+In order to create a conda environment, we need to have conda available within our session. To do this, simply load miniconda using `module load`:
 
-`$ module load miniconda3/20240410`
+`$ module load miniconda3/20260319`
 
 Once miniconda3 is loaded successfully, choose a method in which to create your environment.
 
@@ -26,7 +26,7 @@ Once miniconda3 is loaded successfully, choose a method in which to create your 
 - **Create an environment.yml file**: Start by creating a new text file named `environment.yml` in your project directory: `$ touch environment.yml`
 - **Specify Environment Configuration**: Open the `environment.yml` file in a text editor of your choice and specify the desired configuration for your environment. This typically includes the name of the environment (`name`), the list of packages to be installed (`dependencies`), and optionally the channels from which to install packages (`channels`). For example:
 
-```bash
+```yaml
 name: example_environment-20240930
 channels:
   - defaults
@@ -45,7 +45,7 @@ dependencies:
   - In many instances, the default channels, along with conda-forge, are adequate for installing the specified dependencies. However, should certain packages not be available in either of these channels, you have the option to specify the channel where the package can be located. Typically, the package's documentation will indicate the appropriate channel.
 - **Data Science packages**
   - If you are creating an environment in which you would like many of the common packages used for data science, there exists a dependency you can include named `datascience` that will install those common packages without needing to specify each one.
-- **Creating the conda environment with miniconda3:** Once the `environment.yml` is complete with all required dependencies, we can create the environemnt with the following command:
+- **Creating the conda environment with miniconda3:** Once the `environment.yml` is complete with all required dependencies, we can create the environment with the following command:
   `$ conda env create --solver=libmamba -f environment.yml`
   Upon successful completion, you can activate the environment by using:
   `$ conda activate example_environment`
@@ -58,13 +58,13 @@ dependencies:
 
 ## Not using `environment.yml`
 
-- **Create a conda environment:** To create a conda environment without using an `environment.yml` file, simply provide a name (“example_environemnt")for your environment in the command below:
+- **Create a conda environment:** To create a conda environment without using an `environment.yml` file, simply provide a name (“example_environment") for your environment in the command below:
   `$ conda create --solver=libmamba --name example_environment python=3.12.9`
   Note: you can specify the version of python as seen above with `python=VERSION`. If not specified, conda will use its default python version.
 
 - **Activate environment:** Once the environment has been created, simply activate it via the command: `$ conda activate example_environment` (where “example_environment” is the name of your environment).
 
-- **Using pip to install packages:** Once activated, you have the flexibility to incrementally add new packages and dependencies to your environment as needed to adapt to changing workflow requirements. This allows you to create a tailor the environment with only the packages you need. An example using pip to install a `pytorch` can be seen below:
+- **Using pip to install packages:** Once activated, you have the flexibility to incrementally add new packages and dependencies to your environment as needed to adapt to changing workflow requirements. This allows you to tailor the environment with only the packages you need. An example using pip to install a `pytorch` can be seen below:
   `$ pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu124`
 
 - **Deactivating conda environment:** Once finished with your session, simply enter:
@@ -77,9 +77,9 @@ This will quit the conda environment until you reactivate it again when needed.
 To reactivate an existing environment that was created:
 
 - **Load miniconda3:**
-  `$ module load miniconda3/20240410`
+  `$ module load miniconda3/20260319`
 - **Find environment name:** If you forgot what your environments name was, you can either refer back to your `environment.yml` file or use the command: `$ conda env list`. This will produce a list of all the available conda environments and should help you remember what the name was.
 - **Activate environment:** As before, once you have the name of your created environment, simply do:
   `$ conda activate environment_name`
-- **Deactivating conda environment:** Once finished with your session, simply enter**:
+- **Deactivating conda environment:** Once finished with your session, simply enter:
     `$ conda deactivate`
