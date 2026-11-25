@@ -18,7 +18,7 @@ Designate one panel for the source Collection and the other for the destination 
 
 Step 2. Connect to the source Collection and navigate to the desired file or folder, check the box to select it. Connect to the destination Collection and navigate to the destination folder.
 
-The example below shows the Talapas Collection is in left panel at path '/projects/racs/shared' with the folder 'Apptainer' selected. The right panel shows the CephFS research storage Collection at path '/cephfs/racs'
+The example below shows the Talapas2 Collection is in left panel at path '/projects/racs/shared' with the folder 'Apptainer' selected. The right panel shows the CephFS research storage Collection at path '/cephfs/racs'
 
 ![Globus File Manager Page](../../../../../assets/images/globus_filemanager_transfer.png)
 

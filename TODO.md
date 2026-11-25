@@ -4,7 +4,7 @@ Internal tracking list (excluded from the published site). Items are for team re
 
 ## Naming and convention sweeps
 
-- [x] Replace "Talapas2" / "T2" with "Talapas" (done in the refresh branch; literal collection name "University of Oregon - Talapas2" and `uoregon#Talapas2` CLI output left until verified).
+- [x] Replace "Talapas2" / "T2" with "Talapas" (done in the refresh branch; the Globus collection is really named "University of Oregon - Talapas2", so "Talapas2" stays wherever that collection is named).
 - [x] (done in refresh branch) Replace old `hn1` / `ln1` / `talapas-ln*` references: `how-to_run_an_x11_app.md`, `jupyter.md`, `how-to_submit_an_array_job.md` (`ln1` prompts), `how-to_submit_a_hybrid_job.md` (example env output).
 - [x] (done in refresh branch) Replace `hpcrcf` account/path examples: `quickstart_guide.md`, `how-to_run_an_x11_app.md`, `how-to_submit_a_hybrid_job.md`, `how-to_install_globus_cli.md`.
 - [x] (done in refresh branch) Normalize titles to "How-To" and prose to "Slurm".
