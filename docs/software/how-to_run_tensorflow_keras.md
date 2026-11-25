@@ -7,6 +7,9 @@ nav_order: 13
 
 # How-To Run Tensorflow/Keras on Talapas
 
+{: .warning }
+The job script and module versions on this page have been updated for the current Slurm syntax but have not been re-tested with the current TensorFlow and CUDA modules. Run `module avail tensorflow cuda` to see what is installed, and adjust the module names if needed.
+
 ## [TensorFlow](https://www.tensorflow.org/) is a common machine learning package primarily run in python
 
 ### [Keras](https://keras.io/) is a high-level neural networks API, written in Python and capable of running on top of [TensorFlow](https://github.com/tensorflow/tensorflow), [CNTK](https://github.com/Microsoft/cntk), or [Theano](https://github.com/Theano/Theano).
@@ -25,10 +28,10 @@ tf.keras
 ## Step-by-step guide
 
 * We will start by launching an interactive GPU session from one of the talapas login nodes
-    `$ srun --account=<your account> --pty --gres=gpu:1 --mem=4G --time=60 --partition=testgpu bash`
+    `$ srun --account=<pirg> --partition=interactivegpu --gpus=1 --mem=4G --time=60 --pty bash`
 * Wait for your interactive session to start
 * Load the modules for tensorflow
-    `$ module load cuda/9.0`
+    `$ module load cuda/13.0`
     `$ module load python3`
 * Check what GPU resources are available
 
@@ -184,15 +187,18 @@ Congratulations, you've trained your first network on Talapas! Let's try one mor
 
 ```bash
 #!/bin/bash
-#SBATCH --job-name=GPUMnistTest     ### Job Name
-#SBATCH --partition=gpu       ### Quality of Service (like a queue in PBS)
-#SBATCH --time=0-01:00:00     ### Wall clock time limit in Days-HH:MM:SS
-#SBATCH --nodes=1             ### Node count required for the job
-#SBATCH --ntasks-per-node=1   ### Number of tasks to be launched per Node
-#SBATCH --gres=gpu:1          ### General REServation of gpu:number of gpus
-#SBATCH --account=<your account>
 
-module load cuda/9.0
+#SBATCH --account=<pirg>          ### your slurm account is the name of your pirg
+#SBATCH --partition=gpu           ### specify the partition, see Partition List
+#SBATCH --job-name=GPUMnistTest   ### name of your job
+#SBATCH --output=GPUMnistTest-%j.out ### name of batch script's standard output and error
+#SBATCH --time=0-01:00:00         ### wall clock time limit in Days-HH:MM:SS
+#SBATCH --nodes=1                 ### node count required for the job
+#SBATCH --ntasks=1                ### number of tasks
+#SBATCH --gpus=1                  ### number of GPUs
+#SBATCH --mem=4G                  ### RAM for the whole job
+
+module load cuda/13.0
 module load python3
 python3 my_test.py > my_test_output
 ```

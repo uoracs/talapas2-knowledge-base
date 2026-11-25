@@ -7,290 +7,116 @@ nav_order: 5
 
 # How-To Submit a Hybrid Job
 
-A hybrid job is one that uses both multiple processes and multiple threads within a process.  Typically, MPI is used to start the multiple processes, and each process will use a multithreading library like [OpenMP](https://en.wikipedia.org/wiki/OpenMP) to perform computation with multiple threads.
+A hybrid job is one that uses both multiple processes and multiple threads within a process. Typically, MPI is used to start the multiple processes, and each process uses a multithreading library like [OpenMP](https://en.wikipedia.org/wiki/OpenMP) to perform computation with multiple threads.
 
-Starting such jobs is very similar to starting an MPI job.  See the [How-To Submit an MPI Job]({% link docs/slurm/how-to_submit_an_mpi_job.md %}) and [How-To Submit an OpenMP Job]({% link docs/slurm/how-to_submit_an_openmp_job.md %}) pages for details.
+Starting such jobs is very similar to starting an MPI job. See the [How-To Submit an MPI Job]({% link docs/slurm/how-to_submit_an_mpi_job.md %}) and [How-To Submit an OpenMP Job]({% link docs/slurm/how-to_submit_an_openmp_job.md %}) pages for details.
 
-The main difference is that you will have to tell Slurm that you intend for each task to be bound to multiple CPU cores (rather than just one).  If you omit this step, all threads for a process will be bound to the same core, and it's unlikely that you will see any speedup from threading.
+The main difference is that you have to tell Slurm that each task (MPI process) should get multiple CPU cores, rather than just one. If you omit this step, all threads of a process will share a single core, and it's unlikely that you will see any speedup from threading.
 
-To do this, add a parameter like this to your sbatch script
+To do this, add a parameter like this to your sbatch script:
 
-`#SBATCH --cpus-per-task=28`
+```bash
+#SBATCH --cpus-per-task=8
+```
 
-In this case, we're choosing 28 cores with the knowledge that our hardware has 28 cores per node.  A smaller number could be chosen, but the number cannot be larger than the number of cores available on the hardware.
+The number of CPU cores you request is _tasks_ \* _cpus-per-task_, and the cores for a single task must all be on the same node. So `--cpus-per-task` cannot be larger than the number of cores on a node, and the product of `--ntasks-per-node` and `--cpus-per-task` cannot be greater than the number of cores on a node. See the [Partition List]({% link docs/about_talapas/partition_list.md %}) for the number of CPUs on the nodes in each partition.
 
-Note also that if you specify the `--ntasks-per-node` parameter, the product of these two parameters cannot be greater than the number of available cores on the hardware.
+## Example
 
-## Extended Example
+Here is a small hybrid MPI/OpenMP program in C, saved as `hybrid_hello.c`. Each MPI rank starts a team of OpenMP threads and each thread reports where it is running:
 
-In this section, we'll show a simple example of a hybrid MPI/OpenMP program.  The program prints some useful diagnostic information and performs a trivial CPU-bound computation.  It uses the Intel MPI implementation, but it could be adapted to use OpenMPI instead.
-
-Here's the code in a file named `test-verbose.cpp`:
-
-```c++
-// MPI/OpenMP example with diagnostic output
-
-// example compile command:
-// module load intel intel-mpi
-// mpiicpc -mt_mpi -qopenmp test-verbose.cpp -o test-verbose
-
-#include <errno.h>
-#include <error.h>
-#include <iostream>
+```c
+// hybrid_hello.c: MPI/OpenMP example with diagnostic output
+#include <mpi.h>
+#include <omp.h>
 #include <sched.h>
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <unistd.h>
-
-#include "mpi.h"
-#include <omp.h>
-
 
 int main(int argc, char *argv[]) {
-  int usemem_gb = 0;
-  if (argc > 1)
-    usemem_gb = atoi(argv[1]);
-  if (errno || usemem_gb < 0)
-    error(1, errno,
-          "argument (if present) must be integer number of GB to allocate");
-
-  if (usemem_gb > 0) {
-    const size_t usemem_bytes = size_t(usemem_gb) * 1024 * 1024 * 1024;
-    void *mem = malloc(usemem_bytes);
-    if (!mem)
-      error(1, errno, "malloc failed (not enough memory?)");
-    // writing memory to force it into RSS
-    memset(mem, 86, usemem_bytes);
-    // NB: not freeing memory until exit()
-  }
-
-  MPI::Init(argc, argv);
-  int size = MPI::COMM_WORLD.Get_size();
-  int rank = MPI::COMM_WORLD.Get_rank();
-  bool am_master = (rank == 0);
+  int provided, rank, size, namelen;
   char name[MPI_MAX_PROCESSOR_NAME];
-  int namelen;
-  MPI::Get_processor_name(name, namelen);
 
-  cpu_set_t cpuset;
-  if (sched_getaffinity(0, sizeof cpuset, &cpuset))
-    error(1, errno, "sched_getaffinity failed");
-  int cpucount = CPU_COUNT(&cpuset);
+  // FUNNELED: only the main thread of each rank makes MPI calls
+  MPI_Init_thread(&argc, &argv, MPI_THREAD_FUNNELED, &provided);
+  MPI_Comm_rank(MPI_COMM_WORLD, &rank);
+  MPI_Comm_size(MPI_COMM_WORLD, &size);
+  MPI_Get_processor_name(name, &namelen);
 
-  if (am_master) {
-    std::cout << "rank " << rank << " of " << size << " running on " << name
-              << " alloc " << usemem_gb << "GB" << " cpu count "
-              << cpucount << " mask ";
-    for (int cpu=0; cpu < CPU_SETSIZE; cpu++)
-      if (CPU_ISSET(cpu, &cpuset))
-        std::cout << cpu << ",";
-    std::cout << std::endl;
-
-    for (int i=1; i < size; i++) {
-      MPI::Status stat;
-      MPI::COMM_WORLD.Recv(&rank, 1, MPI_INT, i, 1, stat);
-      MPI::COMM_WORLD.Recv(&size, 1, MPI_INT, i, 1, stat);
-      MPI::COMM_WORLD.Recv(&namelen, 1, MPI_INT, i, 1, stat);
-      MPI::COMM_WORLD.Recv(name, namelen + 1, MPI_CHAR, i, 1, stat);
-      std::cout << "rank " << rank << " of " << size << " running on " << name
-                << " alloc " << usemem_gb << "GB";
-
-      int cpucount_i;
-      MPI::COMM_WORLD.Recv(&cpucount_i, 1, MPI_INT, i, 1, stat);
-      std::cout << " cpu count " << cpucount_i << " mask ";
-      for (int cpu_i=0; cpu_i < cpucount_i; cpu_i++) {
-        int cpu;
-        MPI::COMM_WORLD.Recv(&cpu, 1, MPI_INT, i, 1, stat);
-        std::cout << cpu << ",";
-      }
-      std::cout << std::endl;
-    }
-  } else {
-    MPI::COMM_WORLD.Send(&rank, 1, MPI_INT, 0, 1);
-    MPI::COMM_WORLD.Send(&size, 1, MPI_INT, 0, 1);
-    MPI::COMM_WORLD.Send(&namelen, 1, MPI_INT, 0, 1);
-    MPI::COMM_WORLD.Send(name, namelen + 1, MPI_CHAR, 0, 1);
-
-    MPI::COMM_WORLD.Send(&cpucount, 1, MPI_INT, 0, 1);
-    for (int cpu=0; cpu < CPU_SETSIZE; cpu++)
-      if (CPU_ISSET(cpu, &cpuset))
-        MPI::COMM_WORLD.Send(&cpu, 1, MPI_INT, 0, 1);
-  }
-
-  // junk computation to spin the CPUs in OpenMP threads
-  int result=0;
-  int iam=0, np=1;
-#pragma omp parallel default(shared) private(iam, np)
+  #pragma omp parallel
   {
-    np = omp_get_num_threads();
-    iam = omp_get_thread_num();
-
-    int s=iam*rank;
-    // each rank-thread to do approx equal share a fixed-size workload
-    for (long int i=0; i<(1024*1024*1000/(np*size)); i++)
-      for (int j=0; j<10000; j++)
-        s += j;
-    result += s;
-  }
-  // output the result to keep compiler from optimizing it away
-  if (rank == 0)
-    std::cout << "(meaningless) result " << result << std::endl;
-
-  // synchronize to wait for all workers to finish
-  // (maybe use MPI::Barrier instead?)
-  int value=0;
-  if (am_master) {
-    for (int i=1; i < size; i++) {
-      MPI::Status stat;
-      MPI::COMM_WORLD.Recv(&value, 1, MPI_INT, i, 1, stat);
-    }
-  } else {
-    MPI::COMM_WORLD.Send(&value, 1, MPI_INT, 0, 1);
+    printf("rank %d of %d on %s, thread %d of %d, cpu %d\n",
+           rank, size, name, omp_get_thread_num(), omp_get_num_threads(),
+           sched_getcpu());
   }
 
-  MPI::Finalize();
-
-  if (usemem_gb > 0)
-    sleep(90);       // long enough for Slurm to kill us if RAM usage too high
-
+  MPI_Finalize();
   return 0;
 }
 ```
 
-The program takes one optional, integer parameter.  If specified, each task will allocate that number of gigabytes of RAM.  This is useful for testing the effects of Slurm memory allocation.
+Compile it with an MPI compiler wrapper and the OpenMP flag for your compiler. For example, with GNU compilers and MPICH:
 
-Here is an example Slurm `sbatch` script to invoke the program:
+```bash
+module load gcc/15.2.0-5dhqpt3
+module load mpich/4.3.2-khdddkb
+mpicc -fopenmp hybrid_hello.c -o hybrid_hello
+```
+
+Here is an example Slurm job script (`hybrid.sbatch`) to run the program with 4 MPI tasks, each using 8 threads, spread over 2 nodes:
 
 ```bash
 #!/bin/bash
 
-#SBATCH --account=<myPIRG>
-#SBATCH --partition=preempt
-#SBATCH --job-name=test-verbose-srun
-#SBATCH --output=%x.out
-#SBATCH --time=4:00:00
-#SBATCH --nodes=2
-#SBATCH --ntasks-per-node=28
-#SBATCH --ntasks=16
-#SBATCH --cpus-per-task=8
-#SBATCH --mem-per-cpu=1G
+#SBATCH --account=<pirg>          ### your slurm account is the name of your pirg
+#SBATCH --partition=compute       ### specify the partition, see Partition List
+#SBATCH --job-name=hybrid         ### name of your job
+#SBATCH --output=hybrid.out       ### name of batch script's standard output
+#SBATCH --error=hybrid.err        ### name of batch script's standard error
+#SBATCH --time=00:10:00           ### wall clock time limit
+#SBATCH --nodes=2                 ### number of nodes
+#SBATCH --ntasks-per-node=2       ### MPI tasks per node (4 tasks in total)
+#SBATCH --cpus-per-task=8         ### cores per task (OMP threads per MPI task)
+#SBATCH --mem-per-cpu=1G          ### memory for each cpu requested
 
-module purge
-module load slurm
-module load intel
-module load intel-mpi
-module load mkl
+module load gcc/15.2.0-5dhqpt3
+module load mpich/4.3.2-khdddkb
 
-# print some diagnostic info
-echo env for main task
-env | sort | egrep -e '^(SLURM|OMP|I_MPI)_'
-echo
-
-camask=$(fgrep -ie cpus_allowed: /proc/self/status | awk '{ print $2 }' | tr -d ,)
-ca=$(python -c 'print(bin(0x'${camask}').count("1"))')
-echo Cpus_allowed count for main task before mpi startup is $ca
-echo
-# end diagnostic info
-
-# could choose another mpi lib config, but release_mt is the default
-# source mpivars.sh {debug,release}{,_mt}
-
-# https://software.intel.com/en-us/mpi-developer-reference-linux-interoperability-with-openmp
-# export I_MPI_PIN_DOMAIN=omp
-
-# possibly redundant?
+# one OpenMP thread per core assigned to each task
 export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
+export OMP_PROC_BIND=close
+export OMP_PLACES=cores
 
-# https://software.intel.com/en-us/mpi-developer-reference-linux-other-environment-variables
-# export I_MPI_DEBUG=5,host,level
-
-\time srun ./test-verbose ${1+"$@"}
+# srun does not inherit --cpus-per-task from sbatch, so pass it explicitly
+srun --cpus-per-task=$SLURM_CPUS_PER_TASK ./hybrid_hello
 ```
 
-Note that only the `--ntasks` flag is used to determine the number of MPI worker processes.  This means that the individual tasks may be spread across available nodes as Slurm sees fit.  This is usually a good approach if the program does little inter-worker communication.  And indeed, this example program does very little–most of its computation is performed by each thread without communication.
+A few notes on this script:
 
-If the MPI program does a lot of inter-worker communication, it's generally better to specify a layout of tasks on nodes.  By uncommenting the `--nodes` and `--ntasks-per-node` flags (and commenting out the `--ntasks` flag), we could specify that two compute nodes are to be used, each with 28 tasks.  The advantage of packing lots of tasks onto a minimal number of nodes is that most of the inter-worker communication happens locally on the node, which is faster and more efficient.  The disadvantage is that it may take longer for Slurm to schedule such a job, since we're being more demanding about what we require.
+* `--nodes` and `--ntasks-per-node` determine the number of MPI processes (here 2 \* 2 = 4). If your program does little communication between processes, you can instead specify only `--ntasks` and let Slurm place the tasks wherever there is room. If the program communicates a lot, it's generally better to specify the layout, so that more of the communication stays within a node. The trade-off is that a job with a more demanding layout may take longer to be scheduled.
+* `--cpus-per-task` sets how many CPU cores each task gets. We tell OpenMP to use that many threads by setting `OMP_NUM_THREADS` from `$SLURM_CPUS_PER_TASK`.
+* Since Slurm 22.05, `srun` no longer inherits `--cpus-per-task` from the `sbatch` allocation, so we repeat it on the `srun` line. (Alternatively, `export SRUN_CPUS_PER_TASK=$SLURM_CPUS_PER_TASK`.) Without it, every task may be confined to a single core.
+* `OMP_PROC_BIND` and `OMP_PLACES` pin threads to cores within each task's allocation. Slurm itself already keeps each task on its own cores.
+* The same pattern works with OpenMPI or Intel MPI; only the `module load` lines, the compiler wrapper and the OpenMP flag (for example `-qopenmp` or `-fopenmp` for Intel compilers) change. See the MPI page for details.
 
-With either approach, the Slurm `srun` command will ensure that the total number of tasks is communicated to our program.  We don't need to pass this in explicitly.
+## Example output
 
-The `--cpus-per-task` flag specifies how many CPU cores are assigned to each task.  This can make the program run much faster if the tasks are able to make use of multiple CPUs.  In this example, we do so using OpenMP.  Slurm will constrain each task to use only the CPUs assigned to it (see below).  Note that we tell OpenMP how many CPUs are available to each task by setting the `$OMP_NUM_THREADS` variable.
+The output file `hybrid.out` will contain one line per thread, 32 lines in this case. The order varies from run to run, and the host names and CPU numbers will differ. It will look something like this (abbreviated, illustrative only):
 
-This script prints some diagnostic information, but these lines could be removed or commented out.
-
-## Sample Timings
-
-Here are some sample times (in seconds) for a workload split across **n** MPI workers each using **c** OpenMP threads, all on Skylake nodes.  These times are from single runs, so include noticeable noise.  For the shorter timings, startup times play a significant role.  Broadly speaking, though, we see almost linear speedup as more cores are added.  Since the computations in this example program are entirely independent, the particular combination of worker count and thread count makes little difference.
-
-|      | *c=1* | *c=2* | *c=4* | *c=8* | *c=16* | *c=32* |
-| ---- | ----- | ----- | ----- | ----- | ------ | ------ |
-| n=1  | 4479  | 2350  | 1272  | 642   | 318    | 160    |
-| n=2  | 2348  | 1272  | 637   | 319   | 160    | 85     |
-| n=4  | 1183  | 637   | 322   | 160   | 87     | 41     |
-| n=8  | 639   | 319   | 160   | 81    | 42     | 22     |
-| n=16 | 309   | 161   | 81    | 56    | 21     | 13     |
-| n=32 | 162   | 83    | 42    | 24    | 23     | 8      |
-
-## Sample Output
-
-For the n=4, c=16 case, here is some sample output:
-
-```bash
-env for main task
-I_MPI_PMI_LIBRARY=/cm/shared/apps/slurm/17.11/lib/libpmi.so
-I_MPI_ROOT=/packages/intel/17/linux/mpi
-SLURM_CHECKPOINT_IMAGE_DIR=/var/slurm/checkpoint
-SLURM_CLUSTER_NAME=slurm_cluster
-SLURM_CPUS_ON_NODE=32
-SLURM_CPUS_PER_TASK=16
-SLURM_GTIDS=0
-SLURM_JOBID=6112602
-SLURM_JOB_ACCOUNT=<pirg>
-SLURM_JOB_CPUS_PER_NODE=32(x2)
-SLURM_JOB_GID=2000
-SLURM_JOB_ID=6112602
-SLURM_JOB_NAME=test-verbose-srun
-SLURM_JOB_NODELIST=n[177,180]
-SLURM_JOB_NUM_NODES=2
-SLURM_JOB_PARTITION=preempt
-SLURM_JOB_QOS=normal
-SLURM_JOB_UID=1665
-SLURM_JOB_USER=mkc
-SLURM_LOCALID=0
-SLURM_MEM_PER_CPU=1024
-SLURM_NNODES=2
-SLURM_NODEID=0
-SLURM_NODELIST=n[177,180]
-SLURM_NODE_ALIASES=(null)
-SLURM_NPROCS=4
-SLURM_NTASKS=4
-SLURM_PRIO_PROCESS=0
-SLURM_PROCID=0
-SLURM_SUBMIT_DIR=/gpfs/home/mkc/mpi/test
-SLURM_SUBMIT_HOST=login2
-SLURM_TASKS_PER_NODE=2(x2)
-SLURM_TASK_PID=349764
-SLURM_TOPOLOGY_ADDR=ibcore[1-4].ib8.n177
-SLURM_TOPOLOGY_ADDR_PATTERN=switch.switch.node
-SLURM_WORKING_CLUSTER=slurm_cluster:login1:6817:8192
-Cpus_allowed count for main task before mpi startup is 32
-rank 0 of 4 running on n177 alloc 0GB cpu count 16 mask 6,8,10,12,14,16,18,20,22,24,26,28,30,32,34,36,
-rank 1 of 4 running on n177 alloc 0GB cpu count 16 mask 1,3,5,7,9,11,13,15,17,19,21,23,27,31,33,38,
-rank 2 of 4 running on n180 alloc 0GB cpu count 16 mask 1,6,8,10,12,14,16,20,22,24,28,30,32,34,36,38,
-rank 3 of 4 running on n180 alloc 0GB cpu count 16 mask 3,5,9,11,15,17,19,21,23,25,27,29,31,35,37,39,
+```
+rank 0 of 4 on n0111, thread 0 of 8, cpu 3
+rank 0 of 4 on n0111, thread 1 of 8, cpu 4
+...
+rank 3 of 4 on n0112, thread 7 of 8, cpu 61
 ```
 
-We can see the various Slurm parameters passed in as environment variables.
+Each rank should report threads on different CPUs, and `thread N of 8` should match your `--cpus-per-task`. If every thread of a rank reports the same CPU, check that `--cpus-per-task` is set and passed to `srun` as above.
 
-Also, note that each MPI workers is restricted to its own set of CPUs, with no overlap.  (In the main task on n177, before MPI starts, the initial CPU mask has 32 CPUs, but when MPI starts, it allots 16 each to the two workers that end up running on n177.)
+## Memory
 
-Finally, adding a parameter (16) to have our program use more RAM per CPU than we have requested from Slurm, the job will fail with an error like this
+Memory is requested per CPU with `--mem-per-cpu`, so each task gets `--cpus-per-task` times that amount. If a task uses more memory than it was allocated, Slurm kills it and you will see an out-of-memory message such as `slurmstepd: error: Detected 1 oom-kill event(s) in StepId=... cgroup`. Request more memory, or reduce the number of tasks per node.
 
-```bash
-slurmstepd: error: Detected 1 oom-kill event(s) in step 6139636.0 cgroup. Some of your processes may have been killed by the cgroup out-of-memory handler.
-srun: error: n126: task 8: Out Of Memory
-slurmstepd: error: Detected 2 oom-kill event(s) in step 6139636.0 cgroup. Some of your processes may have been killed by the cgroup out-of-memory handler.
-0.01user 0.01system 0:06.34elapsed 0%CPU (0avgtext+0avgdata 5116maxresident)k
-0inputs+0outputs (0major+1619minor)pagefaults 0swaps
-slurmstepd: error: Detected 2 oom-kill event(s) in step 6139636.batch cgroup. Some of your processes may have been killed by the cgroup out-of-memory handler.
-```
+## See also
+
+* [How-To Submit an MPI Job]({% link docs/slurm/how-to_submit_an_mpi_job.md %})
+* [How-To Submit an OpenMP Job]({% link docs/slurm/how-to_submit_an_openmp_job.md %})
+* [How-To Submit a Batch Job]({% link docs/slurm/how-to_submit_a_batch_job.md %})

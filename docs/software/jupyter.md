@@ -43,13 +43,15 @@ At the bottom of the script, modules are loaded and `jupyter` is invoked.  Edi
 ```bash
 #!/bin/bash
 
-#SBATCH --account=<youraccount>
-#SBATCH --partition=interactive
-#SBATCH --cpus-per-task=1
-#SBATCH --mem-per-cpu=4G
-#SBATCH --time 0-4:00:00
-#SBATCH --job-name jupyter
-#SBATCH --output jupyter-%J.log
+#SBATCH --account=<pirg>          # your slurm account is the name of your pirg
+#SBATCH --partition=interactive   # specify the partition, see Partition List
+#SBATCH --job-name=jupyter        # name of your job
+#SBATCH --output=jupyter-%j.log   # name of batch script's standard output and error
+#SBATCH --time=0-04:00:00         # set a limit on the total run time of the job
+#SBATCH --nodes=1                 # request 1 node
+#SBATCH --ntasks=1                # request 1 task
+#SBATCH --cpus-per-task=1         # request 1 cpu per task
+#SBATCH --mem-per-cpu=4G          # request 4GB RAM for each cpu requested
 
 case $(hostname) in login*)
     echo 'this script should be run with sbatch'; exit 1;;
@@ -102,7 +104,7 @@ module purge
 # uncomment just one: tensorflow is a good start for most purposes
 module load tensorflow
 # module load tensorflow2
-# module load anaconda3
+# module load miniconda3
 # module load python3
 # module load anaconda2
 # module load python2

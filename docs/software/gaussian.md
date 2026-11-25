@@ -16,14 +16,15 @@ Your Slurm (sbatch) input file might look like this
 
 ```bash
 #!/bin/bash
-#SBATCH --partition=compute
-#SBATCH --mem=4G
-#SBATCH --job-name=yourjob
-#SBATCH --output=yourjob.slurm.out
-#SBATCH --nodes=1
-#SBATCH --ntasks-per-node=1
-#SBATCH --cpus-per-task=28
-#SBATCH --account=<pirg>
+#SBATCH --account=<pirg>           # your slurm account is the name of your pirg
+#SBATCH --partition=compute        # specify the partition, see Partition List
+#SBATCH --job-name=yourjob         # name of your job
+#SBATCH --output=yourjob.slurm.out # name of batch script's standard output
+#SBATCH --time=0-04:00:00          # set a limit on the total run time of the job
+#SBATCH --nodes=1                  # Gaussian cannot use more than one node
+#SBATCH --ntasks=1                 # request 1 task
+#SBATCH --cpus-per-task=28         # request 28 cpus for that task
+#SBATCH --mem=4G                   # request 4GB RAM for the job
 
 module load gaussian
 

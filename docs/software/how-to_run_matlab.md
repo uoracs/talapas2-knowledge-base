@@ -33,23 +33,32 @@ matlab
 
 ## Batch
 
-For longer running non-interactive use cases call matlab in batch. Create the file `matlab-job.srun`. In the file, add the desired slurm declarations, load the matlab module, call the application.
+For longer running non-interactive use cases call matlab in batch. Create the file `matlab-job.sbatch`. In the file, add the desired Slurm declarations, load the matlab module, call the application.
 
 ```bash
 #!/bin/bash
 
-#SBATCH --account=<pirg-name>
-#SBATCH --job-name=matlab-job
-#SBATCH --output=matlab-job.out
-#SBATCH --error=matlab-job.err
+#SBATCH --account=<pirg>          # your slurm account is the name of your pirg
+#SBATCH --partition=compute       # specify the partition, see Partition List
+#SBATCH --job-name=matlab-job     # name of your job
+#SBATCH --output=matlab-job.out   # name of batch script's standard output
+#SBATCH --error=matlab-job.err    # name of batch script's standard error
+#SBATCH --time=0-01:00:00         # set a limit on the total run time of the job
+#SBATCH --nodes=1                 # request 1 node
+#SBATCH --ntasks=1                # request 1 task
+#SBATCH --cpus-per-task=1         # request 1 cpu per task
+#SBATCH --mem=4G                  # request 4GB RAM
 
 module load matlab
 
-matlab -nodisplay < matlab-file.m
+matlab -nodisplay -nosplash < matlab-file.m
 ```
+
+{: .note }
+On MATLAB R2019a and newer you can instead run `matlab -batch "matlab_file"`, where `matlab_file` is the name of your script without the `.m` extension. It runs without a display and exits when the script finishes.
 
 ## Submit the job
 
 Use the sbatch command to submit the job.
 
-`$ sbatch matlab-job.srun`
+`$ sbatch matlab-job.sbatch`

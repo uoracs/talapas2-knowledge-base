@@ -30,18 +30,23 @@ Let's look at a simple example:
 echo "I am Slurm job ${SLURM_JOB_ID}, array job ${SLURM_ARRAY_JOB_ID}, and array task ${SLURM_ARRAY_TASK_ID}."
 ```
 
- Let's look at the output of this job:
+ Each array task writes its own output file, named `slurm-<array job id>_<task id>.out` by default (the `%A_%a` pattern, which you can use in `--output` and `--error` too). Let's look at the output of this job:
 
 ```bash
-[duckid@login1 array]$ sbatch array.srun
+[duckid@login1 array]$ sbatch array.sbatch
 Submitted batch job 20303
 [duckid@login1 array]$ cat slurm-20303_1.out
 I am Slurm job 20305, array job 20303, and array task 1.
-&.out
+[duckid@login1 array]$ cat slurm-20303_19.out
 I am Slurm job 20323, array job 20303, and array task 19.
 [duckid@login1 array]$
 ```
 
 Note that all jobs in the array share the same `SLURM_ARRAY_JOB_ID` but have a different `SLURM_JOB_ID`, i.e. they're separate jobs as far as Slurm is concerned. Most importantly, note the value of `SLURM_ARRAY_TASK_ID` corresponds directly to the array values we specified in our Slurm script. It's this value we will use to communicate to the job which specific job within the array of jobs that it's running.
 
-Slurm will run the constituent jobs as resources become available.  It's even possible that they might all start simultaneously.  See the Slurm docs if you need to limit parallelism.
+Slurm will run the constituent jobs as resources become available.  It's even possible that they might all start simultaneously.  If you need to limit how many run at once, add a percent sign and a limit to the array range, for example `#SBATCH --array=0-19%4` runs at most four tasks at a time. See the Slurm [sbatch](https://slurm.schedmd.com/sbatch.html) documentation for more array options.
+
+## See also
+
+- [How-To Submit a Batch Job]({% link docs/slurm/how-to_submit_a_batch_job.md %})
+- [How-To Track Submitted Jobs]({% link docs/slurm/how-to_track_submitted_jobs.md %})

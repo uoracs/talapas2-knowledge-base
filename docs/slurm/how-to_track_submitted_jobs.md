@@ -9,6 +9,10 @@ nav_order: 9
 
 When submitting jobs to Talapas using Slurm, tracking their progress can become tedious, especially when using manual commands like `squeue` to monitor the queue. Using Slurm's built-in email notification options can streamline this process, providing automated updates about your job status without needing to manually check or run expensive watch scripts.
 
+## Checking a job with `squeue` and `sacct`
+
+To see your queued and running jobs, run `squeue -u <duckid>`. To see a job after it has finished, use `sacct`, for example `sacct -j 20190 --format=JobID,JobName,Partition,State,Elapsed,ExitCode`. See the [Quick Start Guide]({% link docs/quickstart_guide/quickstart_guide.md %}) for more on `squeue`, `sacct` and `seff`.
+
 ## How to Use `#SBATCH --mail-type` and `#SBATCH --mail-user`
 
 To enable email notifications, include the following options in your Slurm job submission script:
@@ -16,8 +20,8 @@ To enable email notifications, include the following options in your Slurm job s
 ### Example
 
 ```bash
-#!/bin/bash -l
-#SBATCH --account=<myPIRG>
+#!/bin/bash
+#SBATCH --account=<pirg>
 #SBATCH --partition=preempt
 #SBATCH --job-name=testSlurmEmail
 #SBATCH --output=testSlurm.out
@@ -37,9 +41,10 @@ To enable email notifications, include the following options in your Slurm job s
         - `BEGIN`: Notify when the job starts.
         - `END`: Notify when the job completes.
         - `FAIL`: Notify if the job fails.
-    You can use multiple types, separated by commas (As seen in the above example)
+        - `ALL`: Notify on all of the above and more (including requeue and stage-out).
+    You can use multiple types, separated by commas (as seen in the above example).
 2. `--mail-user`**:**
-    - Defines the email address to receive the notifications. Enter your `<duckID>@uoregon` email.
+    - Defines the email address to receive the notifications. Enter your `<duckID>@uoregon.edu` email.
 
 ## Why Use `#SBATCH --mail-type` and `#SBATCH --mail-user` over `watch`
 

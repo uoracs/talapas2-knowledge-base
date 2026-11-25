@@ -15,13 +15,13 @@ Below is how to setup a job script to run Apptainer.
 ```bash
 #!/bin/bash
 
-#SBATCH --partition=computelong     ### Partition
-#SBATCH --job-name=ApptainerRing ### Job Name
-#SBATCH --time=00:10:00             ### WallTime
-#SBATCH --nodes=3                   ### Number of Nodes
-#SBATCH --ntasks-per-node=28        ### Number of tasks (MPI processes)
+#SBATCH --account=<pirg>            ### your slurm account is the name of your pirg
+#SBATCH --partition=compute         ### specify the partition, see Partition List
+#SBATCH --job-name=ApptainerRing    ### name of your job
+#SBATCH --time=00:10:00             ### wall clock time limit
+#SBATCH --nodes=3                   ### number of nodes
+#SBATCH --ntasks-per-node=28        ### number of tasks (MPI processes) per node
 
-#
 mpirun apptainer exec --bind /cm/shared/:/cm/shared/ --bind /packages/:/packages/ ./container.img ./ring.out
 ```
 

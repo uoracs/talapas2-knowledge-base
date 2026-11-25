@@ -125,4 +125,5 @@ Save the policy.
 
 See [Accessing your S3 files via awscli]({% link docs/storage/transferring_data/aws_s3/accessing_files_awscli.md %}) or [Accessing your S3 Buckets via rclone]({% link docs/storage/transferring_data/aws_s3/accessing_s3_bucket_rclone.md %}) on how to easily access your S3 bucket files.
 
-See [Mounting an AWS S3 Bucket to your Filesystem]({% link docs/storage/transferring_data/aws_s3/mounting_s3_bucket.md %}) on how to mount your S3 bucket to your filesystem.
+{: .note }
+Mounting an S3 bucket as a filesystem on Talapas is not supported. Use `rclone` or `awscli` as described above to copy files between your bucket and Talapas.

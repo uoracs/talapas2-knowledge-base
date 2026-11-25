@@ -27,7 +27,7 @@ The Slurm scheduler manages node memory, and each job run by Slurm has a specifi
 
 For every Slurm job you should specify the amount of memory the job needs, with the `--mem` or `--mem-per-cpu` flags.  If you don't do so, default values are used, but these are often less than ideal.
 
-The `--mem` flag specifies the amount of RAM requested for each node in the job.  Unless you're an advanced user, this flag is probably more intuitive than the `--mem-per-cpu` flag.  See the documentation on the [sbatch](https://slurm.schedmd.com/sbatch.html "https://slurm.schedmd.com/sbatch.html") and [srun](https://slurm.schedmd.com/srun.html "https://slurm.schedmd.com/srun.html") man pages.
+The `--mem` flag specifies the amount of RAM requested for each node in the job, while `--mem-per-cpu` specifies the amount per allocated CPU.  Use one or the other, not both.  Unless you're an advanced user, `--mem` is probably more intuitive.  See the documentation on the [sbatch](https://slurm.schedmd.com/sbatch.html "https://slurm.schedmd.com/sbatch.html") and [srun](https://slurm.schedmd.com/srun.html "https://slurm.schedmd.com/srun.html") man pages.
 
 For memory, the default is an allocation proportional amount of available RAM from the node.  So, for example, if you request one CPU core on a node that has 28 cores and 104GB of RAM available for job use, the default will be about 3.7GB of memory.  A corollary is that if you request all of the cores for a node, you'll get all of the available RAM by default.
 
@@ -43,9 +43,9 @@ Slurm uses several mechanisms to enforce the memory limit specified for a job. 
 
 In addition to the above, the job's ulimit for memory is set to the requested value.  It's possible that this limit will be hit first, in which case one might expect an "out of memory" sort of error from the program (assuming that it checks for this condition).  Again, it's possible that there might be other, less-than-obvious error messages.
 
-Recently, Slurm has started controlling this resource via the [cgroup](https://en.wikipedia.org/wiki/Cgroups "https://en.wikipedia.org/wiki/Cgroups") mechanism.  In this case, exceeding the memory limit will cause the Linux OOM-killer to be invoked, which will kill the process as if by SIGKILL.  You might also see a diagnostic message in the Slurm error log like this:
+Recently, Slurm has started controlling this resource via the [cgroup](https://en.wikipedia.org/wiki/Cgroups "https://en.wikipedia.org/wiki/Cgroups") mechanism.  In this case, exceeding the memory limit will cause the Linux OOM-killer to be invoked, which will kill the process as if by SIGKILL.  The job state will then show as `OUT_OF_MEMORY` in `sacct`.  You might also see a diagnostic message in the Slurm error log like this:
 
-`slurmstepd: error: Detected 1 oom-kill event(s) in step 988715.batch cgroup.`
+`slurmstepd: error: Detected 1 oom_kill event in StepId=988715.batch. Some of the step tasks have been OOM Killed.`
 
 ## Estimating Job Memory Requirements
 

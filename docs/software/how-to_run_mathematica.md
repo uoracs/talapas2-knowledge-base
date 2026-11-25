@@ -36,30 +36,36 @@ This will launch the Mathematica 12 **GUI**.
 
 ```bash
 module load Mathematica
-mathematica
+math
 ```
 
 This will launch the Mathematica 12 **Kernel**.
 
 ## Batch
 
-For longer running non-interactive use cases call Mathematica in batch. Create the file `math-job.srun`. In the file, add the desired slurm declarations, load the module, call the application.
+For longer running non-interactive use cases call Mathematica in batch. Create the file `math-job.sbatch`. In the file, add the desired Slurm declarations, load the module, call the application.
 
 ```bash
 #!/bin/bash
 
-#SBATCH --account=<pirg-name>
-#SBATCH --job-name=math-job
-#SBATCH --output=math-job.out
-#SBATCH --error=math-job.err
+#SBATCH --account=<pirg>          # your slurm account is the name of your pirg
+#SBATCH --partition=compute       # specify the partition, see Partition List
+#SBATCH --job-name=math-job       # name of your job
+#SBATCH --output=math-job.out     # name of batch script's standard output
+#SBATCH --error=math-job.err      # name of batch script's standard error
+#SBATCH --time=0-01:00:00         # set a limit on the total run time of the job
+#SBATCH --nodes=1                 # request 1 node
+#SBATCH --ntasks=1                # request 1 task
+#SBATCH --cpus-per-task=1         # request 1 cpu per task
+#SBATCH --mem=4G                  # request 4GB RAM
 
 module load Mathematica
 
-math -run < math-file.m
+math -script math-file.m
 ```
 
 ## Submit the job
 
 Use the sbatch command to submit the job.
 
-`$ sbatch math-job.srun`
+`$ sbatch math-job.sbatch`

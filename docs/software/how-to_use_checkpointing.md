@@ -75,7 +75,7 @@ The process for setting up DMTCP for interactive checkpointing is as follows:
 1. Request an interactive terminal session on a compute node:
 
     ```bash
-    srun --account=<MY_PIRG> --pty --partition=interactive --time=60 bash
+    srun --account=<pirg> --partition=interactive --time=60 --pty bash
     ```
 
     Load the dmtcp module:
@@ -140,12 +140,12 @@ A sample sbatch script to submit a checkpointed job would look like this:
 
 ```bash
 #!/bin/bash
-#SBATCH --account=<MY_PIRG>
-#SBATCH --job-name=test_submit
-#SBATCH --partition=compute
-#SBATCH --time=0-00:10:00 ### 10 minutes
-#SBATCH -o %x-%j.out
-#SBATCH -e %x-%j.err
+#SBATCH --account=<pirg>          ### your slurm account is the name of your pirg
+#SBATCH --partition=compute       ### specify the partition, see Partition List
+#SBATCH --job-name=test_submit    ### name of your job
+#SBATCH --output=%x-%j.out        ### standard output (%x = job name, %j = job id)
+#SBATCH --error=%x-%j.err         ### standard error
+#SBATCH --time=0-00:10:00         ### 10 minutes
 
 module purge
 module load dmtcp
@@ -154,7 +154,7 @@ module load dmtcp
 export CKPT_INTERVAL=60
 
 #location to store ckpt files
-export CKPT_DIR=/scratch/<MY_PIRG>/<MY_USERNAME>/dmtcp_ckpts/
+export CKPT_DIR=/scratch/<pirg>/<MY_USERNAME>/dmtcp_ckpts/
 
 #make the ckpt dir if it does not exist
 if [ ! -d "$CKPT_DIR" ]; then
@@ -169,18 +169,18 @@ And following a similar form the sbatch script to restart this job would look li
 
 ```bash
 #!/bin/bash
-#SBATCH --account=<MY_PIRG>
-#SBATCH --job-name=test_restart
-#SBATCH --partition=compute
-#SBATCH --time=0-00:10:00 ### 10 minutes
-#SBATCH -o %x-%j.out
-#SBATCH -e %x-%j.err
+#SBATCH --account=<pirg>          ### your slurm account is the name of your pirg
+#SBATCH --partition=compute       ### specify the partition, see Partition List
+#SBATCH --job-name=test_restart   ### name of your job
+#SBATCH --output=%x-%j.out        ### standard output (%x = job name, %j = job id)
+#SBATCH --error=%x-%j.err         ### standard error
+#SBATCH --time=0-00:10:00         ### 10 minutes
 
 module purge
 module load dmtcp
 
 #location to find the stored ckpt files
-export CKPT_DIR=/scratch/<MY_PIRG>/<MY_USERNAME>/dmtcp_ckpts/
+export CKPT_DIR=/scratch/<pirg>/<MY_USERNAME>/dmtcp_ckpts/
 
 #Resume checkpoint from file
 dmtcp_restart $CKPT_DIR/ckpt_your_program_*.dmtcp

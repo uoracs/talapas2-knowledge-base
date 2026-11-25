@@ -44,8 +44,8 @@ Mechanical fixes (naming, typos, front matter, newest module versions from `pack
 - Usernames like `marka` / `flopez2` in usage examples are intentionally kept (see `CLAUDE.md`).
 
 ### Broken or empty pages
-- [ ] `software/apptainer/how-to_create_a_container.md`: empty front matter, "TBD" body. Write or remove.
-- [ ] `storage/transferring_data/aws_s3/mounting_s3_bucket.md`: "TO BE WRITTEN" stub with blank front matter, and linked from another page. Write or remove.
+- [x] `software/apptainer/how-to_create_a_container.md`: written as "How-To Pull an Apptainer Container Image" (pull from docker:// only, per RACS). Not covered: building from definition files / `--fakeroot`. RACS to review the page and the interactive-job recommendation for pulls.
+- [x] `aws_s3/mounting_s3_bucket.md`: removed (mounting is not supported per RACS); the S3 page now says so and points to rclone/awscli.
 - [ ] `software/conda/conda.md`, `software/r/r.md`, `software/software.md`: index pages with no intro text.
 - [ ] Quickstart "Storing your Data" section promises a list of directories but has none.
 - [ ] AlphaFold3 page: module line now says 3.0.4 but image and source paths still say 3.0.0. Reconcile.
@@ -88,3 +88,22 @@ Mechanical fixes (naming, typos, front matter, newest module versions from `pack
 - [ ] Permalinks: `slurm.md` and `about_talapas.md` lack the leading slash; `aws_s3` is missing `/storage`. Changing them can break inbound URLs.
 - [ ] Add a redirect (or accept the break) for the moved `/docs/t2_release_notes/` URL.
 - [ ] Module names in `packages.md` that still carry "t2": `miniconda-t2`, `python3-t2-test`, `racs-spack-t2-test` (lmod side).
+- [ ] `how-to_run_tensorflow_keras.md`: Slurm syntax modernized (`--gpus`, `interactivegpu`, `cuda/13.0`), but the cuda/TF pairing and partition are guesses and the page carries a warning callout until someone re-tests it.
+
+---
+
+## Slurm 25.11.8 doc review: needs RACS confirmation
+
+Every `#SBATCH` block in the docs passes a script check (valid option names, directives before commands, no `--mem` with `--mem-per-cpu`, no `--gres` with `--gpus`) and all internal links resolve. Slurm behavior was written from memory: slurm.schedmd.com returned 403 to the agents, and nothing was run on a real cluster. Please test or confirm:
+
+- [ ] Is an `--account` required and is there **no default partition**? Docs now say so (from the archived release notes).
+- [ ] `interactivegpu` time limit: 12h on the interactive page vs 8h in the partition list.
+- [ ] Default time and memory in the quickstart, and its 28-core node example.
+- [ ] `srun --x11 ... --pty bash -i` works on Talapas; is `xrun`/`idev` still installed? (X11 page no longer mentions them.)
+- [ ] Preempt: the 7-day limit and the requeue default. New example script uses `--requeue` and `--open-mode=append`.
+- [ ] MPI: which `--mpi=` types work (pmix, pmi2); does `mpiicx` exist in `intel-oneapi-mpi/2021.9.0`? The Intel example pairs compilers 2023.1.0 with MPI 2021.9.0 because `packages.md` has no newer `intel-oneapi-mpi` (breaks the "use newest" rule on purpose).
+- [ ] GPU: `SLURM_JOB_GPUS` vs `SLURM_STEP_GPUS` under `srun`; `--gpus` examples with `cuda/12.4.1`.
+- [ ] Hybrid page was rewritten (short C example, `srun --cpus-per-task=$SLURM_CPUS_PER_TASK`, example output labeled illustrative). Run it once on the cluster.
+- [ ] Mathematica `math -script`, MATLAB `-batch`, Gaussian `--mem` vs `%Mem` (`--mem` should be larger), Jupyter `anaconda2/3` modules and deprecated `NotebookApp` flag, Apptainer `--bind` paths.
+- [ ] `memory.md`: hardware numbers, the once-a-minute RSS check paragraph, `slurm-show-def-mem`.
+- [ ] Automate: a CI job that runs `sbatch --test-only` on the example scripts against a test Slurm 25.11 would catch drift.

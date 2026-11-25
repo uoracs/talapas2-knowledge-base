@@ -14,7 +14,7 @@ Second, when you first log into Talapas you will be connected to one of our "log
 {: .note }
 login nodes are not an appropriate place to run applications or conduct simulations. A good rule of thumb is: If it takes more than one second to complete, it's not appropriate for a login node.
 
-Tasks should be conducted on a "compute node." These are purpose-built for running intensive computations and can only be accessed via the Slurm job scheduler. Slurm will ensure that the compute nodes are allocated in a fair and equitable manner that prevents resource conflicts. See the [Partition List]({% link docs/about_talapas/partition_list.md %}) for information on the different types of nodes on Talapas and the resources available on them. 
+Tasks should be conducted on a "compute node." These are purpose-built for running intensive computations and can only be accessed via the Slurm job scheduler. Slurm will ensure that the compute nodes are allocated in a fair and equitable manner that prevents resource conflicts. See the [Partition List]({% link docs/about_talapas/partition_list.md %}) for information on the different types of nodes on Talapas and the resources available on them.
 
 ## Here's an entire job script example
 
@@ -34,7 +34,7 @@ Tasks should be conducted on a "compute node." These are purpose-built for runni
 
 module load python3/3.14.0-cv7xe7d
 
-script.py
+python script.py
 ```
 
 ## The individual components broken down
@@ -72,15 +72,18 @@ module load python3/3.14.0-cv7xe7d
 
 ### Call the program or script
 
-Specify the location or path to the executable or script, in this example script.py is in the same directory as this job script
+Specify the program to run. In this example `script.py` is in the same directory as this job script.
 
 ```bash
-script.py
+python script.py
 ```
 
-Above we see the contents of our job script called `hello.sbatch`(script name and suffix is arbitrary–use whatever name you like).
+Above we see the contents of our job script called `hello.sbatch` (the script name and suffix are arbitrary; use whatever name you like).
 
-Next, we see a collection of specially formatted comments, each beginning with `#SBATCH` followed by option definitions.  These are used by the `sbatch` command to request resources and set options. This allows us to describe our job to the scheduler and ensure that we reserve the appropriate resources (cores, memory, time) for an appropriate amount of time.
+Next, we see a collection of specially formatted comments, each beginning with `#SBATCH` followed by option definitions. These are used by the `sbatch` command to request resources and set options. This allows us to describe our job to the scheduler and ensure that we reserve the appropriate resources (cores, memory, time) for an appropriate amount of time.
+
+{: .note }
+Slurm requires `--account`, and there is no default partition, so you must also specify `--partition`. See the [Partition List]({% link docs/about_talapas/partition_list.md %}) to choose one.
 
 ## Submit your job
 
@@ -93,7 +96,7 @@ The job has been submitted and is assigned the job number 20190 which will serve
 
 ## Check job status
 
-Use the `squeue` command.
+Use the `squeue` command.
 
 ```bash
 $ squeue
@@ -102,8 +105,14 @@ $ squeue
              ...
 ```
 
-Here we see that our job, number 20190, is running 'R' state. Jobs in the system may be in R, PD, CG state (running, pending, completing).
+Here we see that our job, number 20190, is running 'R' state. Jobs in the system may be in R, PD, or CG state (running, pending, completing).
 
-To view your jobs, run the Slurm command `squeue -u <duckid>`.
+To view your jobs, run the Slurm command `squeue -u <duckid>`, replacing `<duckid>` with your DuckID.
 
 If you need to cancel your job for any reason, run the Slurm command `scancel <job_id>` for example `scancel 20190`.
+
+## See also
+
+- [How-To Track Submitted Jobs]({% link docs/slurm/how-to_track_submitted_jobs.md %})
+- [How-To Submit an Array Job]({% link docs/slurm/how-to_submit_an_array_job.md %})
+- [How-To Start An Interactive Job]({% link docs/slurm/how-to_start_an_interactive_job.md %})
