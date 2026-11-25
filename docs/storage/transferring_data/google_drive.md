@@ -25,7 +25,7 @@ Substitute my-client-id and my-secret for your own Google client ID and secret.
 ## Run `rclone config` on a login node
 
 ```bash
-$ module load rclone/1.52.2
+$ module load rclone/1.70.3
 $ rclone config
 
 e) Edit existing remote
@@ -170,7 +170,7 @@ Documentation on rclone commands is available: [https://rclone.org/commands/](ht
 List contents of your Google Drive
 
 ```bash
-$ module load rclone/1.52.2
+$ module load rclone/1.70.3
 $ rclone ls gog-remote:
        -1 DDF-notes.docx
   3225657 fullsizeoutput.jpeg

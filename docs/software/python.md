@@ -53,7 +53,7 @@ Note that each version has a distinct set of “add-on” modules that have been
 
 This is our “go to” solution for most new Python installs these days.
 
-We have a `miniconda` module (The most up-to-date version is now called `miniconda3/20240410`), which contains within it a large number of environments, almost all of which have a `python` installed. Some of these are the instances that sit behind our Open OnDemand Jupyter instance, so you might be using one already without realizing it.
+We have a `miniconda` module (the newest version listed in [Available Packages]({% link docs/software/packages.md %}) is `miniconda3/20260319`), which contains within it a large number of environments, almost all of which have a `python` installed. Some of these are the instances that sit behind our Open OnDemand Jupyter instance, so you might be using one already without realizing it.
 
 The most used one currently can be loaded with
 
@@ -61,8 +61,10 @@ The most used one currently can be loaded with
 
 which is equivalent to
 
-`module load miniconda`
-`conda activate anaconda-tensorflow-gpu`
+```bash
+module load miniconda
+conda activate anaconda-tensorflow-gpu
+```
 
 The name is a bit of an artifact, but refers to the fact that TensorFlow version 1 is included. It also has a large number of other data packages like `pandas`, `numpy`, `scipy`, etc.
 
@@ -72,8 +74,10 @@ A similar module is
 
 which is equivalent to
 
-`module load miniconda`
-`conda activate anaconda-tensorflow2-gpu`
+```bash
+module load miniconda
+conda activate anaconda-tensorflow2-gpu
+```
 
 **This is one recommended alternative, if you’re not sure how to start.**
 
@@ -83,14 +87,16 @@ The above choices are stable, but also a bit dated, having been created in mid-2
 
 If you’d like to use a similar but quite up-to-date environment, you can do this
 
-`module load miniconda`
-`conda activate jupyterlab-tf-pyt-20211020`
+```bash
+module load miniconda
+conda activate jupyterlab-tf-pyt-20211020
+```
 
 This is the module that currently the new Open OnDemand Jupyter instance uses. (Look for the one with the similar date.) This is still in testing and might change a bit, but it’s pretty stable.
 
 ### An Environment of One’s Own
 
-When we get requests to install combinations of packages that might disrupt other users, we often just create a custom conda environment. All of these are visible to all users (see ‘conda env list’), but their contents might be obscure. In any case, if you have a particular set of packages and versions that you need, we can often provide a custom environment for you (which will also be available to other Talapas users). Or, you are welcome to create your own conda env, and here are the steps to on how to do this: [How-to Create Personalized Conda Environments]({% link docs/software/conda/how-to_create_personal_conda_envs.md %}).
+When we get requests to install combinations of packages that might disrupt other users, we often just create a custom conda environment. All of these are visible to all users (see `conda env list`), but their contents might be obscure. In any case, if you have a particular set of packages and versions that you need, we can often provide a custom environment for you (which will also be available to other Talapas users). Or, you are welcome to create your own conda env, and here are the steps for how to do this: [How-To Create Personal Conda Environments]({% link docs/software/conda/how-to_create_personal_conda_envs.md %}).
 
 ## Out With the Old
 
@@ -102,7 +108,7 @@ If you have no modules loaded, you’ll see `python3` and `python2` from the und
 
 ### Anaconda Modules
 
-There are environment modules `anaconda2` and `anaconda3`. These were from an early attempt to get Anaconda working on Talapas. You can still use them, but they are not recommended, and we no longer update them. These are superseded by the `miniconda` modules, of which `miniconda3/20240410` is the most up-to-date as of January 2025.
+There are environment modules `anaconda2` and `anaconda3`. These were from an early attempt to get Anaconda working on Talapas. You can still use them, but they are not recommended, and we no longer update them. These are superseded by the `miniconda` modules, of which `miniconda3/20260319` is the newest listed in [Available Packages]({% link docs/software/packages.md %}).
 
 ### EasyBuild
 

@@ -1,9 +1,11 @@
 ---
 layout: default
-title: How-To Launch OnDemand RStudio app
+title: How-To Launch OnDemand RStudio App
 parent: R
 nav_order: 2
 ---
+
+# How-To Launch OnDemand RStudio App
 
 ## Navigating to RStudio on OnDemand
 

@@ -20,6 +20,6 @@ Tutorials on transferring data to different storage providers:
 
 - [UO Research Storage]({% link docs/storage/research_storage.md %})
 - [AWS S3]({% link docs/storage/transferring_data/aws_s3/aws_s3.md %})
-- [Drop Box]({% link docs/storage/transferring_data/dropbox.md %})
+- [Dropbox]({% link docs/storage/transferring_data/dropbox.md %})
 - [Google Drive]({% link docs/storage/transferring_data/google_drive.md %})
 - [UO Cloud]({% link docs/storage/transferring_data/uocloud.md %})

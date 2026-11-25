@@ -9,19 +9,19 @@ nav_order: 1
 
 ## Overview
 
-R is a powerful programming language and environment designed for statistical computing, data analysis, and graphics, making it essential for data science. While RStudio is a popular integrated development environment (IDE) that enhances the user experience with features like syntax highlighting, debugging, and visualization tools, you can interact with R directly via the command line without using RStudio. This allows users to run R scripts, execute commands, and manage R packages through a terminal interface without the need for a Open OnDemand Talapas Desktop session.
+R is a powerful programming language and environment designed for statistical computing, data analysis, and graphics, making it essential for data science. While RStudio is a popular integrated development environment (IDE) that enhances the user experience with features like syntax highlighting, debugging, and visualization tools, you can interact with R directly via the command line without using RStudio. This allows users to run R scripts, execute commands, and manage R packages through a terminal interface without the need for an Open OnDemand Talapas Desktop session.
 
 ## Loading R
 
-To load R into your current environment, you first must choose which version of R you wish to run. Currently on Talapas2, there are a few versions from which to choose from. To see which options are available, within the terminal, enter the following command and then the `tab` key twice:
+To load R into your current environment, you first must choose which version of R you wish to run. Currently on Talapas, there are a few versions from which to choose from. To see which options are available, within the terminal, enter the following command and then the `tab` key twice:
 
 `$ module load R/`
 
-This will then display a list of all the current versions of R available on Talapas2. Complete the command by entering the version you would like to use (as seen below with 4.3.3) and press enter.
+This will then display a list of all the current versions of R available on Talapas. Complete the command by entering the version you would like to use (as seen below with 4.6.1) and press enter.
 
-`$ module load R/4.3.3`
+`$ module load R/4.6.1`
 
-Note: R/4.3.3 is the latest version of R currently on Talapas and is the version with the most pre-installed library options.
+Note: R/4.6.1 is the newest version of R currently on Talapas.
 
 ## Interacting with R
 
@@ -37,7 +37,7 @@ Once in the interactive R session, you can perform data analysis, create visuali
 
 ### Loading Libraries Interactively
 
-To load libraries interactively, use the `library()`command. An example of this is seen below:
+To load libraries interactively, use the `library()` command. An example of this is seen below:
 
 ```R
 > library(rio)
@@ -62,9 +62,9 @@ This will output a list of **ALL** available libraries and you can see if your d
 
 Using R with an `.R` file allows you to write your R code in a script and execute it non-interactively with the `Rscript` command, eliminating the need to enter an interactive R session. To do this, you create a text file with an `.R` extension (e.g., `my_script.R`) and write your R code inside it.
 
-### Creating an `.R`script
+### Creating an `.R` script
 
-Creating an R script is fairly straight forward. This script can contain R commands, including data manipulation, analysis, and visualization instructions. To do this, first create the script file:
+Creating an R script is fairly straightforward. This script can contain R commands, including data manipulation, analysis, and visualization instructions. To do this, first create the script file:
 
 `$ touch my_script.R`
 

@@ -14,13 +14,13 @@ Rclone is a powerful open-source command-line tool that lets you manage, move, a
 There is a module for rclone on Talapas that can be loaded by running: `module load rclone`. We have a few tutorials on how to use rclone to transfer data to/from Talapas to a few different other storage providers:
 
 - [AWS S3]({% link docs/storage/transferring_data/aws_s3/accessing_s3_bucket_rclone.md %})
-- [Drop Box]({% link docs/storage/transferring_data/dropbox.md %})
+- [Dropbox]({% link docs/storage/transferring_data/dropbox.md %})
 - [Google Drive]({% link docs/storage/transferring_data/google_drive.md %})
 - [UO Research Storage]({% link docs/storage/research_storage.md %})
 
 ## How to Configure Rclone for Ceph S3 Bucket Access
 
-This guide covers configuring rclone to connect to University of Oregons Large-Scale Research Storage Ceph S3 bucket storage solution via Talapas
+This guide covers configuring rclone to connect to the University of Oregon's Large-Scale Research Storage Ceph S3 bucket storage solution via Talapas
 
 ### Prerequisites
 
@@ -30,7 +30,7 @@ This guide covers configuring rclone to connect to University of Oregons Large-S
 - Bucket name you want to access
 
 ### Important Note
-Since there is a single endpoint for accessing bucekts here at the University of Oregon, You will only have to go through the `rclone config` once.
+Since there is a single endpoint for accessing buckets here at the University of Oregon, you will only have to go through the `rclone config` once.
 Once the end point is configured, you can then hit and access any future buckets that you are granted access to using the same initial endpoint. The
 only difference is that you need to change the name of the bucket you are trying to access.
 
@@ -50,7 +50,7 @@ Follow these steps in the interactive menu:
 2. Enter a name for your remote (e.g., `ceph-s3`)
 3. Select `Amazon S3 Compliant Storage Providers` (usually option 4)
 4. Choose `Ceph` (usually option 4)
-5. Select `1 / Enter AWS credendtials in the next step`
+5. Select `1 / Enter AWS credentials in the next step`
 *Note* The following information is obtained via an email that is sent to you when you are granted access to LSRS for the first time.
 6. Enter your configuration details:
    - **Access Key ID**: Your Ceph S3 access key

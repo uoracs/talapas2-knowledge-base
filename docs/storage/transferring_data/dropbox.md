@@ -32,7 +32,7 @@ Substitute app-key and app-secret for your own Dropbox app key and secret.
 ## Run `rclone config` on a login node
 
 ```bash
-$ module load rclone/1.52.2
+$ module load rclone/1.70.3
 $ rclone config
 2020/08/05 12:01:58 NOTICE: Config file "~/.config/rclone/rclone.conf" not found - using defaults
 No remotes found - make a new one
@@ -106,7 +106,7 @@ Copy the rclone authorize line.
 
 Running this step on your local machine is required since Talapas login nodes do not run web browsers.
 
-### Install rclone 1.52.2 on your local machine if not already installed
+### Install rclone on your local machine if not already installed
 
 For example, to install on Linux or Mac run:
 

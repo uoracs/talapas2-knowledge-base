@@ -14,7 +14,7 @@ grand_parent: Transferring Data
 
 In order to configure rclone to see your AWS S3 buckets and associated data, you will first need to load the `rclone` module.
 
-`$ module load rclone/1.66.0`
+`$ module load rclone/1.70.3`
 
 After loading the module, you will need to run the interactive configuration script with the following command.
 
@@ -257,7 +257,7 @@ Talapas view:
 AWS S3 Console view:
 ![AWS S3 Console3](../../../../../assets/images/aws_s3_console3.png)
 
-From here I can copy the entire bucket (one file in the case) from S3 to Talapas into my current directory with `rclone move s3:<bucket_name>/<directory_path> <destination_path>`.
+From here I can copy the entire bucket (one file in the case) from S3 to Talapas into my current directory with `rclone copy s3:<bucket_name>/<directory_path> <destination_path>`.
 
 An example of this can be seen below:
 

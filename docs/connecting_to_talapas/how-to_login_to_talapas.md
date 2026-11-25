@@ -33,7 +33,7 @@ Instructions here: [Getting Started with UO VPN](https://service.uoregon.edu/TDC
 
 ## Connecting via SSH
 
-The [SSH](https://en.wikipedia.org/wiki/Secure_Shell) protocol is used for all shell connections to the login nodes.  Multiple SSH are clients available–you can use whichever one you find most convenient.
+The [SSH](https://en.wikipedia.org/wiki/Secure_Shell) protocol is used for all shell connections to the login nodes.  Multiple SSH clients are available. You can use whichever one you find most convenient.
 
 If you’re not connected to the UOVPN, you’ll want to SSH to our login loadbalancer:
 
@@ -48,7 +48,7 @@ If you’re connected to the UOVPN, you can use any one of the 4 login nodes dir
 
 Your files will be present on all login nodes, so you don’t need to always use the same one!
 
-Once logged into a login node, you can navigate the storage system, write scripts, edit code, and launch jobs.  Remember that login nodes are **NOT** an appropriate place to run applications or simulations. A good rule of thumb to use: if something takes longer than a few seconds to run, then it's inappropriate for a login node. Instead, _use a compute node_.  For information on launching an interactive session on a compute node see the [How-to Start an Interactive Job]({% link docs/slurm/how-to_start_an_interactive_job.md %}) page.
+Once logged into a login node, you can navigate the storage system, write scripts, edit code, and launch jobs.  Remember that login nodes are **NOT** an appropriate place to run applications or simulations. A good rule of thumb to use: if something takes longer than a few seconds to run, then it's inappropriate for a login node. Instead, _use a compute node_.  For information on launching an interactive session on a compute node see the [How-To Start an Interactive Job]({% link docs/slurm/how-to_start_an_interactive_job.md %}) page.
 
 ## Mac OS X and Linux
 
@@ -147,14 +147,14 @@ Some programs expect to show graphic output using the [X Window System](https://
 - On Mac OS X, you'll need to install and start [XQuartz](https://www.xquartz.org/).
 - On Microsoft Windows, there are several solutions.  Perhaps the easiest is to install [MobaXterm](https://mobaxterm.mobatek.net/), which also includes an X server.
 
-Once the server is running, you can forward X11 traffic to it when you start an `SSH` connection.  For command-line clients, this is as easy as adding the `-Y` flag for :
+Once the server is running, you can forward X11 traffic to it when you start an `SSH` connection.  For command-line clients, this is as easy as adding the `-Y` flag:
 
 `ssh -Y myDuckID@login.talapas.uoregon.edu`
 
 For other `SSH` clients, you may need to configure the corresponding option.
 
-See the [How-to Run an X11 Application]({% link docs/software/how-to_run_an_x11_app.md %}) page for more details on running an X11 program on a compute node.
+See the [How-To Run an X11 Application]({% link docs/software/how-to_run_an_x11_app.md %}) page for more details on running an X11 program on a compute node.
 
 ## Blocked ports
 
-Note that inbound access to the new cluster is only allowed for SSH and Open OnDemand. All other ports are blocked.
+Note that inbound access to Talapas is only allowed for SSH and Open OnDemand. All other ports are blocked.

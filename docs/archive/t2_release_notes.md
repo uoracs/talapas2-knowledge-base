@@ -1,10 +1,14 @@
 ---
 layout: default
 title: Talapas2 (T2) Release Notes
-nav_order: 1.5
+parent: Archive
+nav_order: 1
 ---
 
 # Talapas2 (T2) Release Notes
+
+{: .note }
+This page is kept for historical reference. It describes the transition to Talapas2 (T2) and some details may no longer be current. For current information, see the [Quick Start Guide]({% link docs/quickstart_guide/quickstart_guide.md %}).
 
 {: .highlight } 
 > **Semi-Annual Maintenance Window Highlights (09/15–09/18)**

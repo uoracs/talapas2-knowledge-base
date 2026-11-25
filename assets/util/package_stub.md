@@ -28,7 +28,7 @@ You can also search for available versions using:
 module avail ants
 ```
 
-See the [How-to Use LMOD]({%link docs/software/how-to_use_lmod.md %}) page for more details on using [LMOD](https://lmod.readthedocs.io/en/latest/010_user.html).
+See the [How-To Use LMOD]({%link docs/software/how-to_use_lmod.md %}) page for more details on using [LMOD](https://lmod.readthedocs.io/en/latest/010_user.html).
 
 ## Available Software Packages
 
