@@ -1,7 +1,7 @@
 ---
 layout: default
 title: How-To Start An Interactive Job
-parent: SLURM
+parent: Slurm
 nav_order: 8
 ---
 
@@ -39,11 +39,11 @@ Interactive jobs are not limited to CPU only jobs, you can also use GPUs when su
 
 In order to do this, you’ll need to request a GPU. An example of this is seen below:
 
-`$ srun --account=racs --partition=interactivegpu --time=20 --nodes=1 --ntasks=1 --cpus-per-task=1 --mem=500m --gpus=1 --constraint=gpu-10gb --pty bash`
+`$ srun --account=<pirg> --partition=interactivegpu --time=20 --nodes=1 --ntasks=1 --cpus-per-task=1 --mem=500m --gpus=1 --constraint=gpu-10gb --pty bash`
 
-`srun` → Submits and runs a job interactively in SLURM.
+`srun` → Submits and runs a job interactively in Slurm.
 
-`-account=racs` → Specifies the PIRG that the job will run under (This is the pirg you are part of, in my case it is the `racs` pirg)
+`--account=<pirg>` → Specifies the PIRG that the job will run under (this is the PIRG you are part of)
 
 `--partition=interactivegpu` → Requests the `interactivegpu` partition, meaning it's likely optimized for interactive GPU use.
 
@@ -59,7 +59,7 @@ In order to do this, you’ll need to request a GPU. An example of this is seen 
 
 `--gpus=1` → Requests 1 GPU for the job.
 
-`--constraint=gpu-10gb` → Ensures the allocated GPU has at least 10GB of memory. Nodes in the interactivegpu partiton only have GPUs with 10GB memory so in this case we don’t have to specify. However,
+`--constraint=gpu-10gb` → Ensures the allocated GPU has at least 10GB of memory. Nodes in the interactivegpu partition only have GPUs with 10GB memory so in this case we don’t have to specify. However,
 
 other gpu nodes on Talapas have 10, 40, and 80 GB of GPU memory and are requested with gpu-10gb, gpu-40gb, and gpu-80gb
 
