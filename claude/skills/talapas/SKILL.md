@@ -55,7 +55,7 @@ This applies on login nodes and inside jobs alike, because the filesystem is sha
 - **Avoid creating many small files.** Prefer a few large files (HDF5, Parquet, tar archives, single log per job) over thousands of tiny ones. Keep Python environments and caches out of `/scratch`.
 - **Use node-local `/tmp` for heavy temporary I/O inside jobs.** Each compute node has a local SSD at `/tmp`. It is cleared when the job ends, so copy results back to `/projects/<pirg>` before the job finishes.
 - **Don't open files in tight loops** or re-read the same large file repeatedly from many processes. Read once and cache in memory where it fits.
-- **No tight polling.** Don't poll `squeue`, `sacct` or the filesystem more often than about **once a minute**, and prefer `squeue --me` over listing the whole queue. Every `squeue`/`sacct` call loads the shared scheduler. When you wait on a job, use a long interval or `sbatch --wait`, never a `sleep 1` loop.
+- **No tight polling of the filesystem.** Don't loop on `ls`/`stat`/`test -f` waiting for a file to appear. Check at most about once a minute.
 
 ### Storage layout and data safety
 
@@ -81,6 +81,10 @@ This applies on login nodes and inside jobs alike, because the filesystem is sha
 - **Many similar tasks? Use a job array** (`--array`), not a shell loop that calls `sbatch` hundreds of times. Throttle large arrays (`--array=1-1000%50`).
 - **Don't request GPUs for code that doesn't use them**, and don't use `memory`/`memorylong` partitions unless the job truly needs large RAM. Those nodes are scarce.
 - **Long jobs:** suggest checkpointing so work survives time limits and preemption.
+- **Don't hammer the scheduler with information commands.** Every `sinfo`, `squeue`, `sacct`, `scontrol`, `sprio` and `sshare` call is a request to the Slurm controller that every user's jobs depend on. Automated, repeated calls slow scheduling for the whole cluster.
+  - **Fine:** run one when you or the user need the answer, then parse or loop over its output as much as you like.
+  - **Not fine:** `watch -n 1 sinfo`, `while true; do squeue; sleep 1; done`, a background monitor polling job state every few seconds, or calling `scontrol show job <id>` once per job across hundreds of jobs. Instead, make one call that returns everything (`squeue --me`, `sacct -j <id1>,<id2>,...`) and filter the output.
+  - **Waiting on a job:** check at most about **once a minute**, preferably less often. Better options are `sbatch --wait`, `srun` (which blocks until done), or `--mail-type=END`. Prefer `squeue --me` over listing the whole queue.
 - **Check partitions live with `sinfo`.** The partition list in the docs may lag behind the cluster, so trust `sinfo` on the cluster when they disagree.
 - **Software:** use `module spider <name>` / `module avail <name>` / `module load <name>/<version>`. Prefer the newest version available. You can't use `sudo` or install system packages. For software the user can't install themselves, point them to the RACS Service Desk.
 
