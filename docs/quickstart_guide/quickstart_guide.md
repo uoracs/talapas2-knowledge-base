@@ -3,7 +3,7 @@ layout: default
 title: Quick Start Guide
 nav_order: 2
 permalink: /docs/quickstart_guide
-has-children: "true"
+has_children: true
 ---
 
 # Quick Start Guide
@@ -14,7 +14,7 @@ If you don't already have an account, see the [Request Access](https://racs.uor
 
 ## Logging on to Talapas
 
-See our guide: [How-to Login to Talapas]({% link docs/connecting_to_talapas/how-to_login_to_talapas.md %})
+See our guide: [How-To Login to Talapas]({% link docs/connecting_to_talapas/how-to_login_to_talapas.md %})
 
 ## Transferring Files to and from Talapas
 
@@ -26,7 +26,7 @@ to copy the named file to your Talapas home directory.
 
 There are also GUI tools available for file transfer via SCP or SFTP.  [Filezilla](https://filezilla-project.org/) is available for all common platforms.
 
-Globus is the fastest method of file transfering and the one that RACS reccomends the most. For more information see the [Globus]({% link docs/storage/transferring_data/globus/globus.md %}) pages.
+Globus is the fastest method of file transfer and the one that RACS recommends the most. For more information see the [Globus]({% link docs/storage/transferring_data/globus/globus.md %}) pages.
 
 ## Storing your Data
 
@@ -72,24 +72,24 @@ If you would like to unload **all** currently loaded modules, you can use the co
 
 See [How-To Use LMOD]({% link docs/software/how-to_use_lmod.md %}) for more details, and the [All Packages]({% link docs/software/packages.md %}) page to see all of the centrally installed software you can load with LMOD on Talapas.
 
-## SLURM Accounts
+## Slurm Accounts
 
-In order to ensure correct service charges, all SLURM jobs on Talapas require that an account be specified.  You can do this explicitly using the `--account` (or `-A`) option to `sbatch` or srun.  This is shown in the first example below, but omitted from the rest for clarity.  Alternatively, you can set the environment variables `SLURM_ACCOUNT` and `SBATCH_ACCOUNT` in your `~/.bash_profile` if you like.
+In order to ensure correct service charges, all Slurm jobs on Talapas require that an account be specified.  You can do this explicitly using the `--account` (or `-A`) option to `sbatch` or srun.  This is shown in the first example below, but omitted from the rest for clarity.  Alternatively, you can set the environment variables `SLURM_ACCOUNT` and `SBATCH_ACCOUNT` in your `~/.bash_profile` if you like.
 
-If your SLURM job invokes subsidiary calls to `sbatch`, you might also need to include lines like this in your batch script to make sure that the subsidiary `sbatch` calls also see the account information:
+If your Slurm job invokes subsidiary calls to `sbatch`, you might also need to include lines like this in your batch script to make sure that the subsidiary `sbatch` calls also see the account information:
 
 ```bash
 export SLURM_ACCOUNT=$SLURM_JOB_ACCOUNT
 export SBATCH_ACCOUNT=$SLURM_JOB_ACCOUNT
 ```
 
-Note that if you a member of multiple PIRGs, it is your responsibility to specify the correct account for each job.
+Note that if you are a member of multiple PIRGs, it is your responsibility to specify the correct account for each job.
 
 If you're not sure what your PIRG/account name is, you can use the groups command.  It will show a list of groups that you're in.  A few are system groups that you cannot charge to (_e.g._, `talapas`, `gaussian`).  But within that list you should recognize the PIRGs that you are a member of.
 
 ## Running a Batch Job
 
-Talapas uses the [SLURM](https://slurm.schedmd.com/) job scheduler and resource manager to provide a way to submit large computational tasks to the cluster in a batch fashion.
+Talapas uses the [Slurm](https://slurm.schedmd.com/) job scheduler and resource manager to provide a way to submit large computational tasks to the cluster in a batch fashion.
 
 As a basic example, here is a simple batch script to run the `hostname` command on one compute node.  To run it, first create a file `hostname.batch` containing these lines:
 
@@ -113,7 +113,7 @@ Then, to actually submit the job for execution, type:
 
 `sbatch hostname.batch`
 
-When a job is submitted, SLURM considers all of the resources requested (e.g., CPU cores, memory, time, GPUs) together with the set of currently running and queued jobs.  Once compute nodes are available to run your job, it will be run.
+When a job is submitted, Slurm considers all of the resources requested (e.g., CPU cores, memory, time, GPUs) together with the set of currently running and queued jobs.  Once compute nodes are available to run your job, it will be run.
 
 Note that your job will _not_ run until the resources you have requested are available.  This means that you may be able to get your job to run sooner by requesting fewer resources.  For example, if your job will run in 1000MB, it's better not to request 10000MB, as it may take significantly longer for those resources to become available.
 
@@ -127,23 +127,23 @@ Submitted batch job 12345
 $ squeue -j 12345
 
    JOBID PARTITION     NAME        USER ST       TIME  NODES NODELIST(REASON)
-    12345  compute     myhostjob   joec  R       5:08      1 n003
+    12345  compute     myhostjob   duckid  R       5:08      1 n003
 
 # later, we see that the job has successfully completed
 $ sacct -j 12345
 
        JobID    JobName  Partition    Account  AllocCPUS      State ExitCode
 ------------ ---------- ---------- ---------- ---------- ---------- --------
-12345       myhostjob+    compute    joegrp         1     COMPLETED      0:0
-12345.batch      batch               joegrp         1     COMPLETED      0:0
-12345.exte+     extern               joegrp         1     COMPLETED      0:0
+12345       myhostjob+    compute    mypirg         1     COMPLETED      0:0
+12345.batch      batch               mypirg         1     COMPLETED      0:0
+12345.exte+     extern               mypirg         1     COMPLETED      0:0
 ```
 
 If needed, you can also kill a job using its job id.  This will terminate it if it has already started running, or remove it from the queue if it hasn't started yet.
 
 `scancel 12345`
 
-SLURM uses a number of queues, which it calls _partitions_, to run jobs with different properties.  Normal jobs will use the compute partition, but there are other partitions for jobs that need to run longer than a day, need more memory, or need to use GPUs, for example.  You can use the `sinfo` command to see detailed information about the partitions and their states.
+Slurm uses a number of queues, which it calls _partitions_, to run jobs with different properties.  Normal jobs will use the compute partition, but there are other partitions for jobs that need to run longer than a day, need more memory, or need to use GPUs, for example.  You can use the `sinfo` command to see detailed information about the partitions and their states.
 
 See the [Partition List]({% link docs/about_talapas/partition_list.md %}) page for information on the available partitions.
 
@@ -157,7 +157,7 @@ For long-running computational tasks, batch jobs are the way to go.  But someti
 
 You can start a shell like this
 
-`srun --account=hpcrcf --pty --partition=compute --mem=1024M --time=240 bash`
+`srun --account=<pirg> --pty --partition=compute --mem=1024M --time=240 bash`
 
 Most of the flags work just as in batch scripts, above.  This command requests a single core (the default) on a node in the compute partition, with 1024MB of memory, for four hours.  (After four hours, the shell and all commands running under it will be killed.)
 
@@ -174,23 +174,23 @@ Note that on Talapas, using `--ntasks` (or `-n`) instead of `--cpus-per-task` (o
 
 If your interactive job will involve a program like Rstudio, which uses X11 to provide graphical output, there are several options.  You can use the `srun --x11` flag like so to forward your X11 connection back to your workstation X server.
 
-`srun --account=hpcrcf --x11 --pty --partition=compute --mem=4G --time=4:00 bash`
+`srun --account=<pirg> --x11 --pty --partition=compute --mem=4G --time=4:00 bash`
 
 For some cases, the alternative script `xrun` works better.
 
-`xrun --account=hpcrcf --partition=compute --mem=1024 --time=4 bash`
+`xrun --account=<pirg> --partition=compute --mem=1024 --time=4 bash`
 
-Note that this script supports only a subset of the `srun` flags and has some quirks.  The `--mem` value must be a whole number and is in megabytes.  The `--time` value is in HH:MM format, but if only a whole number is specified, it is take as hours (rather than minutes).
+Note that this script supports only a subset of the `srun` flags and has some quirks.  The `--mem` value must be a whole number and is in megabytes.  The `--time` value is in HH:MM format, but if only a whole number is specified, it is taken as hours (rather than minutes).
 
 In order for this to work correctly, you will need to be running an X server on your local workstation, and you'll have to forward X traffic when you connect to a login node.  This is typically done by using `ssh -Y` or its equivalent.
 
-The final option, which is far simpler if it works for your case, is to simply start a desktop session using Open OnDemand.  This does not require an X11 server on your workstation, but rather runs the server on the compute node, forwarding traffic via a web browser-based VNC client.  See the [[Open OnDemand]] page for more details.
+The final option, which is far simpler if it works for your case, is to simply start a desktop session using Open OnDemand.  This does not require an X11 server on your workstation, but rather runs the server on the compute node, forwarding traffic via a web browser-based VNC client.  See the [Open OnDemand]({% link docs/open_ondemand.md %}) page for more details.
 
 ## Requesting Space and Time
 
-For every SLURM job you should specify the amount of memory the job needs (with `--mem` and related flags) and the amount of time it needs (with `--time`).  If you don't do so, default values are used, but these are often less than ideal.
+For every Slurm job you should specify the amount of memory the job needs (with `--mem` and related flags) and the amount of time it needs (with `--time`).  If you don't do so, default values are used, but these are often less than ideal.
 
-As a general rule, the fewer resources your job requires, the sooner it will run.  This is because smaller/shorter jobs are easier for SLURM to schedule sooner.  (Requesting fewer resources also benefits other users by allowing SLURM to schedule cluster resources more efficiently.)  That said, if you specify less space or time than your job needs, it will be killed before it can complete, since these specifications are enforced.  So, you want to err somewhat on the high side.  For any given application, you might have to experiment some to get this right.
+As a general rule, the fewer resources your job requires, the sooner it will run.  This is because smaller/shorter jobs are easier for Slurm to schedule sooner.  (Requesting fewer resources also benefits other users by allowing Slurm to schedule cluster resources more efficiently.)  That said, if you specify less space or time than your job needs, it will be killed before it can complete, since these specifications are enforced.  So, you want to err somewhat on the high side.  For any given application, you might have to experiment some to get this right.
 
 For memory, the default is to be allocated a proportional amount of available RAM from the node.  So, for example, if you request one CPU core on a node that has 28 cores and 104GB of RAM, the default will be about 3.7GB of memory.  (A corollary is that if you request all of the cores for a node, you'll get all of the available RAM by default.)  Some nodes have more cores and/or RAM, so this may vary, but 3.7GB is currently the smallest default for all Talapas nodes.
 
@@ -202,7 +202,7 @@ In order to help estimate your job's requirements, you can use sacct to see what
 
 `sacct -j JOBID --format=JobID,JobName,ReqMem,MaxRSS,Elapsed`
 
-where JOBID is the numeric ID of a job that previously complete.  This will produce output like this
+where JOBID is the numeric ID of a job that previously completed.  This will produce output like this
 
 ```bash
 sacct -j 301111 --format=JobID,JobName,ReqMem,MaxRSS,Elapsed
@@ -217,11 +217,11 @@ This job used about 193MB (197180K) of RAM at its peak and ran for a bit over 16
 
 There's also a helper script `seff` that provides similar information and is a bit easier to type.  Just say `seff JOBID`.
 
-See the [Memory]({% link docs/about_talapas/memory.md %}) documetation page for more details.
+See the [Memory]({% link docs/about_talapas/memory.md %}) documentation page for more details.
 
 ## Special Handling for Quarterly Maintenance Events
 
-Approximately once per quarter, Talapas is taken down for maintenance, to update software and hardware, make repairs, etc. To minimize the disruption, SLURM reservations are added to "block out" those times. If you take no special steps, a job request that you make that runs into a maintenance window will be held and run _after_ the window.
+Approximately once per quarter, Talapas is taken down for maintenance, to update software and hardware, make repairs, etc. To minimize the disruption, Slurm reservations are added to "block out" those times. If you take no special steps, a job request that you make that runs into a maintenance window will be held and run _after_ the window.
 
 This is often what you'd want. But, sometimes you might want a job to start right away, even if the entire optimal running time is not available. You can specify this using the `--time-min` flag to specify a minimum acceptable time limit for the job.
 
@@ -230,7 +230,7 @@ This is often what you'd want. But, sometimes you might want a job to start rig
 #SBATCH --time-min=0-1:00:00
 ```
 
-Using the above flag, you'll normally get a time limit of eight hours. But, if there are reservations that would delay the start of your job, SLURM will consider any time limit down to one hour to be acceptable and start the job immediately. (SLURM will prefer the largest available time limit.)
+Using the above flag, you'll normally get a time limit of eight hours. But, if there are reservations that would delay the start of your job, Slurm will consider any time limit down to one hour to be acceptable and start the job immediately. (Slurm will prefer the largest available time limit.)
 
 ## Being a Good Cluster Citizen
 

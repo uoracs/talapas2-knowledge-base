@@ -23,9 +23,9 @@ Currently the compute nodes have no swap space configured.  In almost all scena
 
 ## Specifying Job Memory Requirements
 
-The SLURM scheduler manages node memory, and each job run by SLURM has a specific amount of memory allocated to it.  If the amount is not explicitly specified, a default is used.
+The Slurm scheduler manages node memory, and each job run by Slurm has a specific amount of memory allocated to it.  If the amount is not explicitly specified, a default is used.
 
-For every SLURM job you should specify the amount of memory the job needs, with the `--mem` or `--mem-per-cpu` flags.  If you don't do so, default values are used, but these are often less than ideal.
+For every Slurm job you should specify the amount of memory the job needs, with the `--mem` or `--mem-per-cpu` flags.  If you don't do so, default values are used, but these are often less than ideal.
 
 The `--mem` flag specifies the amount of RAM requested for each node in the job.  Unless you're an advanced user, this flag is probably more intuitive than the `--mem-per-cpu` flag.  See the documentation on the [sbatch](https://slurm.schedmd.com/sbatch.html "https://slurm.schedmd.com/sbatch.html") and [srun](https://slurm.schedmd.com/srun.html "https://slurm.schedmd.com/srun.html") man pages.
 
@@ -33,17 +33,17 @@ For memory, the default is an allocation proportional amount of available RAM fr
 
 If your job needs more than the default, you must explicitly specify a larger value.  Alternatively, if your job needs less, you might want to specify that, which will increase the odds that it will be scheduled sooner.
 
-As a general rule, the fewer resources your job requires, the sooner it will run.  This is because smaller jobs are easier for SLURM to schedule sooner.  (Requesting fewer resources also benefits other users by allowing SLURM to schedule cluster resources more efficiently.)  That said, if you specify less space than your job needs, it will be killed before it can complete, since these specifications are enforced.  So, you want to err somewhat on the high side.  For any given application, you might have to experiment some to get this right.
+As a general rule, the fewer resources your job requires, the sooner it will run.  This is because smaller jobs are easier for Slurm to schedule sooner.  (Requesting fewer resources also benefits other users by allowing Slurm to schedule cluster resources more efficiently.)  That said, if you specify less space than your job needs, it will be killed before it can complete, since these specifications are enforced.  So, you want to err somewhat on the high side.  For any given application, you might have to experiment some to get this right.
 
 Note that a small amount of RAM on each node is reserved for system functions, in order to keep the OS and I/O operations running at full speed.
 
 ## What Happens When Memory Limits are Exceeded?
 
-SLURM uses several mechanisms to enforce the memory limit specified for a job.  Currently, the main mechanism is a periodic check of memory usage.  About once per minute, the node SLURM daemon will check to see how much RAM ([RSS](https://en.wikipedia.org/wiki/Resident_set_size "https://en.wikipedia.org/wiki/Resident_set_size")) is in use.  If that amount is over the limit, the job will be sent a SIGTERM (followed by a SIGKILL if necessary), and the job will be put into the CANCELLED state (which can be viewed using the [sacct](https://slurm.schedmd.com/sacct.html "https://slurm.schedmd.com/sacct.html") command).  From the user point of view, in this case it will typically appear that the processes in question were killed by a signal.  Depending on how the programs being run handle signals, however, there might be other, less-than-obvious error messages as a result.  If your job is dying unexpectedly, consider the possibility that it is exceeding the amount of memory requested for it.
+Slurm uses several mechanisms to enforce the memory limit specified for a job.  Currently, the main mechanism is a periodic check of memory usage.  About once per minute, the node Slurm daemon will check to see how much RAM ([RSS](https://en.wikipedia.org/wiki/Resident_set_size "https://en.wikipedia.org/wiki/Resident_set_size")) is in use.  If that amount is over the limit, the job will be sent a SIGTERM (followed by a SIGKILL if necessary), and the job will be put into the CANCELLED state (which can be viewed using the [sacct](https://slurm.schedmd.com/sacct.html "https://slurm.schedmd.com/sacct.html") command).  From the user point of view, in this case it will typically appear that the processes in question were killed by a signal.  Depending on how the programs being run handle signals, however, there might be other, less-than-obvious error messages as a result.  If your job is dying unexpectedly, consider the possibility that it is exceeding the amount of memory requested for it.
 
 In addition to the above, the job's ulimit for memory is set to the requested value.  It's possible that this limit will be hit first, in which case one might expect an "out of memory" sort of error from the program (assuming that it checks for this condition).  Again, it's possible that there might be other, less-than-obvious error messages.
 
-Recently, SLURM has started controlling this resource via the [cgroup](https://en.wikipedia.org/wiki/Cgroups "https://en.wikipedia.org/wiki/Cgroups") mechanism.  In this case, exceeding the memory limit will cause the Linux OOM-killer to be invoked, which will kill the process as if by SIGKILL.  You might also see a diagnostic message in the SLURM error log like this:
+Recently, Slurm has started controlling this resource via the [cgroup](https://en.wikipedia.org/wiki/Cgroups "https://en.wikipedia.org/wiki/Cgroups") mechanism.  In this case, exceeding the memory limit will cause the Linux OOM-killer to be invoked, which will kill the process as if by SIGKILL.  You might also see a diagnostic message in the Slurm error log like this:
 
 `slurmstepd: error: Detected 1 oom-kill event(s) in step 988715.batch cgroup.`
 
@@ -53,7 +53,7 @@ In order to help estimate your job's requirements, you can use `sacct` to see wh
 
 `sacct -j JOBID --format=JobID,JobName,ReqMem,MaxRSS,Elapsed`
 
-where JOBID is the numeric ID of a job that previously complete.  This will produce output like this:
+where JOBID is the numeric ID of a job that previously completed.  This will produce output like this:
 
 ```bash
 sacct -j 301111 --format=JobID,JobName,ReqMem,MaxRSS,Elapsed
@@ -75,7 +75,7 @@ When estimating, keep in mind that the amount of memory your job uses might be d
 
 ## Memory and MemoryLong Partitions
 
-As mentioned above, some of the SLURM partitions (queues) contain nodes with more memory.  Specifically, the partitions with "memory" in their name currently provide much larger amounts of RAM than the standard nodes.  If it appears that your job will not run correctly or efficiently on standard nodes, try running on a "memory" node instead.
+As mentioned above, some of the Slurm partitions (queues) contain nodes with more memory.  Specifically, the partitions with "memory" in their name currently provide much larger amounts of RAM than the standard nodes.  If it appears that your job will not run correctly or efficiently on standard nodes, try running on a "memory" node instead.
 
 There are only a relatively small number of memory nodes, so in general you can expect to wait longer before your job is scheduled.
 
